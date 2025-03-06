@@ -1,0 +1,280 @@
+2025-03-06T15:53:00.431+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21.0.2 with PID 19412 (X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend\target\classes started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T15:53:00.433+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-06T15:53:01.126+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-06T15:53:01.137+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-06T15:53:01.138+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-06T15:53:01.179+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-06T15:53:01.179+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 718 ms
+2025-03-06T15:53:01.441+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T15:53:01.708+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-06T15:53:01.710+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T15:53:01.718+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-06T15:53:01.762+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-06T15:53:01.767+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 1.696 seconds (process running for 1.941)
+2025-03-06T15:53:55.416+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-06T15:53:55.418+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-06T15:53:55.419+01:00 r= ip=  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-06T15:53:55.423+01:00 r=e18576dd0ddb ip=0:0:0:0:0:0:0:1  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET / UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+2025-03-06T15:53:55.439+01:00 r=e18576dd0ddb ip=0:0:0:0:0:0:0:1  WARN 19412 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET / status=404 time=15ms
+2025-03-06T15:53:55.485+01:00 r=ef0ff6c45455 ip=0:0:0:0:0:0:0:1  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /favicon.ico UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+2025-03-06T15:53:55.491+01:00 r=ef0ff6c45455 ip=0:0:0:0:0:0:0:1  WARN 19412 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /favicon.ico status=404 time=4ms
+2025-03-06T15:54:28.686+01:00 r=bc17876b3a0e ip=127.0.0.1  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /
+2025-03-06T15:54:28.689+01:00 r=bc17876b3a0e ip=127.0.0.1  WARN 19412 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET / status=404 time=0ms
+2025-03-06T16:10:05.993+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.persistence.HorseDaoTest     : Starting HorseDaoTest using Java 21.0.2 with PID 3188 (started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:10:05.994+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.persistence.HorseDaoTest     : The following 2 profiles are active: "test", "datagen"
+2025-03-06T16:10:06.720+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Generating data...
+2025-03-06T16:10:06.721+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:10:06.884+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-03-06T16:10:06.885+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:10:06.897+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Finished generating data successfully.
+2025-03-06T16:10:07.297+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-06T16:10:07.334+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.persistence.HorseDaoTest     : Started HorseDaoTest in 1.596 seconds (process running for 2.39)
+2025-03-06T16:10:08.004+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [at.ac.tuwien.sepr.assignment.individual.rest.HorseEndpointTest]: HorseEndpointTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-03-06T16:10:08.020+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplication for test class at.ac.tuwien.sepr.assignment.individual.rest.HorseEndpointTest
+2025-03-06T16:10:08.056+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.rest.HorseEndpointTest       : Starting HorseEndpointTest using Java 21.0.2 with PID 3188 (started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:10:08.056+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.rest.HorseEndpointTest       : The following 2 profiles are active: "test", "datagen"
+2025-03-06T16:10:08.226+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Generating data...
+2025-03-06T16:10:08.227+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-03-06T16:10:08.230+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
+2025-03-06T16:10:08.230+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-03-06T16:10:08.231+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Finished generating data successfully.
+2025-03-06T16:10:08.306+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-06T16:10:08.320+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.i.rest.HorseEndpointTest       : Started HorseEndpointTest in 0.296 seconds (process running for 3.377)
+2025-03-06T16:10:08.330+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-06T16:10:08.330+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-06T16:10:08.331+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-03-06T16:10:08.358+01:00 r= ip=  WARN 3188 --- [wendys-family-tree] [main] o.s.web.servlet.PageNotFound             : No mapping for GET /asdf123
+2025-03-06T16:10:08.364+01:00 r= ip=  WARN 3188 --- [wendys-family-tree] [main] o.s.web.servlet.PageNotFound             : No endpoint GET /asdf123.
+2025-03-06T16:10:08.372+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-06T16:10:08.372+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-06T16:10:08.373+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-03-06T16:10:08.402+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:10:08.488+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplicationTests]: SeprIndividualAssignmentApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-03-06T16:10:08.499+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplication for test class at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplicationTests
+2025-03-06T16:10:08.523+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] SeprIndividualAssignmentApplicationTests : Starting SeprIndividualAssignmentApplicationTests using Java 21.0.2 with PID 3188 (started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:10:08.523+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] SeprIndividualAssignmentApplicationTests : The following 1 profile is active: "test"
+2025-03-06T16:10:08.710+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-03-06T16:10:08.711+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=SA
+2025-03-06T16:10:08.712+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-03-06T16:10:08.712+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-06T16:10:08.722+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] SeprIndividualAssignmentApplicationTests : Started SeprIndividualAssignmentApplicationTests in 0.219 seconds (process running for 3.778)
+2025-03-06T16:10:08.729+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [at.ac.tuwien.sepr.assignment.individual.service.HorseServiceTest]: HorseServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-03-06T16:10:08.743+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplication for test class at.ac.tuwien.sepr.assignment.individual.service.HorseServiceTest
+2025-03-06T16:10:08.764+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:10:08.766+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-06T16:10:08.767+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-03-06T16:10:08.768+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-03-06T16:10:08.769+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-03-06T16:10:08.771+01:00 r= ip=  INFO 3188 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-03-06T16:14:13.769+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21.0.2 with PID 11200 (X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend\target\e01234567-0.0.1-SNAPSHOT.jar started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:14:13.773+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : The following 1 profile is active: "datagen"
+2025-03-06T16:14:14.565+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-06T16:14:14.583+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-06T16:14:14.585+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-06T16:14:14.606+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-06T16:14:14.606+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 797 ms
+2025-03-06T16:14:14.672+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Generating data...
+2025-03-06T16:14:14.673+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:14:14.769+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:./wendydb user=SA
+2025-03-06T16:14:14.770+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:14:14.777+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Finished generating data successfully.
+2025-03-06T16:14:15.050+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-06T16:14:15.088+01:00 r= ip=  WARN 11200 --- [wendys-family-tree] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-03-06T16:14:15.089+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:14:15.110+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-06T16:14:15.120+01:00 r= ip=  INFO 11200 --- [wendys-family-tree] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-03-06T16:14:15.135+01:00 r= ip= ERROR 11200 --- [wendys-family-tree] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-03-06T16:14:40.037+01:00 r=8240458db440 ip=127.0.0.1  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /
+2025-03-06T16:14:40.038+01:00 r=8240458db440 ip=127.0.0.1  WARN 19412 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET / status=404 time=0ms
+2025-03-06T16:14:41.734+01:00 r=31d1b5fb85af ip=127.0.0.1  INFO 19412 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /
+2025-03-06T16:14:41.735+01:00 r=31d1b5fb85af ip=127.0.0.1  WARN 19412 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET / status=404 time=0ms
+2025-03-06T16:17:12.963+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21.0.2 with PID 16936 (X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend\target\e01234567-0.0.1-SNAPSHOT.jar started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:17:12.965+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : The following 1 profile is active: "datagen"
+2025-03-06T16:17:13.747+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-06T16:17:13.758+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-06T16:17:13.758+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-06T16:17:13.781+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-06T16:17:13.782+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 784 ms
+2025-03-06T16:17:13.846+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Generating data...
+2025-03-06T16:17:13.847+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:17:18.130+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-06T16:17:18.132+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:17:18.137+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Finished generating data successfully.
+2025-03-06T16:17:18.444+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-06T16:17:18.501+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-06T16:17:18.516+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 5.966 seconds (process running for 6.323)
+2025-03-06T16:17:25.702+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-06T16:17:25.703+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-06T16:17:25.704+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-06T16:17:25.709+01:00 r=580e1b72edf2 ip=127.0.0.1  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /
+2025-03-06T16:17:25.722+01:00 r=580e1b72edf2 ip=127.0.0.1  WARN 16936 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET / status=404 time=13ms
+2025-03-06T16:17:27.041+01:00 r=c81fe6b360ea ip=127.0.0.1  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /
+2025-03-06T16:17:27.042+01:00 r=c81fe6b360ea ip=127.0.0.1  WARN 16936 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET / status=404 time=0ms
+2025-03-06T16:17:28.379+01:00 r=d3ee301d078d ip=127.0.0.1  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /
+2025-03-06T16:17:28.379+01:00 r=d3ee301d078d ip=127.0.0.1  WARN 16936 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET / status=404 time=0ms
+2025-03-06T16:17:56.431+01:00 r=2bc1b769ebb8 ip=127.0.0.1  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses
+2025-03-06T16:17:56.446+01:00 r=2bc1b769ebb8 ip=127.0.0.1  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:17:56.484+01:00 r=2bc1b769ebb8 ip=127.0.0.1  INFO 16936 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=52ms
+2025-03-06T16:18:07.348+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-06T16:18:07.355+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-06T16:18:07.357+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:18:07.359+01:00 r= ip=  INFO 16936 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-06T16:18:27.241+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.persistence.HorseDaoTest     : Starting HorseDaoTest using Java 21.0.2 with PID 13676 (started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:18:27.242+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.persistence.HorseDaoTest     : The following 2 profiles are active: "test", "datagen"
+2025-03-06T16:18:27.912+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Generating data...
+2025-03-06T16:18:27.950+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:18:28.113+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2025-03-06T16:18:28.116+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:18:28.127+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Finished generating data successfully.
+2025-03-06T16:18:28.536+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-06T16:18:28.575+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.persistence.HorseDaoTest     : Started HorseDaoTest in 1.589 seconds (process running for 2.31)
+2025-03-06T16:18:29.204+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [at.ac.tuwien.sepr.assignment.individual.rest.HorseEndpointTest]: HorseEndpointTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-03-06T16:18:29.225+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplication for test class at.ac.tuwien.sepr.assignment.individual.rest.HorseEndpointTest
+2025-03-06T16:18:29.258+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.rest.HorseEndpointTest       : Starting HorseEndpointTest using Java 21.0.2 with PID 13676 (started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:18:29.258+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.rest.HorseEndpointTest       : The following 2 profiles are active: "test", "datagen"
+2025-03-06T16:18:29.415+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Generating data...
+2025-03-06T16:18:29.415+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-03-06T16:18:29.417+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
+2025-03-06T16:18:29.417+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-03-06T16:18:29.418+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.p.DataGeneratorBean          : Finished generating data successfully.
+2025-03-06T16:18:29.480+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-06T16:18:29.495+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.i.rest.HorseEndpointTest       : Started HorseEndpointTest in 0.266 seconds (process running for 3.231)
+2025-03-06T16:18:29.505+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-06T16:18:29.505+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-06T16:18:29.506+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-03-06T16:18:29.531+01:00 r= ip=  WARN 13676 --- [wendys-family-tree] [main] o.s.web.servlet.PageNotFound             : No mapping for GET /asdf123
+2025-03-06T16:18:29.537+01:00 r= ip=  WARN 13676 --- [wendys-family-tree] [main] o.s.web.servlet.PageNotFound             : No endpoint GET /asdf123.
+2025-03-06T16:18:29.543+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-03-06T16:18:29.543+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-03-06T16:18:29.544+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-03-06T16:18:29.572+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:18:29.661+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplicationTests]: SeprIndividualAssignmentApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-03-06T16:18:29.671+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplication for test class at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplicationTests
+2025-03-06T16:18:29.692+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] SeprIndividualAssignmentApplicationTests : Starting SeprIndividualAssignmentApplicationTests using Java 21.0.2 with PID 13676 (started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:18:29.692+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] SeprIndividualAssignmentApplicationTests : The following 1 profile is active: "test"
+2025-03-06T16:18:29.870+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-03-06T16:18:29.872+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=SA
+2025-03-06T16:18:29.872+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-03-06T16:18:29.872+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-03-06T16:18:29.880+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] SeprIndividualAssignmentApplicationTests : Started SeprIndividualAssignmentApplicationTests in 0.206 seconds (process running for 3.616)
+2025-03-06T16:18:29.887+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [at.ac.tuwien.sepr.assignment.individual.service.HorseServiceTest]: HorseServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-03-06T16:18:29.897+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration at.ac.tuwien.sepr.assignment.individual.SeprIndividualAssignmentApplication for test class at.ac.tuwien.sepr.assignment.individual.service.HorseServiceTest
+2025-03-06T16:18:29.918+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:18:29.920+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-06T16:18:29.921+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-03-06T16:18:29.921+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-03-06T16:18:29.924+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-03-06T16:18:29.924+01:00 r= ip=  INFO 13676 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-03-06T16:18:43.836+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21.0.2 with PID 13060 (X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend\target\classes started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:18:43.838+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-06T16:18:44.439+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-06T16:18:44.447+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-06T16:18:44.448+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-06T16:18:44.482+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-06T16:18:44.483+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 621 ms
+2025-03-06T16:18:44.731+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:18:44.962+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-06T16:18:44.964+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:18:44.971+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-06T16:18:45.006+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-06T16:18:45.012+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 1.483 seconds (process running for 1.709)
+2025-03-06T16:18:49.147+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-06T16:18:49.148+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-06T16:18:49.149+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-06T16:18:49.152+01:00 r=f9c44e681673 ip=127.0.0.1  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses
+2025-03-06T16:18:49.177+01:00 r=f9c44e681673 ip=127.0.0.1  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:18:49.233+01:00 r=f9c44e681673 ip=127.0.0.1  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=79ms
+2025-03-06T16:18:50.238+01:00 r=e8672bfb4313 ip=127.0.0.1  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses
+2025-03-06T16:18:50.239+01:00 r=e8672bfb4313 ip=127.0.0.1  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:18:50.240+01:00 r=e8672bfb4313 ip=127.0.0.1  INFO 13060 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-06T16:18:59.864+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-06T16:18:59.869+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-06T16:18:59.872+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:18:59.873+01:00 r= ip=  INFO 13060 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-06T16:19:09.711+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21.0.2 with PID 18860 (X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend\target\classes started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:19:09.713+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-06T16:19:10.401+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-06T16:19:10.411+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-06T16:19:10.411+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-06T16:19:10.445+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-06T16:19:10.445+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 696 ms
+2025-03-06T16:19:10.713+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:19:10.934+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-06T16:19:10.936+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:19:10.943+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-06T16:19:10.983+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-06T16:19:10.988+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 1.732 seconds (process running for 2.301)
+2025-03-06T16:19:41.262+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-06T16:19:41.263+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-06T16:19:41.263+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-03-06T16:19:41.268+01:00 r=81c94b7b5335 ip=127.0.0.1  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses
+2025-03-06T16:19:41.292+01:00 r=81c94b7b5335 ip=127.0.0.1  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:19:41.355+01:00 r=81c94b7b5335 ip=127.0.0.1  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=87ms
+2025-03-06T16:19:42.058+01:00 r=23db96678d54 ip=127.0.0.1  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses
+2025-03-06T16:19:42.059+01:00 r=23db96678d54 ip=127.0.0.1  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:19:42.060+01:00 r=23db96678d54 ip=127.0.0.1  INFO 18860 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-06T16:19:45.325+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-06T16:19:45.330+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-06T16:19:45.332+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:19:45.332+01:00 r= ip=  INFO 18860 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-06T16:21:18.398+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21.0.2 with PID 5104 (X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend\target\classes started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:21:18.399+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-06T16:21:19.111+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-06T16:21:22.618+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-06T16:21:22.618+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-06T16:21:22.661+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-06T16:21:22.661+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4234 ms
+2025-03-06T16:21:22.964+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:21:23.294+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-06T16:21:23.296+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:21:23.303+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-06T16:21:23.356+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-06T16:21:23.361+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 5.335 seconds (process running for 5.824)
+2025-03-06T16:25:06.564+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-06T16:25:06.565+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-06T16:25:06.566+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-06T16:25:06.576+01:00 r=e975cfca96c2 ip=0:0:0:0:0:0:0:1  INFO 5104 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+2025-03-06T16:25:06.616+01:00 r=e975cfca96c2 ip=0:0:0:0:0:0:0:1  INFO 5104 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:25:06.673+01:00 r=e975cfca96c2 ip=0:0:0:0:0:0:0:1  INFO 5104 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=95ms
+2025-03-06T16:25:18.804+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-06T16:25:18.810+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-06T16:25:18.812+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:25:18.813+01:00 r= ip=  INFO 5104 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-06T16:25:30.719+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21.0.2 with PID 2776 (X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend\target\classes started by Inferno in X:\SEP\Einzelphase\sepr-individual-assignment-Wendys-Family-Tree-java-template\Wendys-Family-Tree\backend)
+2025-03-06T16:25:30.720+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-06T16:25:31.307+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-06T16:25:31.316+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-06T16:25:31.316+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-06T16:25:31.348+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-06T16:25:31.349+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 603 ms
+2025-03-06T16:25:31.597+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-06T16:25:31.827+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-06T16:25:31.829+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-06T16:25:31.836+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-06T16:25:31.879+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-06T16:25:31.885+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 1.467 seconds (process running for 1.916)
+2025-03-06T16:25:46.027+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-06T16:25:46.027+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-06T16:25:46.028+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-06T16:25:46.031+01:00 r=ab34aba9ea41 ip=0:0:0:0:0:0:0:1  INFO 2776 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0
+2025-03-06T16:25:46.066+01:00 r=ab34aba9ea41 ip=0:0:0:0:0:0:0:1  INFO 2776 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-06T16:25:46.121+01:00 r=ab34aba9ea41 ip=0:0:0:0:0:0:0:1  INFO 2776 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=89ms
+2025-03-06T16:26:40.023+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-06T16:26:40.028+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-06T16:26:40.030+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-06T16:26:40.031+01:00 r= ip=  INFO 2776 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
