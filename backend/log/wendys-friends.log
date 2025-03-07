@@ -27,3 +27,29 @@
 2025-03-07T17:55:25.295+01:00 r= ip=  INFO 7532 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
 2025-03-07T17:55:25.299+01:00 r= ip=  INFO 7532 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-03-07T17:55:25.303+01:00 r= ip=  INFO 7532 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-07T18:00:55.423+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21 with PID 11376 (C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend\target\classes started by ericy in C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend)
+2025-03-07T18:00:55.425+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-07T18:00:57.416+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-07T18:00:57.435+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-07T18:00:57.436+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-07T18:00:57.499+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-07T18:00:57.500+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2018 ms
+2025-03-07T18:00:58.002+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-07T18:00:58.610+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-07T18:00:58.614+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-07T18:00:58.638+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-07T18:00:58.766+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-07T18:00:58.781+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 4.066 seconds (process running for 5.338)
+2025-03-07T18:01:57.270+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-07T18:01:57.271+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-07T18:01:57.273+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-07T18:01:57.285+01:00 r=bdfbce680475 ip=127.0.0.1  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=insomnia/10.3.1
+2025-03-07T18:01:57.372+01:00 r=bdfbce680475 ip=127.0.0.1  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-07T18:01:57.566+01:00 r=bdfbce680475 ip=127.0.0.1  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=280ms
+2025-03-07T18:05:59.155+01:00 r=90139defe74f ip=0:0:0:0:0:0:0:1  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 OPR/116.0.0.0
+2025-03-07T18:05:59.193+01:00 r=90139defe74f ip=0:0:0:0:0:0:0:1  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-07T18:05:59.200+01:00 r=90139defe74f ip=0:0:0:0:0:0:0:1  INFO 11376 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=43ms
+2025-03-07T18:06:18.474+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-07T18:06:18.492+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-07T18:06:18.495+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-07T18:06:18.497+01:00 r= ip=  INFO 11376 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
