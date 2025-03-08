@@ -1,6 +1,7 @@
 package at.ac.tuwien.sepr.assignment.individual.rest;
 
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateRestDto;
@@ -8,19 +9,25 @@ import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import at.ac.tuwien.sepr.assignment.individual.service.HorseService;
+import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
 
 /**
  * REST controller for managing horse-related operations.
@@ -101,6 +108,25 @@ public class HorseEndpoint {
     }
   }
 
+  /**
+   * Creates a new horse with the provided details.
+   *
+   * @param toCreate  the horse data to create
+   * @return the created horse details
+   * @throws ValidationException     if validation fails
+   * @throws ConflictException       if a conflict occurs while creating
+   */
+  @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+  public HorseCreateDto create(
+          @RequestPart("horse") HorseCreateDto toCreate,
+          @RequestPart(value = "image", required = false) MultipartFile image)
+          throws ValidationException, ConflictException, IOException {
+
+    LOG.info("POST " + BASE_PATH);
+    LOG.debug("Body of request:\n{}", toCreate);
+
+    return service.create(toCreate, image);
+  }
 
   /**
    * Logs client-side errors with relevant details.

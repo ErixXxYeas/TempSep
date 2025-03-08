@@ -1,12 +1,17 @@
 package at.ac.tuwien.sepr.assignment.individual.service;
 
 
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
+import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.stream.Stream;
 
 /**
@@ -45,5 +50,8 @@ public interface HorseService {
    * @throws NotFoundException if the horse with the given ID does not exist in the persistent data store
    */
   HorseDetailDto getById(long id) throws NotFoundException;
+
+  // TODO Desc
+  HorseCreateDto create(HorseCreateDto horse, MultipartFile image) throws IOException; //TODO exception
 
 }

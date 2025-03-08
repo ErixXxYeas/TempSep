@@ -1,9 +1,13 @@
 package at.ac.tuwien.sepr.assignment.individual.persistence;
 
 
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -17,7 +21,6 @@ public interface HorseDao {
    * @return a list of all stored horses
    */
   List<Horse> getAll();
-
 
   /**
    * Update the horse with the ID given in {@code horse}
@@ -39,5 +42,15 @@ public interface HorseDao {
    * @throws NotFoundException if the Horse with the given ID does not exist in the persistent data store
    */
   Horse getById(long id) throws NotFoundException;
+
+  /**
+   * Creates a horse
+   *
+   * @param horse the horse
+   * @param image an image
+   * @throws IOException if there is no Data
+   */
+  void create(HorseCreateDto horse, MultipartFile image) throws IOException;
+
 
 }

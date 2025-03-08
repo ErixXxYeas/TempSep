@@ -2,6 +2,7 @@ import {Owner} from './owner';
 import {Sex} from './sex';
 
 export interface Horse {
+  image?: File;
   id?: number;
   name: string;
   description?: string;
@@ -20,6 +21,7 @@ export interface HorseCreate {
   description?: string;
   dateOfBirth: Date;
   sex: Sex;
+  image?: File;
   ownerId?: number;
 }
 
@@ -29,6 +31,7 @@ export function convertFromHorseToCreate(horse: Horse): HorseCreate {
     description: horse.description,
     dateOfBirth: horse.dateOfBirth,
     sex: horse.sex,
+    image: horse.image,
     ownerId: horse.owner?.id,
   };
 }
