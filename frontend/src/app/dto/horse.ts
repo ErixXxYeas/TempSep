@@ -25,13 +25,13 @@ export interface HorseCreate {
   ownerId?: number;
 }
 
-export function convertFromHorseToCreate(horse: Horse): HorseCreate {
+export function convertFromHorseToCreate(horse: Horse, image: File | null): HorseCreate {
   return {
     name: horse.name,
     description: horse.description,
     dateOfBirth: horse.dateOfBirth,
     sex: horse.sex,
-    image: horse.image,
+    image: image || undefined,
     ownerId: horse.owner?.id,
   };
 }

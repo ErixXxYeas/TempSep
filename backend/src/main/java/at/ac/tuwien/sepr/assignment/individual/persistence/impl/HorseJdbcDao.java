@@ -10,6 +10,7 @@ import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -96,7 +97,7 @@ public class HorseJdbcDao implements HorseDao {
     LOG.trace("create()");
 
     byte[] imageBytes = null;
-    if (image != null && !image.isEmpty()) {
+    if (image != null) {
       imageBytes = image.getBytes(); // Convert image to byte array
     }
 
@@ -105,8 +106,8 @@ public class HorseJdbcDao implements HorseDao {
               .param("description", horse.description())
               .param("dateOfBirth", horse.dateOfBirth())
               .param("sex", horse.sex().toString())
-              .param("ownerId", horse.ownerId())
               .param("image", imageBytes)
+              .param("ownerId", horse.ownerId())
               .update();
     } else {
       LOG.error("Error: Horse data is null.");
@@ -140,6 +141,7 @@ public class HorseJdbcDao implements HorseDao {
             horse.description(),
             horse.dateOfBirth(),
             horse.sex(),
+            horse.image(),
             horse.ownerId());
   }
   private Horse mapRow(ResultSet result, int rownum) throws SQLException {
@@ -149,6 +151,7 @@ public class HorseJdbcDao implements HorseDao {
             result.getString("description"),
             result.getDate("date_of_birth").toLocalDate(),
             Sex.valueOf(result.getString("sex")),
+            result.getBlob("image"),
             result.getObject("owner_id", Long.class));
   }
 }

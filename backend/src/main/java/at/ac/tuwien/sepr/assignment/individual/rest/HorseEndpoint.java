@@ -116,11 +116,11 @@ public class HorseEndpoint {
    * @throws ValidationException     if validation fails
    * @throws ConflictException       if a conflict occurs while creating
    */
-  @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+  @PostMapping()
   public HorseCreateDto create(
           @RequestPart("horse") HorseCreateDto toCreate,
           @RequestPart(value = "image", required = false) MultipartFile image)
-          throws ValidationException, ConflictException, IOException {
+        throws IOException {
 
     LOG.info("POST " + BASE_PATH);
     LOG.debug("Body of request:\n{}", toCreate);

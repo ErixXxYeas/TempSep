@@ -1,6 +1,8 @@
 package at.ac.tuwien.sepr.assignment.individual.dto;
 
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
+
+import java.sql.Blob;
 import java.time.LocalDate;
 
 /**
@@ -13,6 +15,7 @@ public record HorseUpdateDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
+    Blob image,
     Long ownerId
 ) {
 

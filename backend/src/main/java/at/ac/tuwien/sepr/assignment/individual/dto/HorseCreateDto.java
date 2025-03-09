@@ -3,6 +3,7 @@ package at.ac.tuwien.sepr.assignment.individual.dto;
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Blob;
 import java.time.LocalDate;
 
 /**
@@ -14,7 +15,7 @@ public record HorseCreateDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    MultipartFile image,
+    Blob image,
     Long ownerId
 ) {
 

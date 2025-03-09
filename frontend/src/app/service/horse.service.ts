@@ -4,6 +4,7 @@ import {map, Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
 import {Horse, HorseCreate} from '../dto/horse';
 import {formatIsoDate} from "../utils/date-helper";
+import {Block} from "@angular/compiler";
 
 
 const baseUri = environment.backendUrl + '/horses';
@@ -42,7 +43,6 @@ export class HorseService {
     // We _need_ the date to be a string here, and just passing the object with the
     // “type error” to the HTTP client is unproblematic
     (horse as any).dateOfBirth = formatIsoDate(horse.dateOfBirth);
-
     return this.http.post<Horse>(
       baseUri,
       horse

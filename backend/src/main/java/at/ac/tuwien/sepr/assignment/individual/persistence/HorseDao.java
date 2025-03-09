@@ -47,7 +47,6 @@ public interface HorseDao {
    * Creates a horse
    *
    * @param horse the horse
-   * @param image an image
    * @throws IOException if there is no Data
    */
   void create(HorseCreateDto horse, MultipartFile image) throws IOException;

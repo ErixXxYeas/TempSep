@@ -103,6 +103,15 @@
     </div>
   </div>
 
+  <div class="row mb-2">
+    <label for="image" class="col-form-label text-md-end text-muted col-md-2">
+      Upload image
+    </label>
+    <div class="col-md-10">
+    <input type="file" id="image" (change)="imageUploaded($event)" />
+  </div>
+  </div>
+
 
   <div class="mt-4 d-flex flex-row">
     <button

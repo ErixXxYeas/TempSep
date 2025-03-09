@@ -12,6 +12,7 @@ import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {formatIsoDate} from "../../../utils/date-helper";
 
+
 export enum HorseCreateEditMode {
   create,
   edit
@@ -38,7 +39,8 @@ export class HorseCreateEditComponent implements OnInit {
     sex: Sex.female,
   };
   horseBirthDateIsSet = false;
-
+  imageFile: File | null = null;
+  previewUrl: string | ArrayBuffer | null = null
 
   constructor(
     private service: HorseService,
@@ -49,6 +51,7 @@ export class HorseCreateEditComponent implements OnInit {
     private errorFormatter: ErrorFormatterService
   ) {
   }
+
 
   public get heading(): string {
     switch (this.mode) {
@@ -133,6 +136,13 @@ export class HorseCreateEditComponent implements OnInit {
       : `${owner.firstName} ${owner.lastName}`;
   }
 
+  imageUploaded(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.imageFile = file;
+    }
+  }
+
 
   public onSubmit(form: NgForm): void {
     console.log('is form valid?', form.valid, this.horse);
@@ -144,7 +154,7 @@ export class HorseCreateEditComponent implements OnInit {
       switch (this.mode) {
         case HorseCreateEditMode.create:
           observable = this.service.create(
-            convertFromHorseToCreate(this.horse)
+            convertFromHorseToCreate(this.horse, this.imageFile)
           );
           break;
         default:

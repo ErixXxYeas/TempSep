@@ -1,6 +1,8 @@
 package at.ac.tuwien.sepr.assignment.individual.entity;
 
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
+
+import java.sql.Blob;
 import java.time.LocalDate;
 
 /**
@@ -12,6 +14,7 @@ public record Horse(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
+    Blob image,
     Long ownerId
 ) {
 }
