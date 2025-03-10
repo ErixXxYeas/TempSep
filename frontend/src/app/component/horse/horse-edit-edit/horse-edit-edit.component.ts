@@ -38,9 +38,10 @@ export class HorseEditEditComponent implements OnInit {
     dateOfBirth: new Date(),
     sex: Sex.female,
   };
+  imageAvailable = false;
   horseBirthDateIsSet = true;
   imageFile: File | null = null;
-  imagePreview: string | ArrayBuffer | null;
+  imagePreview: string | ArrayBuffer | null | undefined;
 
   constructor(
     private service: HorseService,
@@ -65,7 +66,7 @@ export class HorseEditEditComponent implements OnInit {
   public get submitButtonText(): string {
     switch (this.mode) {
       case HorseEditEditMode.create:
-        return 'Create';
+        return 'Change';
       default:
         return '?';
     }
@@ -108,7 +109,7 @@ export class HorseEditEditComponent implements OnInit {
   private get modeActionFinished(): string {
     switch (this.mode) {
       case HorseEditEditMode.create:
-        return 'created';
+        return 'updated';
       default:
         return '?';
     }
@@ -123,7 +124,6 @@ export class HorseEditEditComponent implements OnInit {
   }
 
 
-
   loadHorseInfo(){
     const horseId = Number(this.route.snapshot.paramMap.get('id'));
     this.service.getById(horseId).subscribe({
@@ -132,11 +132,11 @@ export class HorseEditEditComponent implements OnInit {
         this.horse.description = data.description;
         this.horse.sex = data.sex;
         this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
+        this.imagePreview = 'data:image/jpeg;base64,' + data.image;
 
-
-
-        //Todo: display image
-
+        if (data.image != null){
+          this.imageAvailable = true;
+        }
 
       }, error: error => {
         console.error('Error fetching horses', error);
@@ -149,6 +149,7 @@ export class HorseEditEditComponent implements OnInit {
     })
 
   }
+
 
   public dynamicCssClassesForInput(input: NgModel): any {
     return {
@@ -165,6 +166,7 @@ export class HorseEditEditComponent implements OnInit {
   imageUploaded(event: any): void {
     const file = event.target.files[0];
     if(file){
+      this.imageAvailable = true;
       this.imageFile = file;
       const reader = new FileReader();
       reader.onload = () => {
@@ -172,10 +174,17 @@ export class HorseEditEditComponent implements OnInit {
       }
       reader.readAsDataURL(file)
     }
-
   }
 
-
+  removeImage(){
+    this.imageAvailable = false;
+    this.imagePreview = null
+    this.imageFile = null;
+    const fileInput = document.getElementById("image") as HTMLInputElement;
+    if(fileInput){
+      fileInput.value = "";
+    }
+  }
 
   public onSubmit(form: NgForm): void {
     console.log('is form valid?', form.valid, this.horse);

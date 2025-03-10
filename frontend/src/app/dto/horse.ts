@@ -2,7 +2,7 @@ import {Owner} from './owner';
 import {Sex} from './sex';
 
 export interface Horse {
-  image?: File;
+  image?: string;
   id?: number;
   name: string;
   description?: string;

@@ -108,12 +108,21 @@
       Upload image
     </label>
     <div class="col-md-10">
-    <input type="file" id="image" (change)="imageUploaded($event)" accept="image/png, image/gif, image/jpeg" />
-        <img [src]="imagePreview" alt="Preview" class="img-thumbnail" style="max-width: 200px; height: auto;">
+      <input type="file" id="image" (change)="imageUploaded($event)" accept="image/png, image/gif, image/jpeg" />
     </div>
-
   </div>
 
+  <div class="row mb-2"  [hidden]="!imageAvailable">
+    <label for="image" class="col-form-label text-md-end text-muted col-md-2">
+      Preview
+    </label>
+    <div class="col-md-10">
+      <div class="col-md-10">
+        <img [src]="imagePreview" class="image-preview" >
+      </div>
+      <button type="button" class="btn btn-danger mt-2" (click)="removeImage()">Remove Image</button>
+    </div>
+  </div>
 
 
 

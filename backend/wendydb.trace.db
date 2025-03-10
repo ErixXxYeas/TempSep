@@ -1960,3 +1960,13 @@ INSERT INTO horse (name, description, date_of_birth, sex, image, owner_id) VALUE
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-03-10 22:13:05.692219+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax Fehler in SQL Befehl "UPDATE horse    SET name = ?,\000a        description = ?,\000a        date_of_birth = ?,\000a        sex = ?\000a        [*]image = ?\000a    WHERE id = ?\000a"
+Syntax error in SQL statement "UPDATE horse    SET name = ?,\000a        description = ?,\000a        date_of_birth = ?,\000a        sex = ?\000a        [*]image = ?\000a    WHERE id = ?\000a"; SQL statement:
+UPDATE horse    SET name = ?,
+        description = ?,
+        date_of_birth = ?,
+        sex = ?
+        image = ?
+    WHERE id = ?
+ [42000-232]

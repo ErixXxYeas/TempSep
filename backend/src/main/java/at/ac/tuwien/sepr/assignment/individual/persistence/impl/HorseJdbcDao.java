@@ -45,7 +45,8 @@ public class HorseJdbcDao implements HorseDao {
               SET name = :name,
                   description = :description,
                   date_of_birth = :date_of_birth,
-                  sex = :sex
+                  sex = :sex,
+                  image = :image
               WHERE id = :id
           """;
 

@@ -38,6 +38,7 @@ export class HorseCreateEditComponent implements OnInit {
     dateOfBirth: new Date(),
     sex: Sex.female,
   };
+  imageAvailable = false;
   horseBirthDateIsSet = false;
   imageFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
@@ -139,6 +140,7 @@ export class HorseCreateEditComponent implements OnInit {
   imageUploaded(event: any): void {
     const file = event.target.files[0];
     if(file){
+      this.imageAvailable = true;
       this.imageFile = file;
       const reader = new FileReader();
       reader.onload = () => {
@@ -146,7 +148,16 @@ export class HorseCreateEditComponent implements OnInit {
       }
       reader.readAsDataURL(file)
     }
+  }
 
+  removeImage(){
+    this.imageAvailable = false;
+    this.imagePreview = null
+    this.imageFile = null;
+    const fileInput = document.getElementById("image") as HTMLInputElement;
+    if(fileInput){
+      fileInput.value = "";
+    }
   }
 
 

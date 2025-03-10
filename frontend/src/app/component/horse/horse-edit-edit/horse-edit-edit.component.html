@@ -112,6 +112,20 @@
   </div>
   </div>
 
+  <div class="row mb-2"  [hidden]="!imageAvailable">
+    <label for="image" class="col-form-label text-md-end text-muted col-md-2">
+      Preview
+    </label>
+    <div class="col-md-10">
+      <div class="col-md-10">
+        <img [src]="imagePreview" class="image-preview" >
+      </div>
+      <button type="button" class="btn btn-danger mt-2" (click)="removeImage()">Remove Image</button>
+  </div>
+  </div>
+
+
+
 
   <div class="mt-4 d-flex flex-row">
     <button

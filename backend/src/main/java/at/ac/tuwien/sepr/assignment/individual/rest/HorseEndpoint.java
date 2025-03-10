@@ -95,14 +95,13 @@ public class HorseEndpoint {
       @RequestPart(value = "image", required = false) MultipartFile image)
           throws IOException {
 
-    HorseCreateDto toCreate = new HorseCreateDto(name,description,dateOfBirth,sex,ownerId);
-
-    LOG.info("POST " + BASE_PATH);
-    LOG.debug("Body of request:\n{}", toCreate);
-
     try {
       HorseUpdateRestDto toUpdate = new HorseUpdateRestDto(name,description, dateOfBirth , sex, ownerId);
+      LOG.info("PUT " + BASE_PATH);
+      LOG.debug("Body of request:\n{}", toUpdate);
       return service.update(toUpdate.toUpdateDtoWithId(id), image);
+
+
     } catch (NotFoundException | ValidationException | ConflictException e) {
       HttpStatus status = HttpStatus.NOT_FOUND;
       logClientError(status, "Horse to update not found", e);
