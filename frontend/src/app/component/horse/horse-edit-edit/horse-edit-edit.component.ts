@@ -11,36 +11,36 @@ import {ErrorFormatterService} from 'src/app/service/error-formatter.service';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {formatIsoDate} from "../../../utils/date-helper";
-import {CommonModule} from "@angular/common";
 
 
-export enum HorseCreateEditMode {
+export enum HorseEditEditMode {
   create,
   edit
 }
 
 @Component({
-  selector: 'app-horse-create-edit',
-  templateUrl: './horse-create-edit.component.html',
+  selector: 'app-horse-edit-edit',
+  templateUrl: './horse-edit-edit.component.html',
   imports: [
     FormsModule,
     AutocompleteComponent,
+    FormsModule
   ],
   standalone: true,
-  styleUrls: ['./horse-create-edit.component.scss']
+  styleUrls: ['./horse-edit-edit.component.scss']
 })
-export class HorseCreateEditComponent implements OnInit {
-
-  mode: HorseCreateEditMode = HorseCreateEditMode.create;
+export class HorseEditEditComponent implements OnInit {
+  bannerError: string | null = null;
+  mode: HorseEditEditMode = HorseEditEditMode.create;
   horse: Horse = {
     name: '',
     description: '',
     dateOfBirth: new Date(),
     sex: Sex.female,
   };
-  horseBirthDateIsSet = false;
+  horseBirthDateIsSet = true;
   imageFile: File | null = null;
-  imagePreview: string | ArrayBuffer | null = null;
+  imagePreview: string | ArrayBuffer | null;
 
   constructor(
     private service: HorseService,
@@ -55,8 +55,8 @@ export class HorseCreateEditComponent implements OnInit {
 
   public get heading(): string {
     switch (this.mode) {
-      case HorseCreateEditMode.create:
-        return 'Create New Horse';
+      case HorseEditEditMode.create:
+        return 'Edit Horse';
       default:
         return '?';
     }
@@ -64,7 +64,7 @@ export class HorseCreateEditComponent implements OnInit {
 
   public get submitButtonText(): string {
     switch (this.mode) {
-      case HorseCreateEditMode.create:
+      case HorseEditEditMode.create:
         return 'Create';
       default:
         return '?';
@@ -89,7 +89,7 @@ export class HorseCreateEditComponent implements OnInit {
   }
 
   get modeIsCreate(): boolean {
-    return this.mode === HorseCreateEditMode.create;
+    return this.mode === HorseEditEditMode.create;
   }
 
 
@@ -107,7 +107,7 @@ export class HorseCreateEditComponent implements OnInit {
 
   private get modeActionFinished(): string {
     switch (this.mode) {
-      case HorseCreateEditMode.create:
+      case HorseEditEditMode.create:
         return 'created';
       default:
         return '?';
@@ -119,9 +119,35 @@ export class HorseCreateEditComponent implements OnInit {
     : this.ownerService.searchByName(input, 5);
 
   ngOnInit(): void {
-    this.route.data.subscribe(data => {
-      this.mode = data.mode;
-    });
+  this.loadHorseInfo();
+  }
+
+
+
+  loadHorseInfo(){
+    const horseId = Number(this.route.snapshot.paramMap.get('id'));
+    this.service.getById(horseId).subscribe({
+      next: data =>{
+        this.horse.name = data.name;
+        this.horse.description = data.description;
+        this.horse.sex = data.sex;
+        this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
+
+
+
+        //Todo: display image
+
+
+      }, error: error => {
+        console.error('Error fetching horses', error);
+        this.bannerError = 'Could not fetch horses: ' + error.message;
+        const errorMessage = error.status === 0
+          ? 'Is the backend up?'
+          : error.message.message;
+        this.notification.error(errorMessage, 'Could Not Fetch Horses');
+      }
+    })
+
   }
 
   public dynamicCssClassesForInput(input: NgModel): any {
@@ -150,6 +176,7 @@ export class HorseCreateEditComponent implements OnInit {
   }
 
 
+
   public onSubmit(form: NgForm): void {
     console.log('is form valid?', form.valid, this.horse);
     if (form.valid) {
@@ -158,9 +185,9 @@ export class HorseCreateEditComponent implements OnInit {
       }
       let observable: Observable<Horse>;
       switch (this.mode) {
-        case HorseCreateEditMode.create:
-          observable = this.service.create(
-            convertFromHorseToCreate(this.horse, this.imageFile)
+        case HorseEditEditMode.create:
+          observable = this.service.update(
+            convertFromHorseToCreate(this.horse, this.imageFile), Number(this.route.snapshot.paramMap.get('id'))
           );
           break;
         default:

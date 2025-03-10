@@ -1,10 +1,6 @@
 package at.ac.tuwien.sepr.assignment.individual.rest;
 
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateRestDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.*;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
@@ -88,16 +84,26 @@ public class HorseEndpoint {
    * @throws ConflictException       if a conflict occurs while updating
    * @throws ResponseStatusException if the horse is not found
    */
-  @PutMapping(path = "{id}")
+  @PutMapping(path = "{id}", consumes ={MediaType.MULTIPART_FORM_DATA_VALUE} )
   public HorseDetailDto update(
       @PathVariable("id") long id,
-      @RequestBody HorseUpdateRestDto toUpdate)
-      throws ValidationException, ConflictException {
-    LOG.info("PUT " + BASE_PATH + "/{}", toUpdate);
-    LOG.debug("Body of request:\n{}", toUpdate);
+      @RequestParam("name") String name,
+      @RequestParam("dateOfBirth")LocalDate dateOfBirth,
+      @RequestParam("sex") Sex sex,
+      @RequestParam(value = "description", required = false) String description,
+      @RequestParam(value = "ownerId", required = false) Long ownerId,
+      @RequestPart(value = "image", required = false) MultipartFile image)
+          throws IOException {
+
+    HorseCreateDto toCreate = new HorseCreateDto(name,description,dateOfBirth,sex,ownerId);
+
+    LOG.info("POST " + BASE_PATH);
+    LOG.debug("Body of request:\n{}", toCreate);
+
     try {
-      return service.update(toUpdate.toUpdateDtoWithId(id));
-    } catch (NotFoundException e) {
+      HorseUpdateRestDto toUpdate = new HorseUpdateRestDto(name,description, dateOfBirth , sex, ownerId);
+      return service.update(toUpdate.toUpdateDtoWithId(id), image);
+    } catch (NotFoundException | ValidationException | ConflictException e) {
       HttpStatus status = HttpStatus.NOT_FOUND;
       logClientError(status, "Horse to update not found", e);
       throw new ResponseStatusException(status, e.getMessage(), e);

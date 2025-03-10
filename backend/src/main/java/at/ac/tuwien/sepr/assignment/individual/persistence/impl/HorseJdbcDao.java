@@ -93,20 +93,15 @@ public class HorseJdbcDao implements HorseDao {
   }
 
   @Override
-  public void create(HorseCreateDto horse, MultipartFile image) throws IOException {
+  public void create(HorseCreateDto horse, byte[] image) throws IOException {
     LOG.trace("create()");
-
-    byte[] imageBytes = null;
-    if (image != null) {
-      imageBytes = image.getBytes();
-    }
 
     if (horse != null) {
       jdbcClient.sql(SQL_INSERT).param("name", horse.name())
               .param("description", horse.description())
               .param("dateOfBirth", horse.dateOfBirth())
               .param("sex", horse.sex().toString())
-              .param("image", imageBytes)
+              .param("image", image)
               .param("ownerId", horse.ownerId())
               .update();
     } else {
@@ -117,7 +112,7 @@ public class HorseJdbcDao implements HorseDao {
 
 
   @Override
-  public Horse update(HorseUpdateDto horse) throws NotFoundException {
+  public Horse update(HorseUpdateDto horse, byte[] image) throws NotFoundException {
     LOG.trace("update({})", horse);
     int updated = jdbcClient
         .sql(SQL_UPDATE)
@@ -126,6 +121,7 @@ public class HorseJdbcDao implements HorseDao {
         .param("description", horse.description())
         .param("date_of_birth", horse.dateOfBirth())
         .param("sex", horse.sex().toString())
+        .param("image", image)
         .param("owner_id", horse.ownerId())
         .update();
 
@@ -141,9 +137,11 @@ public class HorseJdbcDao implements HorseDao {
             horse.description(),
             horse.dateOfBirth(),
             horse.sex(),
-            horse.image(),
+            image,
             horse.ownerId());
   }
+
+
   private Horse mapRow(ResultSet result, int rownum) throws SQLException {
     return new Horse(
             result.getLong("id"),

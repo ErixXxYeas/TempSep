@@ -13,7 +13,7 @@
             type="text"
             id="horseName"
             name="horseName"
-            placeholder="Horse name"
+            placeholder="Horse"
             class="form-control"
             [class]="dynamicCssClassesForInput(horseNameModel)"
             [(ngModel)]="horse.name"
@@ -91,7 +91,7 @@
 
   <div class="row mb-2">
     <label for="horseDescription" class="col-form-label text-md-end text-muted col-md-2">
-      Description
+      Descriptiondsasasdas
     </label>
     <div class="col-md-10">
         <textarea
@@ -109,12 +109,8 @@
     </label>
     <div class="col-md-10">
     <input type="file" id="image" (change)="imageUploaded($event)" accept="image/png, image/gif, image/jpeg" />
-        <img [src]="imagePreview" alt="Preview" class="img-thumbnail" style="max-width: 200px; height: auto;">
-    </div>
-
   </div>
-
-
+  </div>
 
 
   <div class="mt-4 d-flex flex-row">

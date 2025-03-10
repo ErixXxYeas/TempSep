@@ -31,7 +31,7 @@ public interface HorseDao {
    * @return the updated horse
    * @throws NotFoundException if the Horse with the given ID does not exist in the persistent data store
    */
-  Horse update(HorseUpdateDto horse) throws NotFoundException;
+  Horse update(HorseUpdateDto horse, byte[] image) throws NotFoundException;
 
 
   /**
@@ -49,7 +49,7 @@ public interface HorseDao {
    * @param horse the horse
    * @throws IOException if there is no Data
    */
-  void create(HorseCreateDto horse, MultipartFile image) throws IOException;
+  void create(HorseCreateDto horse, byte[] image) throws IOException;
 
 
 }

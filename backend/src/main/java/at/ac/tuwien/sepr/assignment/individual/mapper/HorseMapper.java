@@ -65,6 +65,7 @@ public class HorseMapper {
         horse.description(),
         horse.dateOfBirth(),
         horse.sex(),
+        horse.image(),
         getOwner(horse, owners)
     );
   }
