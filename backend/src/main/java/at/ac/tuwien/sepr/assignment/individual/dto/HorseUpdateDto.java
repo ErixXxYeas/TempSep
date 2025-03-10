@@ -15,7 +15,7 @@ public record HorseUpdateDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    Blob image,
+    byte[] image,
     Long ownerId
 ) {
 

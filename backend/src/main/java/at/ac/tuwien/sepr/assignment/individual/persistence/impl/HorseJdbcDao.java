@@ -98,7 +98,7 @@ public class HorseJdbcDao implements HorseDao {
 
     byte[] imageBytes = null;
     if (image != null) {
-      imageBytes = image.getBytes(); // Convert image to byte array
+      imageBytes = image.getBytes();
     }
 
     if (horse != null) {
@@ -151,7 +151,7 @@ public class HorseJdbcDao implements HorseDao {
             result.getString("description"),
             result.getDate("date_of_birth").toLocalDate(),
             Sex.valueOf(result.getString("sex")),
-            result.getBlob("image"),
+            result.getBytes("image"),
             result.getObject("owner_id", Long.class));
   }
 }

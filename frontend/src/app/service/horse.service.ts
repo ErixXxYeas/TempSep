@@ -43,9 +43,25 @@ export class HorseService {
     // We _need_ the date to be a string here, and just passing the object with the
     // “type error” to the HTTP client is unproblematic
     (horse as any).dateOfBirth = formatIsoDate(horse.dateOfBirth);
+    const formData = new FormData();
+
+    formData.append('name', horse.name);
+    formData.append('dateOfBirth', horse.dateOfBirth.toString());
+    formData.append('sex', horse.sex.toString());
+
+    if (horse.description) {
+      formData.append('description', horse.description);
+    }
+    if (horse.image) {
+      formData.append('image', horse.image, horse.image.name);
+    }
+    if (horse.ownerId !== undefined) {
+      formData.append('ownerId', horse.ownerId.toString());
+    }
+
     return this.http.post<Horse>(
       baseUri,
-      horse
+      formData
     ).pipe(
       map(this.fixHorseDate)
     );

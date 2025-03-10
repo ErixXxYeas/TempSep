@@ -15,7 +15,6 @@ public record HorseCreateDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    Blob image,
     Long ownerId
 ) {
 

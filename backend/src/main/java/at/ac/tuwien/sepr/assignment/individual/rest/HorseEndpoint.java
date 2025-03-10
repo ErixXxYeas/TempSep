@@ -11,20 +11,16 @@ import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import at.ac.tuwien.sepr.assignment.individual.service.HorseService;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
+import java.time.LocalDate;
 import java.util.stream.Stream;
+
+import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -116,11 +112,17 @@ public class HorseEndpoint {
    * @throws ValidationException     if validation fails
    * @throws ConflictException       if a conflict occurs while creating
    */
-  @PostMapping()
+  @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
   public HorseCreateDto create(
-          @RequestPart("horse") HorseCreateDto toCreate,
+          @RequestParam("name") String name,
+          @RequestParam("dateOfBirth")LocalDate dateOfBirth,
+          @RequestParam("sex") Sex sex,
+          @RequestParam(value = "description", required = false) String description,
+          @RequestParam(value = "ownerId", required = false) Long ownerId,
           @RequestPart(value = "image", required = false) MultipartFile image)
         throws IOException {
+
+    HorseCreateDto toCreate = new HorseCreateDto(name,description,dateOfBirth,sex,ownerId);
 
     LOG.info("POST " + BASE_PATH);
     LOG.debug("Body of request:\n{}", toCreate);

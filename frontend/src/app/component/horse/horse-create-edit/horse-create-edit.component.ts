@@ -40,7 +40,6 @@ export class HorseCreateEditComponent implements OnInit {
   };
   horseBirthDateIsSet = false;
   imageFile: File | null = null;
-  previewUrl: string | ArrayBuffer | null = null
 
   constructor(
     private service: HorseService,
