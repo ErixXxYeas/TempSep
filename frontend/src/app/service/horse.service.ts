@@ -60,7 +60,7 @@ export class HorseService {
     if (horse.description) {
       formData.append('description', horse.description);
     }
-    if (horse.image) {
+    if (horse.image != null) {
       formData.append('image', horse.image, horse.image.name);
     }
     if (horse.ownerId !== undefined) {
