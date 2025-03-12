@@ -1970,3 +1970,7 @@ UPDATE horse    SET name = ?,
         image = ?
     WHERE id = ?
  [42000-232]
+2025-03-12 15:57:28.017480+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabelle "FROMHORSE" nicht gefunden
+Table "FROMHORSE" not found; SQL statement:
+DELETE FROMhorse WHERE ID = ? [42102-232]

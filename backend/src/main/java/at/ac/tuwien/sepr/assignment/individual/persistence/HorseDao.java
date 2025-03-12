@@ -51,5 +51,9 @@ public interface HorseDao {
    */
   void create(HorseCreateDto horse, byte[] image) throws IOException;
 
+  // TODO desc
+
+  void delete (Long id) throws NotFoundException;
+
 
 }

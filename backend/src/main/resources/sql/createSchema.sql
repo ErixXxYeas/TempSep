@@ -16,3 +16,13 @@ CREATE TABLE IF NOT EXISTS horse
   image BLOB NULL,
   owner_id BIGINT
 );
+
+
+CREATE TABLE IF NOT EXISTS horse_parent
+(
+    child_id BIGINT NOT NULL,
+    parent_id BIGINT NOT NULL,
+    PRIMARY KEY (child_id, parent_id),
+    FOREIGN KEY (child_id) REFERENCES horse(id) ON DELETE CASCADE,
+    FOREIGN KEY (parent_id) REFERENCES horse(id) ON DELETE CASCADE
+    );

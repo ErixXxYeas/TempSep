@@ -135,6 +135,19 @@ public class HorseEndpoint {
     return service.create(toCreate, image);
   }
 
+  @DeleteMapping("{id}")
+  public void deleteById(@PathVariable("id") long id) {
+    LOG.info("Delete " + BASE_PATH + "/{}", id);
+    try {
+      service.deleteById(id);
+    } catch (NotFoundException e) {
+      HttpStatus status = HttpStatus.NOT_FOUND;
+      logClientError(status, "Horse to get details of not found", e);
+      throw new ResponseStatusException(status, e.getMessage(), e);
+    }
+  }
+
+
   /**
    * Logs client-side errors with relevant details.
    *

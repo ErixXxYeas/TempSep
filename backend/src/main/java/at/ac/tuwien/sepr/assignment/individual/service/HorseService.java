@@ -54,4 +54,8 @@ public interface HorseService {
   // TODO Desc
   HorseCreateDto create(HorseCreateDto horse, MultipartFile image) throws IOException; //TODO exception
 
+  // TODO Desc
+  void deleteById(long id) throws NotFoundException;
+
+
 }

@@ -10,10 +10,8 @@ import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
-import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -21,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * JDBC implementation of {@link HorseDao} for interacting with the database.
@@ -38,6 +35,10 @@ public class HorseJdbcDao implements HorseDao {
   private static final String SQL_SELECT_BY_ID =
       "SELECT * FROM " + TABLE_NAME
           + " WHERE ID = :id";
+
+  private static final String SQL_DELETE_BY_ID =
+          "DELETE FROM " + TABLE_NAME
+                  + " WHERE ID = :id";
 
   private static final String SQL_UPDATE =
       "UPDATE " + TABLE_NAME
@@ -110,6 +111,14 @@ public class HorseJdbcDao implements HorseDao {
     }
   }
 
+  @Override
+  public void delete(Long id) throws NotFoundException {
+    LOG.trace("delete()");
+
+    jdbcClient.sql(SQL_DELETE_BY_ID)
+            .param("id", id).update();
+
+  }
 
 
   @Override
