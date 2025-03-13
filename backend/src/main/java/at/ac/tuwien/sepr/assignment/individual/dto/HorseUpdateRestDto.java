@@ -15,14 +15,12 @@ public record HorseUpdateRestDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    Long ownerId
+    Long ownerId,
+    Long parentId1,
+    Long parentId2
 ) {
-
   public HorseUpdateDto toUpdateDtoWithId(Long id) {
-
-
-
-    return new HorseUpdateDto(id, name, description, dateOfBirth, sex,  ownerId);
+    return new HorseUpdateDto(id, name, description, dateOfBirth, sex,  ownerId, parentId1, parentId2);
   }
 
 }

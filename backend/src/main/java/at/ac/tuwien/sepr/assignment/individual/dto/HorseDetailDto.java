@@ -16,6 +16,9 @@ public record HorseDetailDto(
     LocalDate dateOfBirth,
     Sex sex,
     byte[] image,
-    OwnerDto owner
+    OwnerDto owner,
+    HorseDetailDto parent1,
+    HorseDetailDto parent2
+
 ) {
 }

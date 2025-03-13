@@ -15,7 +15,9 @@ public record HorseCreateDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    Long ownerId
+    Long ownerId,
+    Long parentId1,
+    Long parentId2
 ) {
 
 }

@@ -1,10 +1,11 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
 import {Horse, HorseCreate} from '../dto/horse';
 import {formatIsoDate} from "../utils/date-helper";
 import {Block} from "@angular/compiler";
+import {Owner} from "../dto/owner";
 
 
 const baseUri = environment.backendUrl + '/horses';
@@ -73,6 +74,14 @@ export class HorseService {
       formData.append('ownerId', horse.ownerId.toString());
     }
 
+    if (horse.parentId1 !== undefined) {
+      formData.append('parentId1', horse.parentId1.toString());
+    }
+
+    if (horse.parentId2 !== undefined) {
+      formData.append('parentId2', horse.parentId2.toString());
+    }
+
     return this.http.post<Horse>(
       baseUri,
       formData
@@ -103,12 +112,27 @@ export class HorseService {
       formData.append('ownerId', horse.ownerId.toString());
     }
 
+    if (horse.parentId1 !== undefined) {
+      formData.append('parentId1', horse.parentId1.toString());
+    }
+
+    if (horse.parentId2 !== undefined) {
+      formData.append('parentId2', horse.parentId2.toString());
+    }
+
     return this.http.put<Horse>(
       `${baseUri}/${id}`,
       formData
     ).pipe(
       map(this.fixHorseDate)
     );
+  }
+
+  public searchByName(name: string, limitTo: number): Observable<Horse[]> {
+    const params = new HttpParams()
+      .set('name', name)
+      .set('maxAmount', limitTo);
+    return this.http.get<Horse[]>(baseUri, { params });
   }
 
   private fixHorseDate(horse: Horse): Horse {

@@ -92,11 +92,13 @@ public class HorseEndpoint {
       @RequestParam("sex") Sex sex,
       @RequestParam(value = "description", required = false) String description,
       @RequestParam(value = "ownerId", required = false) Long ownerId,
+      @RequestParam(value = "parentId1", required = false) Long parentId1,
+      @RequestParam(value = "parentId2", required = false) Long parentId2,
       @RequestPart(value = "image", required = false) MultipartFile image)
           throws IOException {
 
     try {
-      HorseUpdateRestDto toUpdate = new HorseUpdateRestDto(name,description, dateOfBirth , sex, ownerId);
+      HorseUpdateRestDto toUpdate = new HorseUpdateRestDto(name,description, dateOfBirth , sex, ownerId, parentId1, parentId2);
       LOG.info("PUT " + BASE_PATH);
       LOG.debug("Body of request:\n{}", toUpdate);
       return service.update(toUpdate.toUpdateDtoWithId(id), image);
@@ -124,10 +126,12 @@ public class HorseEndpoint {
           @RequestParam("sex") Sex sex,
           @RequestParam(value = "description", required = false) String description,
           @RequestParam(value = "ownerId", required = false) Long ownerId,
+          @RequestParam(value = "parentId1", required = false) Long parentId1,
+          @RequestParam(value = "parentId2", required = false) Long parentId2,
           @RequestPart(value = "image", required = false) MultipartFile image)
         throws IOException {
 
-    HorseCreateDto toCreate = new HorseCreateDto(name,description,dateOfBirth,sex,ownerId);
+    HorseCreateDto toCreate = new HorseCreateDto(name,description,dateOfBirth,sex,ownerId,parentId1,parentId2);
 
     LOG.info("POST " + BASE_PATH);
     LOG.debug("Body of request:\n{}", toCreate);

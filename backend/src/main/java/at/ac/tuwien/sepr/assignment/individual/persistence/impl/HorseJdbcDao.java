@@ -47,15 +47,18 @@ public class HorseJdbcDao implements HorseDao {
                   description = :description,
                   date_of_birth = :date_of_birth,
                   sex = :sex,
-                  image = :image
+                  image = :image,
+                  owner_id = :owner_id,
+                  parent1_id = :parentId1,
+                  parent2_id = :parentId2
               WHERE id = :id
           """;
 
   private static final String SQL_INSERT =
           "INSERT INTO "
                   + TABLE_NAME
-                  + " (name, description, date_of_birth, sex, image, owner_id) "
-                  + "VALUES (:name, :description, :dateOfBirth, :sex, :image, :ownerId)";
+                  + " (name, description, date_of_birth, sex, image, owner_id, parent1_id, parent2_id) "
+                  + "VALUES (:name, :description, :dateOfBirth, :sex, :image, :ownerId, :parentId1, :parentId2)";
 
   private final JdbcClient jdbcClient;
 
@@ -105,6 +108,8 @@ public class HorseJdbcDao implements HorseDao {
               .param("sex", horse.sex().toString())
               .param("image", image)
               .param("ownerId", horse.ownerId())
+              .param("parentId1", horse.parentId1())
+              .param("parentId2", horse.parentId2())
               .update();
     } else {
       LOG.error("Error: Horse data is null.");
@@ -133,6 +138,8 @@ public class HorseJdbcDao implements HorseDao {
         .param("sex", horse.sex().toString())
         .param("image", image)
         .param("owner_id", horse.ownerId())
+        .param("parentId1", horse.parentId1())
+        .param("parentId2", horse.parentId2())
         .update();
 
     if (updated == 0) {
@@ -140,7 +147,6 @@ public class HorseJdbcDao implements HorseDao {
             "Could not update horse with ID " + horse.id() + ", because it does not exist"
         );
     }
-
     return new Horse(
             horse.id(),
             horse.name(),
@@ -148,7 +154,9 @@ public class HorseJdbcDao implements HorseDao {
             horse.dateOfBirth(),
             horse.sex(),
             image,
-            horse.ownerId());
+            horse.ownerId(),
+            horse.parentId1(),
+            horse.parentId2());
   }
 
 
@@ -160,6 +168,8 @@ public class HorseJdbcDao implements HorseDao {
             result.getDate("date_of_birth").toLocalDate(),
             Sex.valueOf(result.getString("sex")),
             result.getBytes("image"),
-            result.getObject("owner_id", Long.class));
+            result.getObject("owner_id", Long.class),
+            result.getObject("parent1_id", Long.class),
+            result.getObject("parent2_id", Long.class));
   }
 }

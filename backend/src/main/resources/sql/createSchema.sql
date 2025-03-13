@@ -14,15 +14,13 @@ CREATE TABLE IF NOT EXISTS horse
   date_of_birth DATE NOT NULL,
   sex ENUM('MALE', 'FEMALE') NOT NULL,
   image BLOB NULL,
-  owner_id BIGINT
+  owner_id BIGINT,
+  parent1_id BIGINT NULL,
+  parent2_id BIGINT NULL,
+  CONSTRAINT horse_owner_fk FOREIGN KEY (owner_id) REFERENCES owner(id) ON DELETE SET NULL,
+  CONSTRAINT horse_parent1_fk FOREIGN KEY (parent1_id) REFERENCES horse(id) ON DELETE SET NULL,
+  CONSTRAINT horse_parent2_fk FOREIGN KEY (parent2_id) REFERENCES horse(id) ON DELETE SET NULL
 );
 
 
-CREATE TABLE IF NOT EXISTS horse_parent
-(
-    child_id BIGINT NOT NULL,
-    parent_id BIGINT NOT NULL,
-    PRIMARY KEY (child_id, parent_id),
-    FOREIGN KEY (child_id) REFERENCES horse(id) ON DELETE CASCADE,
-    FOREIGN KEY (parent_id) REFERENCES horse(id) ON DELETE CASCADE
-    );
+

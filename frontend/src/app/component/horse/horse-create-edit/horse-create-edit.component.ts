@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormsModule, NgForm, NgModel} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {Observable, of} from 'rxjs';
+import {map, Observable, of} from 'rxjs';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
 import {Horse, convertFromHorseToCreate} from 'src/app/dto/horse';
 import {Owner} from 'src/app/dto/owner';
@@ -11,7 +11,6 @@ import {ErrorFormatterService} from 'src/app/service/error-formatter.service';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {formatIsoDate} from "../../../utils/date-helper";
-import { Buffer } from "buffer"
 
 export enum HorseCreateEditMode {
   create,
@@ -36,11 +35,16 @@ export class HorseCreateEditComponent implements OnInit {
     description: '',
     dateOfBirth: new Date(),
     sex: Sex.female,
+    parentId1: undefined,
+    parentId2: undefined
   };
-  imageAvailable = false;
   horseBirthDateIsSet = false;
+  imageAvailable = false;
   imageFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
+  mom: Horse | null = null;
+  dad: Horse | null = null;
+
 
   constructor(
     private service: HorseService,
@@ -51,7 +55,6 @@ export class HorseCreateEditComponent implements OnInit {
     private errorFormatter: ErrorFormatterService
   ) {
   }
-
 
   public get heading(): string {
     switch (this.mode) {
@@ -95,7 +98,6 @@ export class HorseCreateEditComponent implements OnInit {
   get modeIsCreate(): boolean {
     return this.mode === HorseCreateEditMode.create;
   }
-
   get sex(): string {
     switch (this.horse.sex) {
       case Sex.male:
@@ -121,6 +123,22 @@ export class HorseCreateEditComponent implements OnInit {
     ? of([])
     : this.ownerService.searchByName(input, 5);
 
+  parentSuggestions = (parent: string) => {
+    return (input: string) => this.parentSuggestionsByGender(input,parent)
+  };
+
+  parentSuggestionsByGender = (input: string, parent: string) => {
+    return input === ''
+      ? of([])
+      : this.service.searchByName(input, 5).pipe(
+        map(horses => horses.filter(
+          horse => parent === 'mom' ? horse.sex === 'FEMALE' : horse.sex === 'MALE')
+        )
+      );
+  };
+
+
+
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.mode = data.mode;
@@ -134,6 +152,7 @@ export class HorseCreateEditComponent implements OnInit {
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
           this.horseBirthDateIsSet = true;
+          console.log(data)
           if (data.image) {
             this.imageFile = this.imageToFile(data.image,"image")
             this.imagePreview = 'data:image/jpeg;base64,' + data.image;
@@ -176,6 +195,25 @@ export class HorseCreateEditComponent implements OnInit {
     return (owner == null)
       ? ''
       : `${owner.firstName} ${owner.lastName}`;
+  }
+
+  public formatHorseName(horse: Horse | null | undefined): string {
+    return (horse == null)
+      ? ''
+      : `${horse.name} `;
+  }
+
+  public onParentSelected(parent: string, horse: Horse){
+
+    if (horse){
+      if(parent === "mom"){
+        this.horse.parentId1 = horse
+      }
+      if(parent === "dad"){
+        this.horse.parentId2 = horse
+      }
+    }
+
   }
 
   imageUploaded(event: any): void {

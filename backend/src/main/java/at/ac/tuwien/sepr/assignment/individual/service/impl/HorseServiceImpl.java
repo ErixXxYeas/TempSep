@@ -80,10 +80,21 @@ public class HorseServiceImpl implements HorseService {
       imageBytes = image.getBytes();
     }
 
+    HorseDetailDto parent1 = null;
+    HorseDetailDto parent2 = null;
+
+    if (horse.parentId1() != null){
+      parent1 = getById(horse.parentId1());
+    }
+
+    if (horse.parentId2() != null){
+      parent2 = getById(horse.parentId2());
+    }
+
     var updatedHorse = dao.update(horse, imageBytes);
     return mapper.entityToDetailDto(
         updatedHorse,
-        ownerMapForSingleId(updatedHorse.ownerId()));
+        ownerMapForSingleId(updatedHorse.ownerId()), parent1, parent2);
   }
 
 
@@ -91,9 +102,20 @@ public class HorseServiceImpl implements HorseService {
   public HorseDetailDto getById(long id) throws NotFoundException {
     LOG.trace("details({})", id);
     Horse horse = dao.getById(id);
+
+    HorseDetailDto parent1 = null;
+    HorseDetailDto parent2 = null;
+
+    if (horse.parentId1() != null){
+       parent1 = getById(horse.parentId1());
+    }
+
+    if (horse.parentId2() != null){
+       parent2 = getById(horse.parentId2());
+    }
     return mapper.entityToDetailDto(
         horse,
-        ownerMapForSingleId(horse.ownerId()));
+        ownerMapForSingleId(horse.ownerId()), parent1, parent2);
   }
 
   @Override

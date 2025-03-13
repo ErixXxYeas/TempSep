@@ -15,6 +15,8 @@ public record Horse(
     LocalDate dateOfBirth,
     Sex sex,
     byte[] image,
-    Long ownerId
+    Long ownerId,
+    Long parentId1,
+    Long parentId2
 ) {
 }

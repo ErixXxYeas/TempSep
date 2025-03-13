@@ -53,7 +53,9 @@ public class HorseMapper {
    */
   public HorseDetailDto entityToDetailDto(
       Horse horse,
-      Map<Long, OwnerDto> owners) {
+      Map<Long, OwnerDto> owners,
+      HorseDetailDto parent1,
+      HorseDetailDto parent2) {
     LOG.trace("entityToDto({})", horse);
     if (horse == null) {
       return null;
@@ -66,7 +68,9 @@ public class HorseMapper {
         horse.dateOfBirth(),
         horse.sex(),
         horse.image(),
-        getOwner(horse, owners)
+        getOwner(horse, owners),
+        parent1,
+        parent2
     );
   }
 

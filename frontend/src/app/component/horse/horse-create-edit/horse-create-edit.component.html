@@ -88,6 +88,49 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="mb-2 col-lg-6">
+      <div class="row">
+        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+          Mom
+        </label>
+        <div class="col-md-10 col-lg-8">
+          <app-autocomplete
+            id="mom"
+            name="mom"
+            class="col-md-10 col-lg-8"
+            textInputClass="form-control"
+            valueNeedsToMatchSuggestion="true"
+            [(ngModel)]="mom"
+            [formatModel]="formatHorseName"
+            [suggestions]="parentSuggestions('mom')"
+            (ngModelChange)="onParentSelected('mom', $event)">
+          </app-autocomplete>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2 col-lg-6">
+      <div class="row">
+        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+          Dad
+        </label>
+        <app-autocomplete
+          id="dad"
+          name="dad"
+          class="col-md-10 col-lg-8"
+          textInputClass="form-control"
+          valueNeedsToMatchSuggestion="true"
+          [(ngModel)]="dad"
+          [formatModel]="formatHorseName"
+          [suggestions]="parentSuggestions('dad')"
+          (ngModelChange)="onParentSelected('dad', $event)">
+
+        </app-autocomplete>
+      </div>
+    </div>
+  </div>
+
 
   <div class="row mb-2">
     <label for="horseDescription" class="col-form-label text-md-end text-muted col-md-2">
