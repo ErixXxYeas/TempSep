@@ -44,7 +44,10 @@
       type="text"
       id="searchHorseName"
       name="searchHorseName"
-      class="form-control">
+      class="form-control"
+      (input)="reloadHorses()"
+      [(ngModel)]="searchName">
+
   </div>
 
   <div class="flex-grow-1 ms-1">
@@ -53,7 +56,10 @@
       type="text"
       id="searchHorseDescription"
       name="searchHorseDescription"
-      class="form-control">
+      class="form-control"
+      (input)="reloadHorses()"
+      [(ngModel)]="searchDescription">
+
   </div>
 
   <div class="ms-1">
@@ -64,7 +70,9 @@
       name="searchHorseDateOfBirth"
       pattern="\d{4}-\d{2}-\d{2}"
       placeholder="yyyy-mm-dd"
-      class="form-control">
+      class="form-control"
+      (change)="reloadHorses()"
+      [(ngModel)]="horseBirthDateText">
   </div>
 
   <div class="ms-1">
@@ -72,7 +80,9 @@
     <select
       id="searchHorseSex"
       name="searchHorseSex"
-      class="form-select">
+      class="form-select"
+      (change)="reloadHorses()"
+      [(ngModel)]="searchSex">
       <option></option>
       <option value="FEMALE">Female</option>
       <option value="MALE">Male</option>
@@ -85,7 +95,9 @@
       id="searchHorseOwner"
       name="searchHorseOwner"
       textInputClass="form-control"
-      valueNeedsToMatchSuggestion="false">
+      valueNeedsToMatchSuggestion="false"
+      (change)="reloadHorses()"
+      [(ngModel)]="searchOwner">
     </app-autocomplete>
   </div>
 </form>
@@ -110,15 +122,13 @@
           <td>{{ ownerName(horse.owner) }}</td>
           <td>
             <div class="btn-group">
-              <a class="btn btn-sm responsive-info-button"
+              <a class="btn btn-sm responsive-info-button" [routerLink]="[horse.id]"
                  aria-label="Show horse details">
                 <i class="bi bi-info-lg"></i>
               </a>
-
               <a class="btn btn-sm responsive-warning-button"  [routerLink]="['/horses', horse.id, 'edit']" aria-label="Edit horse">
                 <i class="bi bi-alipay"></i>
               </a>
-
               <button class="btn btn-sm responsive-danger-button" (click)="horseForDeletion = horse"
                       data-bs-toggle="modal" data-bs-target="#delete-dialog" aria-label="Delete horse">
                 <i class="bi bi-trash"></i>

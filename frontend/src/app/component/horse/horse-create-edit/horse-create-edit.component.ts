@@ -35,8 +35,8 @@ export class HorseCreateEditComponent implements OnInit {
     description: '',
     dateOfBirth: new Date(),
     sex: Sex.female,
-    parentId1: undefined,
-    parentId2: undefined
+    parent1: undefined,
+    parent2: undefined
   };
   horseBirthDateIsSet = false;
   imageAvailable = false;
@@ -152,6 +152,12 @@ export class HorseCreateEditComponent implements OnInit {
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
           this.horseBirthDateIsSet = true;
+          if (data.parent1){
+            this.horse.parent1 = data.parent1
+          }
+          if (data.parent2){
+            this.horse.parent2 = data.parent2
+          }
           console.log(data)
           if (data.image) {
             this.imageFile = this.imageToFile(data.image,"image")
@@ -207,10 +213,10 @@ export class HorseCreateEditComponent implements OnInit {
 
     if (horse){
       if(parent === "mom"){
-        this.horse.parentId1 = horse
+        this.horse.parent1 = horse
       }
       if(parent === "dad"){
-        this.horse.parentId2 = horse
+        this.horse.parent2 = horse
       }
     }
 

@@ -101,7 +101,7 @@
             class="col-md-10 col-lg-8"
             textInputClass="form-control"
             valueNeedsToMatchSuggestion="true"
-            [(ngModel)]="mom"
+            [(ngModel)]="horse.parent1"
             [formatModel]="formatHorseName"
             [suggestions]="parentSuggestions('mom')"
             (ngModelChange)="onParentSelected('mom', $event)">
@@ -121,7 +121,7 @@
           class="col-md-10 col-lg-8"
           textInputClass="form-control"
           valueNeedsToMatchSuggestion="true"
-          [(ngModel)]="dad"
+          [(ngModel)]="horse.parent2"
           [formatModel]="formatHorseName"
           [suggestions]="parentSuggestions('dad')"
           (ngModelChange)="onParentSelected('dad', $event)">
