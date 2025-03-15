@@ -9,8 +9,11 @@ import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.time.LocalDate;
 import java.util.stream.Stream;
-
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.apache.tomcat.util.json.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,18 +90,20 @@ public class HorseEndpoint {
   @PutMapping(path = "{id}", consumes ={MediaType.MULTIPART_FORM_DATA_VALUE} )
   public HorseDetailDto update(
       @PathVariable("id") long id,
-      @RequestParam("name") String name,
-      @RequestParam("dateOfBirth")LocalDate dateOfBirth,
-      @RequestParam("sex") Sex sex,
-      @RequestParam(value = "description", required = false) String description,
-      @RequestParam(value = "ownerId", required = false) Long ownerId,
-      @RequestParam(value = "parentId1", required = false) Long parentId1,
-      @RequestParam(value = "parentId2", required = false) Long parentId2,
+      @RequestPart("horse") String horse,
       @RequestPart(value = "image", required = false) MultipartFile image)
           throws IOException {
 
     try {
-      HorseUpdateRestDto toUpdate = new HorseUpdateRestDto(name,description, dateOfBirth , sex, ownerId, parentId1, parentId2);
+
+      JsonObject horseJson = (JsonObject) JsonParser.parseString(horse);
+      HorseUpdateRestDto toUpdate = new HorseUpdateRestDto(horseJson.get("name").getAsString(),
+              horseJson.get("description").getAsString(),
+              LocalDate.parse(horseJson.get("dateOfBirth").getAsString()),
+              Sex.valueOf(horseJson.get("sex").getAsString().toUpperCase()),
+              horseJson.has("ownerId") ? horseJson.get("ownerId").getAsLong() : null,
+              horseJson.has("parentId1") ? horseJson.get("parentId1").getAsLong() : null,
+              horseJson.has("parentId2") ? horseJson.get("parentId2").getAsLong() : null);
       LOG.info("PUT " + BASE_PATH);
       LOG.debug("Body of request:\n{}", toUpdate);
       return service.update(toUpdate.toUpdateDtoWithId(id), image);
@@ -125,9 +130,14 @@ public class HorseEndpoint {
           @RequestPart(value = "image", required = false) MultipartFile image)
         throws IOException {
 
-
-
-    HorseCreateDto toCreate = new HorseCreateDto(name,description,dateOfBirth,sex,ownerId,parentId1,parentId2);
+    JsonObject horseJson = (JsonObject) JsonParser.parseString(horse);
+    HorseCreateDto toCreate = new HorseCreateDto(horseJson.get("name").getAsString(),
+            horseJson.has("description") ? horseJson.get("description").getAsString() : null,
+            LocalDate.parse(horseJson.get("dateOfBirth").getAsString()),
+            Sex.valueOf(horseJson.get("sex").getAsString().toUpperCase()),
+            horseJson.has("ownerId") ? horseJson.get("ownerId").getAsLong() : null,
+            horseJson.has("parentId1") ? horseJson.get("parentId1").getAsLong() : null,
+            horseJson.has("parentId2") ? horseJson.get("parentId2").getAsLong() : null);
 
     LOG.info("POST " + BASE_PATH);
     LOG.debug("Body of request:\n{}", toCreate);

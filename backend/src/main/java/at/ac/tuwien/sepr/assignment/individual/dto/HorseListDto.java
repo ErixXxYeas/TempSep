@@ -13,6 +13,9 @@ public record HorseListDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    OwnerDto owner
+    OwnerDto owner,
+    HorseDetailDto parent1,
+    HorseDetailDto parent2
+
 ) {
 }

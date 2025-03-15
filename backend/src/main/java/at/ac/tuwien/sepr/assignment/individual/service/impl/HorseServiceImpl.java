@@ -61,12 +61,30 @@ public class HorseServiceImpl implements HorseService {
         .collect(Collectors.toUnmodifiableSet());
     Map<Long, OwnerDto> ownerMap;
     try {
+
       ownerMap = ownerService.getAllById(ownerIds);
     } catch (NotFoundException e) {
       throw new FatalException("Horse, that is already persisted, refers to non-existing owner", e);
     }
     return horses.stream()
-        .map(horse -> mapper.entityToListDto(horse, ownerMap));
+        .map(horse ->{
+
+          HorseDetailDto parent1 = fetchParent(horse.parentId1());
+          HorseDetailDto parent2 = fetchParent(horse.parentId2());
+
+           return mapper.entityToListDto(horse, ownerMap, parent1, parent2);
+        });
+
+  }
+  private HorseDetailDto fetchParent(Long parentId) {
+    if (parentId != null) {
+      try {
+        return getById(parentId);
+      } catch (NotFoundException e) {
+        throw new RuntimeException("Parent with ID " + parentId + " not found", e);
+      }
+    }
+    return null;
   }
 
 
@@ -100,23 +118,25 @@ public class HorseServiceImpl implements HorseService {
 
   @Override
   public HorseDetailDto getById(long id) throws NotFoundException {
-    LOG.trace("details({})", id);
-    Horse horse = dao.getById(id);
 
-    HorseDetailDto parent1 = null;
-    HorseDetailDto parent2 = null;
+      LOG.trace("details({})", id);
+      Horse horse = dao.getById(id);
 
-    if (horse.parentId1() != null){
-       parent1 = getById(horse.parentId1());
+      HorseDetailDto parent1 = null;
+      HorseDetailDto parent2 = null;
+
+      if (horse.parentId1() != null) {
+        parent1 = getById(horse.parentId1());
+      }
+
+      if (horse.parentId2() != null) {
+        parent2 = getById(horse.parentId2());
+      }
+      return mapper.entityToDetailDto(
+              horse,
+              ownerMapForSingleId(horse.ownerId()), parent1, parent2);
     }
 
-    if (horse.parentId2() != null){
-       parent2 = getById(horse.parentId2());
-    }
-    return mapper.entityToDetailDto(
-        horse,
-        ownerMapForSingleId(horse.ownerId()), parent1, parent2);
-  }
 
   @Override
   public HorseCreateDto create(HorseCreateDto horse, MultipartFile image) throws IOException {

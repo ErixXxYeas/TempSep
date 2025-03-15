@@ -44,6 +44,7 @@ export class HorseCreateEditComponent implements OnInit {
   imagePreview: string | ArrayBuffer | null = null;
   mom: Horse | null = null;
   dad: Horse | null = null;
+  horseId : number | undefined;
 
 
   constructor(
@@ -131,11 +132,28 @@ export class HorseCreateEditComponent implements OnInit {
     return input === ''
       ? of([])
       : this.service.searchByName(input, 5).pipe(
-        map(horses => horses.filter(
-          horse => parent === 'mom' ? horse.sex === 'FEMALE' : horse.sex === 'MALE')
-        )
-      );
+        map(horses =>
+          horses.filter(
+          (horse =>
+          (parent === 'mom' ? horse.sex === 'FEMALE' : horse.sex === 'MALE') &&
+          !this.isAncestor(horse))
+          ))
+         );
   };
+
+  private isAncestor( potentialParent: Horse | undefined): boolean {
+    if(!potentialParent){
+      return false
+    }
+    if (potentialParent.id === this.horseId){
+      console.log("JFJDJD")
+      return true;
+    } else {
+
+      return this.isAncestor( potentialParent.parent1) || this.isAncestor(potentialParent.parent2);
+    }
+  }
+
 
 
 
@@ -144,21 +162,17 @@ export class HorseCreateEditComponent implements OnInit {
       this.mode = data.mode;
     });
     if (!this.modeIsCreate){
-      const horseId = Number(this.route.snapshot.paramMap.get('id'));
-      this.service.getById(horseId).subscribe({
+    this.horseId = Number(this.route.snapshot.paramMap.get('id'));
+      this.service.getById(this.horseId).subscribe({
         next: data =>{
           this.horse.name = data.name;
           this.horse.description = data.description;
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
           this.horseBirthDateIsSet = true;
-
-            this.horse.parent1 = data.parent1
-
-            this.horse.parent2 = data.parent2
-
-            this.horse.owner = data.owner
-
+          this.horse.parent1 = data.parent1
+          this.horse.parent2 = data.parent2
+          this.horse.owner = data.owner
           console.log(data)
           if (data.image) {
             this.imageFile = this.imageToFile(data.image,"image")
@@ -167,7 +181,6 @@ export class HorseCreateEditComponent implements OnInit {
               this.imageAvailable = true;
             }
           }
-
         }, error: error => {
           console.error('Error fetching horses', error);
           this.bannerError = 'Could not fetch horses: ' + error.message;
@@ -197,9 +210,7 @@ export class HorseCreateEditComponent implements OnInit {
       'is-invalid': !input.valid && !input.pristine,
     };
   }
-
   public formatOwnerName(owner: Owner | null | undefined): string {
-
     return (owner == null)
       ? ''
       : `${owner.firstName} ${owner.lastName}`;
@@ -260,12 +271,11 @@ export class HorseCreateEditComponent implements OnInit {
             convertFromHorseToCreate(this.horse) , this.imageFile
           );
           break;
-          /* case HorseCreateEditMode.edit:
+           case HorseCreateEditMode.edit:
              observable = this.service.update(
-               convertFromHorseToCreate(this.horse, this.imageFile), Number(this.route.snapshot.paramMap.get('id'))
+               convertFromHorseToCreate(this.horse), this.imageFile, Number(this.route.snapshot.paramMap.get('id'))
              );
           break;
-          */
         default:
           console.error('Unknown HorseCreateEditMode', this.mode);
           return;

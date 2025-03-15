@@ -1,5 +1,6 @@
 package at.ac.tuwien.sepr.assignment.individual.mapper;
 
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
@@ -11,14 +12,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import javax.swing.text.html.parser.Entity;
+
 /**
  * Mapper class responsible for converting {@link Horse} entities into various DTOs.
  */
 @Component
 public class HorseMapper {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-
   /**
    * Converts a {@link Horse} entity into a {@link HorseListDto}.
    * The given map of owners must contain the owner referenced by the horse.
@@ -27,7 +28,7 @@ public class HorseMapper {
    * @param owners a map of horse owners by their ID
    * @return the converted {@link HorseListDto}
    */
-  public HorseListDto entityToListDto(Horse horse, Map<Long, OwnerDto> owners) {
+  public HorseListDto entityToListDto(Horse horse, Map<Long, OwnerDto> owners, HorseDetailDto parent1, HorseDetailDto parent2) {
     LOG.trace("entityToDto({})", horse);
     if (horse == null) {
       return null;
@@ -39,7 +40,10 @@ public class HorseMapper {
         horse.description(),
         horse.dateOfBirth(),
         horse.sex(),
-        getOwner(horse, owners)
+        getOwner(horse, owners),
+        parent1,
+        parent2
+
     );
   }
 
@@ -60,7 +64,6 @@ public class HorseMapper {
     if (horse == null) {
       return null;
     }
-
     return new HorseDetailDto(
         horse.id(),
         horse.name(),
