@@ -1,17 +1,22 @@
 package at.ac.tuwien.sepr.assignment.individual.service.impl;
 
+import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.mapper.OwnerMapper;
 import at.ac.tuwien.sepr.assignment.individual.persistence.OwnerDao;
 import at.ac.tuwien.sepr.assignment.individual.service.OwnerService;
+
+import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.util.Collection;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.apache.juli.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -31,6 +36,14 @@ public class OwnerServiceImpl implements OwnerService {
       OwnerMapper mapper) {
     this.dao = dao;
     this.mapper = mapper;
+  }
+
+  @Override
+  public OwnerCreateDto create(OwnerCreateDto owner) throws IOException {
+    LOG.trace("create()");
+
+    dao.create(owner);
+    return owner;
   }
 
   /**

@@ -105,7 +105,6 @@ export class OwnerCreateComponent implements OnInit {
 
   public onSubmit(form: NgForm): void {
     if (form.valid) {
-      const ownerName = this.formatOwnerName(this.owner)
       if (this.owner.description === '') {
         delete this.owner.description;
       }
@@ -120,7 +119,7 @@ export class OwnerCreateComponent implements OnInit {
       }
       observable.subscribe({
         next: data => {
-          this.notification.success(`Owner ${ownerName} successfully ${this.modeActionFinished}.`);
+          this.notification.success(`Owner ${this.owner.firstName + " " + this.owner.lastName}  successfully ${this.modeActionFinished}.`);
           this.router.navigate(['/horses']);
         },
         error: error => {

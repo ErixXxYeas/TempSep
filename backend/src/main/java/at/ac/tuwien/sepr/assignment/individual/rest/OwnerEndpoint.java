@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.*;
 public class OwnerEndpoint {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
   static final String BASE_PATH = "/owners";
-
   private final OwnerService service;
 
   public OwnerEndpoint(OwnerService service) {
@@ -45,10 +44,10 @@ public class OwnerEndpoint {
 
   @PostMapping
   public OwnerCreateDto create(
-          @RequestBody OwnerDto toCreate)throws IOException{
+          @RequestBody OwnerCreateDto toCreate)throws IOException{
     LOG.info("Post " + BASE_PATH, toCreate);
 
-      return null;
+      return service.create(toCreate);
   }
 
 }

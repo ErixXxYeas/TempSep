@@ -7,6 +7,6 @@ public record Owner(
     Long id,
     String firstName,
     String lastName,
-    String email
+    String description
 ) {
 }

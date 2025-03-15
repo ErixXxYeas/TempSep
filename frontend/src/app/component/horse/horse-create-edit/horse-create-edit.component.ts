@@ -158,6 +158,9 @@ export class HorseCreateEditComponent implements OnInit {
           if (data.parent2){
             this.horse.parent2 = data.parent2
           }
+          if(data.owner){
+            this.horse.owner = data.owner
+          }
           console.log(data)
           if (data.image) {
             this.imageFile = this.imageToFile(data.image,"image")

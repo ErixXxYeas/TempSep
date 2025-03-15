@@ -29,6 +29,6 @@ public class OwnerMapper {
         owner.id(),
         owner.firstName(),
         owner.lastName(),
-        owner.email());
+        owner.description());
   }
 }

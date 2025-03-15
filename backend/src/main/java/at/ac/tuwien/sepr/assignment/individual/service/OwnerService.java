@@ -1,8 +1,11 @@
 package at.ac.tuwien.sepr.assignment.individual.service;
 
+import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
+
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -11,6 +14,9 @@ import java.util.stream.Stream;
  * Service for working with owners.
  */
 public interface OwnerService {
+
+  OwnerCreateDto create(OwnerCreateDto owner) throws IOException;
+
   /**
    * Fetch an owner from the persistent data store by its ID.
    *

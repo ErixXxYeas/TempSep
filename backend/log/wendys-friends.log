@@ -120,3 +120,993 @@
 2025-03-15T11:37:35.293+01:00 r= ip=  INFO 21716 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
 2025-03-15T11:37:35.296+01:00 r= ip=  INFO 21716 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-03-15T11:37:35.297+01:00 r= ip=  INFO 21716 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-15T12:37:08.160+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21 with PID 14328 (C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend\target\classes started by ericy in C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend)
+2025-03-15T12:37:08.164+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-15T12:37:10.178+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-15T12:37:10.219+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-15T12:37:10.220+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-15T12:37:10.307+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-15T12:37:10.308+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2076 ms
+2025-03-15T12:37:11.217+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-15T12:37:11.727+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-15T12:37:11.731+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-15T12:37:11.743+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-15T12:37:11.830+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-15T12:37:11.843+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 4.555 seconds (process running for 5.865)
+2025-03-15T12:38:31.570+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-15T12:38:31.572+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-15T12:38:31.574+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-15T12:38:31.591+01:00 r=5fad60092463 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:31.708+01:00 r=5fad60092463 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:38:31.932+01:00 r=5fad60092463 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=339ms
+2025-03-15T12:38:41.266+01:00 r=ff01b7f479e5 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=s&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:41.273+01:00 r=ff01b7f479e5 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:38:41.278+01:00 r=ff01b7f479e5 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=s&maxAmount=5 status=200 time=12ms
+2025-03-15T12:38:42.307+01:00 r=77e32057c2a6 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=gdfgdfsg%20&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:42.311+01:00 r=77e32057c2a6 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:38:42.316+01:00 r=77e32057c2a6 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=gdfgdfsg%20&maxAmount=5 status=200 time=8ms
+2025-03-15T12:38:43.024+01:00 r=37a005c2a194 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=f&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:43.026+01:00 r=37a005c2a194 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:38:43.029+01:00 r=37a005c2a194 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=f&maxAmount=5 status=200 time=5ms
+2025-03-15T12:38:44.468+01:00 r=cf8529fba91f ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=d&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:44.471+01:00 r=cf8529fba91f ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:38:44.478+01:00 r=cf8529fba91f ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=d&maxAmount=5 status=200 time=10ms
+2025-03-15T12:38:45.404+01:00 r=b401e4cc3baf ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=Siegward%20&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:45.409+01:00 r=b401e4cc3baf ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:38:45.414+01:00 r=b401e4cc3baf ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=Siegward%20&maxAmount=5 status=200 time=7ms
+2025-03-15T12:38:52.837+01:00 r=c3f6d6aaee55 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> POST /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:52.994+01:00 r=c3f6d6aaee55 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : POST /horses
+2025-03-15T12:38:53.038+01:00 r=c3f6d6aaee55 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< POST /horses status=200 time=200ms
+2025-03-15T12:38:53.092+01:00 r=7f2f1e92e570 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:53.099+01:00 r=7f2f1e92e570 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:38:53.122+01:00 r=7f2f1e92e570 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=29ms
+2025-03-15T12:38:56.293+01:00 r=245f98b5947e ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/14 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:38:56.298+01:00 r=245f98b5947e ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/14
+2025-03-15T12:38:56.350+01:00 r=245f98b5947e ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/14 status=200 time=56ms
+2025-03-15T12:39:02.848+01:00 r=5e6e5613196d ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:02.881+01:00 r=5e6e5613196d ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:02.914+01:00 r=5e6e5613196d ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=64ms
+2025-03-15T12:39:14.628+01:00 r=faed882ef7ea ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:14.630+01:00 r=faed882ef7ea ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:14.638+01:00 r=faed882ef7ea ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=8ms
+2025-03-15T12:39:14.946+01:00 r=0d6f2e093cee ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:14.948+01:00 r=0d6f2e093cee ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:14.951+01:00 r=0d6f2e093cee ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T12:39:15.598+01:00 r=7c3404e3c7e9 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:15.601+01:00 r=7c3404e3c7e9 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:15.603+01:00 r=7c3404e3c7e9 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T12:39:15.975+01:00 r=3d129b2a8c71 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:15.979+01:00 r=3d129b2a8c71 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:15.982+01:00 r=3d129b2a8c71 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T12:39:16.614+01:00 r=25ff7a789772 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:16.617+01:00 r=25ff7a789772 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:16.618+01:00 r=25ff7a789772 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T12:39:16.735+01:00 r=792699f5272f ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:16.737+01:00 r=792699f5272f ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:16.740+01:00 r=792699f5272f ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T12:39:17.442+01:00 r=8db551063e99 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:17.445+01:00 r=8db551063e99 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:17.448+01:00 r=8db551063e99 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T12:39:17.613+01:00 r=7fc60ab3bee5 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:17.614+01:00 r=7fc60ab3bee5 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:17.619+01:00 r=7fc60ab3bee5 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T12:39:18.592+01:00 r=a091f971b59b ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:18.596+01:00 r=a091f971b59b ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:18.598+01:00 r=a091f971b59b ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T12:39:19.498+01:00 r=159e8b2f1d18 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:19.500+01:00 r=159e8b2f1d18 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:19.504+01:00 r=159e8b2f1d18 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T12:39:21.446+01:00 r=d3ceec504198 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:21.451+01:00 r=d3ceec504198 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:21.453+01:00 r=d3ceec504198 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T12:39:21.698+01:00 r=601f76444160 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:21.701+01:00 r=601f76444160 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:21.705+01:00 r=601f76444160 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T12:39:23.736+01:00 r=9338c1916ea0 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:23.740+01:00 r=9338c1916ea0 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:23.747+01:00 r=9338c1916ea0 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=10ms
+2025-03-15T12:39:26.828+01:00 r=e88a42be3071 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:26.834+01:00 r=e88a42be3071 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:26.838+01:00 r=e88a42be3071 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=9ms
+2025-03-15T12:39:29.572+01:00 r=2c8d2e5e234e ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:29.575+01:00 r=2c8d2e5e234e ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:29.584+01:00 r=2c8d2e5e234e ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=11ms
+2025-03-15T12:39:30.979+01:00 r=9e1ea6bdd7df ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:30.981+01:00 r=9e1ea6bdd7df ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:30.986+01:00 r=9e1ea6bdd7df ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T12:39:32.074+01:00 r=7bf5c6def200 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:32.076+01:00 r=7bf5c6def200 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:32.081+01:00 r=7bf5c6def200 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T12:39:33.202+01:00 r=bc78087b7f68 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:39:33.205+01:00 r=bc78087b7f68 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:39:33.207+01:00 r=bc78087b7f68 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T12:50:49.333+01:00 r=c5ba4d4dfcc8 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:50:49.335+01:00 r=c5ba4d4dfcc8 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T12:50:49.341+01:00 r=c5ba4d4dfcc8 ip=0:0:0:0:0:0:0:1  INFO 14328 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=8ms
+2025-03-15T12:57:20.505+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-15T12:57:20.519+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-15T12:57:20.525+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-15T12:57:20.528+01:00 r= ip=  INFO 14328 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-15T12:57:41.071+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21 with PID 10500 (C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend\target\classes started by ericy in C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend)
+2025-03-15T12:57:41.074+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-15T12:57:43.096+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-15T12:57:43.128+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-15T12:57:43.128+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-15T12:57:43.234+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-15T12:57:43.234+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2109 ms
+2025-03-15T12:57:43.764+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-15T12:57:45.356+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-15T12:57:45.363+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 5.049 seconds (process running for 6.073)
+2025-03-15T12:58:04.587+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-15T12:58:04.588+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-15T12:58:04.589+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-15T12:58:04.597+01:00 r=c90568724b4b ip=0:0:0:0:0:0:0:1  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> OPTIONS /owners UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:58:04.645+01:00 r=c90568724b4b ip=0:0:0:0:0:0:0:1  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< OPTIONS /owners status=200 time=46ms
+2025-03-15T12:58:04.651+01:00 r=c0f492f69586 ip=0:0:0:0:0:0:0:1  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> POST /owners UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:58:04.745+01:00 r=c0f492f69586 ip=0:0:0:0:0:0:0:1  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.OwnerEndpoint  : Post /owners
+2025-03-15T12:58:04.762+01:00 r=c0f492f69586 ip=0:0:0:0:0:0:0:1  INFO 10500 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< POST /owners status=200 time=112ms
+2025-03-15T12:58:04.764+01:00 r= ip= ERROR 10500 --- [wendys-family-tree] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+at.ac.tuwien.sepr.assignment.individual.exception.FatalException: jakarta.servlet.ServletException: Request processing failed: org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'ast_name': No value registered for key 'ast_name'
+	at at.ac.tuwien.sepr.assignment.individual.config.LogFilter.doFilterInternal(LogFilter.java:49) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.servlet.ServletException: Request processing failed: org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'ast_name': No value registered for key 'ast_name'
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at at.ac.tuwien.sepr.assignment.individual.config.LogFilter.doFilterInternal(LogFilter.java:47) ~[classes/:na]
+	... 31 common frames omitted
+Caused by: org.springframework.dao.InvalidDataAccessApiUsageException: No value supplied for the SQL parameter 'ast_name': No value registered for key 'ast_name'
+	at org.springframework.jdbc.core.namedparam.NamedParameterUtils.buildValueArray(NamedParameterUtils.java:377) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.getPreparedStatementCreator(NamedParameterJdbcTemplate.java:472) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.getPreparedStatementCreator(NamedParameterJdbcTemplate.java:446) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.update(NamedParameterJdbcTemplate.java:337) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.simple.DefaultJdbcClient$DefaultStatementSpec.update(DefaultJdbcClient.java:237) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at at.ac.tuwien.sepr.assignment.individual.persistence.impl.OwnerJdbcDao.create(OwnerJdbcDao.java:64) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727) ~[spring-aop-6.2.3.jar:6.2.3]
+	at at.ac.tuwien.sepr.assignment.individual.persistence.impl.OwnerJdbcDao$$SpringCGLIB$$0.create(<generated>) ~[classes/:na]
+	at at.ac.tuwien.sepr.assignment.individual.service.impl.OwnerServiceImpl.create(OwnerServiceImpl.java:45) ~[classes/:na]
+	at at.ac.tuwien.sepr.assignment.individual.rest.OwnerEndpoint.create(OwnerEndpoint.java:50) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	... 41 common frames omitted
+
+2025-03-15T12:58:29.500+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-15T12:58:29.515+01:00 r= ip=  INFO 10500 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-15T12:58:33.502+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21 with PID 16120 (C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend\target\classes started by ericy in C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend)
+2025-03-15T12:58:33.505+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-15T12:58:34.671+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-15T12:58:34.686+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-15T12:58:34.686+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-15T12:58:34.734+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-15T12:58:34.734+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1169 ms
+2025-03-15T12:58:35.199+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-15T12:58:35.588+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-15T12:58:35.590+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-15T12:58:35.600+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-15T12:58:35.662+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-15T12:58:35.670+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 2.87 seconds (process running for 3.504)
+2025-03-15T12:58:45.515+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-15T12:58:45.515+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-15T12:58:45.517+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-15T12:58:45.522+01:00 r=bb6417da4104 ip=0:0:0:0:0:0:0:1  INFO 16120 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> POST /owners UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T12:58:45.622+01:00 r=bb6417da4104 ip=0:0:0:0:0:0:0:1  INFO 16120 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.OwnerEndpoint  : Post /owners
+2025-03-15T12:58:45.651+01:00 r=bb6417da4104 ip=0:0:0:0:0:0:0:1  INFO 16120 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< POST /owners status=200 time=128ms
+2025-03-15T12:58:45.651+01:00 r= ip= ERROR 16120 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+at.ac.tuwien.sepr.assignment.individual.exception.FatalException: jakarta.servlet.ServletException: Request processing failed: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [INSERT INTO owner (first_name, last_name, description) Values (?, ?, ?)]
+	at at.ac.tuwien.sepr.assignment.individual.config.LogFilter.doFilterInternal(LogFilter.java:49) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.servlet.ServletException: Request processing failed: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [INSERT INTO owner (first_name, last_name, description) Values (?, ?, ?)]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at at.ac.tuwien.sepr.assignment.individual.config.LogFilter.doFilterInternal(LogFilter.java:47) ~[classes/:na]
+	... 31 common frames omitted
+Caused by: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [INSERT INTO owner (first_name, last_name, description) Values (?, ?, ?)]
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:103) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1556) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:677) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:972) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:993) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.update(NamedParameterJdbcTemplate.java:337) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.simple.DefaultJdbcClient$DefaultStatementSpec.update(DefaultJdbcClient.java:237) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at at.ac.tuwien.sepr.assignment.individual.persistence.impl.OwnerJdbcDao.create(OwnerJdbcDao.java:64) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727) ~[spring-aop-6.2.3.jar:6.2.3]
+	at at.ac.tuwien.sepr.assignment.individual.persistence.impl.OwnerJdbcDao$$SpringCGLIB$$0.create(<generated>) ~[classes/:na]
+	at at.ac.tuwien.sepr.assignment.individual.service.impl.OwnerServiceImpl.create(OwnerServiceImpl.java:45) ~[classes/:na]
+	at at.ac.tuwien.sepr.assignment.individual.rest.OwnerEndpoint.create(OwnerEndpoint.java:50) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	... 41 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Feld "DESCRIPTION" nicht gefunden
+Column "DESCRIPTION" not found; SQL statement:
+INSERT INTO owner (first_name, last_name, description) Values (?, ?, ?) [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.table.Table.getColumn(Table.java:786) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseColumn(Parser.java:1171) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseColumnList(Parser.java:1156) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseInsert(Parser.java:1530) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parsePrepared(Parser.java:698) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:581) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:556) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.prepareCommand(Parser.java:484) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:315) ~[h2-2.3.232.jar:2.3.232]
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-5.1.0.jar:na]
+	at org.springframework.jdbc.core.PreparedStatementCreatorFactory$PreparedStatementCreatorImpl.createPreparedStatement(PreparedStatementCreatorFactory.java:239) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:656) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	... 68 common frames omitted
+
+2025-03-15T13:00:12.077+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-15T13:00:12.092+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-15T13:00:12.096+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-15T13:00:12.099+01:00 r= ip=  INFO 16120 --- [wendys-family-tree] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-15T13:00:17.626+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Starting SeprIndividualAssignmentApplication using Java 21 with PID 14668 (C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend\target\classes started by ericy in C:\Users\ericy\OneDrive - TU Wien\Desktop\Technische Universität Wien\4. Sem (SS 25)\Software Engineering Projekt\Einzelphase\TempSep\backend)
+2025-03-15T13:00:17.629+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : No active profile set, falling back to 1 default profile: "default"
+2025-03-15T13:00:18.580+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-15T13:00:18.592+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-15T13:00:18.593+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-03-15T13:00:18.641+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-15T13:00:18.642+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 964 ms
+2025-03-15T13:00:19.079+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-15T13:00:19.439+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn1: url=jdbc:h2:./wendydb user=SA
+2025-03-15T13:00:19.441+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-15T13:00:19.451+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:./wendydb'
+2025-03-15T13:00:19.510+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-15T13:00:19.517+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [main] .a.i.SeprIndividualAssignmentApplication : Started SeprIndividualAssignmentApplication in 2.393 seconds (process running for 3.023)
+2025-03-15T13:00:22.909+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-15T13:00:22.910+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-15T13:00:22.912+01:00 r= ip=  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-15T13:00:22.916+01:00 r=2aeca24f2f1e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> POST /owners UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:00:23.001+01:00 r=2aeca24f2f1e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.OwnerEndpoint  : Post /owners
+2025-03-15T13:00:23.030+01:00 r=2aeca24f2f1e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< POST /owners status=200 time=113ms
+2025-03-15T13:00:23.030+01:00 r= ip= ERROR 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+at.ac.tuwien.sepr.assignment.individual.exception.FatalException: jakarta.servlet.ServletException: Request processing failed: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [INSERT INTO owner (first_name, last_name, description) VALUES (?, ?, ?)]
+	at at.ac.tuwien.sepr.assignment.individual.config.LogFilter.doFilterInternal(LogFilter.java:49) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: jakarta.servlet.ServletException: Request processing failed: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [INSERT INTO owner (first_name, last_name, description) VALUES (?, ?, ?)]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.36.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.36.jar:10.1.36]
+	at at.ac.tuwien.sepr.assignment.individual.config.LogFilter.doFilterInternal(LogFilter.java:47) ~[classes/:na]
+	... 31 common frames omitted
+Caused by: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [INSERT INTO owner (first_name, last_name, description) VALUES (?, ?, ?)]
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:103) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1556) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:677) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:972) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.update(JdbcTemplate.java:993) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate.update(NamedParameterJdbcTemplate.java:337) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.simple.DefaultJdbcClient$DefaultStatementSpec.update(DefaultJdbcClient.java:237) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at at.ac.tuwien.sepr.assignment.individual.persistence.impl.OwnerJdbcDao.create(OwnerJdbcDao.java:66) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.3.jar:6.2.3]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727) ~[spring-aop-6.2.3.jar:6.2.3]
+	at at.ac.tuwien.sepr.assignment.individual.persistence.impl.OwnerJdbcDao$$SpringCGLIB$$0.create(<generated>) ~[classes/:na]
+	at at.ac.tuwien.sepr.assignment.individual.service.impl.OwnerServiceImpl.create(OwnerServiceImpl.java:45) ~[classes/:na]
+	at at.ac.tuwien.sepr.assignment.individual.rest.OwnerEndpoint.create(OwnerEndpoint.java:50) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:257) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:190) ~[spring-web-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:986) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:891) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1088) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:978) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.3.jar:6.2.3]
+	... 41 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Feld "DESCRIPTION" nicht gefunden
+Column "DESCRIPTION" not found; SQL statement:
+INSERT INTO owner (first_name, last_name, description) VALUES (?, ?, ?) [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.table.Table.getColumn(Table.java:786) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseColumn(Parser.java:1171) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseColumnList(Parser.java:1156) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parseInsert(Parser.java:1530) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parsePrepared(Parser.java:698) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:581) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.parse(Parser.java:556) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.command.Parser.prepareCommand(Parser.java:484) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93) ~[h2-2.3.232.jar:2.3.232]
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:315) ~[h2-2.3.232.jar:2.3.232]
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java) ~[HikariCP-5.1.0.jar:na]
+	at org.springframework.jdbc.core.PreparedStatementCreatorFactory$PreparedStatementCreatorImpl.createPreparedStatement(PreparedStatementCreatorFactory.java:239) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:656) ~[spring-jdbc-6.2.3.jar:6.2.3]
+	... 68 common frames omitted
+
+2025-03-15T13:04:52.948+01:00 r=b25d5869cab3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> POST /owners UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:04:52.950+01:00 r=b25d5869cab3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.OwnerEndpoint  : Post /owners
+2025-03-15T13:04:52.961+01:00 r=b25d5869cab3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< POST /owners status=200 time=13ms
+2025-03-15T13:04:53.013+01:00 r=94bd034f19f5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:04:53.025+01:00 r=94bd034f19f5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:04:53.067+01:00 r=94bd034f19f5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=54ms
+2025-03-15T13:04:59.803+01:00 r=24a8cb8507de ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:04:59.808+01:00 r=24a8cb8507de ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:04:59.811+01:00 r=24a8cb8507de ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T13:05:02.559+01:00 r=dcf00bb45045 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:05:02.561+01:00 r=dcf00bb45045 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:05:02.577+01:00 r=dcf00bb45045 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=18ms
+2025-03-15T13:05:14.159+01:00 r=dc2490fa3427 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> POST /owners UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:05:14.161+01:00 r=dc2490fa3427 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.OwnerEndpoint  : Post /owners
+2025-03-15T13:05:14.162+01:00 r=dc2490fa3427 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< POST /owners status=200 time=2ms
+2025-03-15T13:05:14.210+01:00 r=52a71847e90f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:05:14.212+01:00 r=52a71847e90f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:05:14.222+01:00 r=52a71847e90f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=11ms
+2025-03-15T13:06:14.000+01:00 r=0ecf5c46bca2 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:14.005+01:00 r=0ecf5c46bca2 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/2
+2025-03-15T13:06:14.038+01:00 r=0ecf5c46bca2 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/2 status=200 time=37ms
+2025-03-15T13:06:17.940+01:00 r=79819513c4b0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=S&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:17.940+01:00 r=79819513c4b0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:17.952+01:00 r=79819513c4b0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=S&maxAmount=5 status=200 time=5ms
+2025-03-15T13:06:21.285+01:00 r=22f5c453dd15 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=S&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:21.288+01:00 r=22f5c453dd15 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:21.291+01:00 r=22f5c453dd15 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=S&maxAmount=5 status=200 time=5ms
+2025-03-15T13:06:22.361+01:00 r=d281cd6093eb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=Siegward%20&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:22.364+01:00 r=d281cd6093eb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:22.364+01:00 r=d281cd6093eb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=Siegward%20&maxAmount=5 status=200 time=4ms
+2025-03-15T13:06:23.227+01:00 r=fc214397ead4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=S&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:23.227+01:00 r=fc214397ead4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:23.231+01:00 r=fc214397ead4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=S&maxAmount=5 status=200 time=3ms
+2025-03-15T13:06:24.328+01:00 r=1e9aac6bde3d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=Siegward%20&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:24.331+01:00 r=1e9aac6bde3d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:24.331+01:00 r=1e9aac6bde3d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=Siegward%20&maxAmount=5 status=200 time=4ms
+2025-03-15T13:06:25.908+01:00 r=9546844962bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /owners?name=m&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:25.910+01:00 r=9546844962bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.OwnerEndpoint  : GET /owners query parameters: OwnerSearchDto[name=m, maxAmount=5]
+2025-03-15T13:06:25.914+01:00 r=9546844962bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /owners?name=m&maxAmount=5 status=200 time=6ms
+2025-03-15T13:06:27.914+01:00 r=64b959cdb5ff ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /owners?name=MAX%20Musette&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:27.916+01:00 r=64b959cdb5ff ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.OwnerEndpoint  : GET /owners query parameters: OwnerSearchDto[name=MAX Musette, maxAmount=5]
+2025-03-15T13:06:27.918+01:00 r=64b959cdb5ff ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /owners?name=MAX%20Musette&maxAmount=5 status=200 time=3ms
+2025-03-15T13:06:29.443+01:00 r=43b00f5836d1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> OPTIONS /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:29.448+01:00 r=43b00f5836d1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< OPTIONS /horses/2 status=200 time=5ms
+2025-03-15T13:06:29.453+01:00 r=9965c39a6dd6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> PUT /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:29.552+01:00 r=9965c39a6dd6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : PUT /horses
+2025-03-15T13:06:29.588+01:00 r=9965c39a6dd6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< PUT /horses/2 status=200 time=134ms
+2025-03-15T13:06:29.663+01:00 r=99e5073ba070 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:29.665+01:00 r=99e5073ba070 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:29.683+01:00 r=99e5073ba070 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=19ms
+2025-03-15T13:06:41.503+01:00 r=a50419436566 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> OPTIONS /horses/1 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:41.505+01:00 r=a50419436566 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< OPTIONS /horses/1 status=200 time=0ms
+2025-03-15T13:06:41.509+01:00 r=f3fee155f664 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> DELETE /horses/1 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:41.511+01:00 r=f3fee155f664 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : Delete /horses/1
+2025-03-15T13:06:41.515+01:00 r=f3fee155f664 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< DELETE /horses/1 status=200 time=6ms
+2025-03-15T13:06:41.530+01:00 r=8a5981e197fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:41.531+01:00 r=8a5981e197fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:41.537+01:00 r=8a5981e197fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T13:06:49.856+01:00 r=6f717a5b6bfb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:49.857+01:00 r=6f717a5b6bfb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/2
+2025-03-15T13:06:49.943+01:00 r=6f717a5b6bfb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/2 status=200 time=86ms
+2025-03-15T13:06:56.282+01:00 r=7587b65c5b63 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:56.284+01:00 r=7587b65c5b63 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:06:56.288+01:00 r=7587b65c5b63 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:06:57.871+01:00 r=d34024b3d0fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:06:57.874+01:00 r=d34024b3d0fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/2
+2025-03-15T13:06:57.881+01:00 r=d34024b3d0fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/2 status=200 time=8ms
+2025-03-15T13:07:46.115+01:00 r=2c408fb2dfe9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:07:46.118+01:00 r=2c408fb2dfe9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/2
+2025-03-15T13:07:46.137+01:00 r=2c408fb2dfe9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/2 status=200 time=20ms
+2025-03-15T13:07:50.359+01:00 r=033af4c63d52 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:07:50.362+01:00 r=033af4c63d52 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:07:50.365+01:00 r=033af4c63d52 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:07:53.173+01:00 r=acb416a0d060 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:07:53.174+01:00 r=acb416a0d060 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/2
+2025-03-15T13:07:53.184+01:00 r=acb416a0d060 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/2 status=200 time=10ms
+2025-03-15T13:07:54.621+01:00 r=a481dc4a9950 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:07:54.624+01:00 r=a481dc4a9950 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:07:54.628+01:00 r=a481dc4a9950 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T13:07:57.093+01:00 r=1636231fe0bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/2 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:07:57.097+01:00 r=1636231fe0bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/2
+2025-03-15T13:07:57.109+01:00 r=1636231fe0bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/2 status=200 time=15ms
+2025-03-15T13:07:59.315+01:00 r=f52d7763dd05 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:07:59.318+01:00 r=f52d7763dd05 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:07:59.356+01:00 r=f52d7763dd05 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=40ms
+2025-03-15T13:08:01.631+01:00 r=2c35de90b076 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses/4 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:01.632+01:00 r=2c35de90b076 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses/4
+2025-03-15T13:08:01.635+01:00 r=2c35de90b076 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses/4 status=200 time=4ms
+2025-03-15T13:08:04.490+01:00 r=9af33e1d9c97 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=F&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:04.492+01:00 r=9af33e1d9c97 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:04.494+01:00 r=9af33e1d9c97 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=F&maxAmount=5 status=200 time=4ms
+2025-03-15T13:08:05.522+01:00 r=a74eb83e7a3a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=gdfgdfsg%20&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:05.526+01:00 r=a74eb83e7a3a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:05.529+01:00 r=a74eb83e7a3a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=gdfgdfsg%20&maxAmount=5 status=200 time=5ms
+2025-03-15T13:08:06.322+01:00 r=d67e06a74954 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=as&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:06.322+01:00 r=d67e06a74954 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:06.324+01:00 r=d67e06a74954 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=as&maxAmount=5 status=200 time=3ms
+2025-03-15T13:08:07.776+01:00 r=6aad4e3f475c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses?name=sdfas%20&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:07.776+01:00 r=6aad4e3f475c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:07.781+01:00 r=6aad4e3f475c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses?name=sdfas%20&maxAmount=5 status=200 time=4ms
+2025-03-15T13:08:08.986+01:00 r=ed2750e5832f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /owners?name=M&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:08.990+01:00 r=ed2750e5832f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.OwnerEndpoint  : GET /owners query parameters: OwnerSearchDto[name=M, maxAmount=5]
+2025-03-15T13:08:08.990+01:00 r=ed2750e5832f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /owners?name=M&maxAmount=5 status=200 time=2ms
+2025-03-15T13:08:10.953+01:00 r=968d5420e16e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /owners?name=Max%20MusterMann&maxAmount=5 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:10.953+01:00 r=968d5420e16e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.OwnerEndpoint  : GET /owners query parameters: OwnerSearchDto[name=Max MusterMann, maxAmount=5]
+2025-03-15T13:08:10.956+01:00 r=968d5420e16e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /owners?name=Max%20MusterMann&maxAmount=5 status=200 time=3ms
+2025-03-15T13:08:11.403+01:00 r=d5b4a5fa3347 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> OPTIONS /horses/4 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:11.404+01:00 r=d5b4a5fa3347 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< OPTIONS /horses/4 status=200 time=0ms
+2025-03-15T13:08:11.407+01:00 r=0fbd580347ae ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> PUT /horses/4 UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:11.445+01:00 r=0fbd580347ae ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : PUT /horses
+2025-03-15T13:08:11.451+01:00 r=0fbd580347ae ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< PUT /horses/4 status=200 time=42ms
+2025-03-15T13:08:11.488+01:00 r=bd2547ea9571 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:11.493+01:00 r=bd2547ea9571 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:11.499+01:00 r=bd2547ea9571 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=9ms
+2025-03-15T13:08:18.898+01:00 r=5b305a012f9c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:18.900+01:00 r=5b305a012f9c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:18.904+01:00 r=5b305a012f9c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:08:18.905+01:00 r=2a150daeac61 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:18.907+01:00 r=2a150daeac61 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:18.909+01:00 r=2a150daeac61 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:08:46.680+01:00 r=f42ea8e6c370 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:08:46.690+01:00 r=f42ea8e6c370 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:08:46.693+01:00 r=f42ea8e6c370 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=10ms
+2025-03-15T13:10:38.683+01:00 r=e77aefbed933 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:10:38.685+01:00 r=e77aefbed933 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:10:38.692+01:00 r=e77aefbed933 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=9ms
+2025-03-15T13:10:38.706+01:00 r=559ad07d2eb5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:10:38.708+01:00 r=559ad07d2eb5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:10:38.720+01:00 r=559ad07d2eb5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=13ms
+2025-03-15T13:11:06.718+01:00 r=4a9b19628779 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:06.731+01:00 r=4a9b19628779 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:06.743+01:00 r=4a9b19628779 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=24ms
+2025-03-15T13:11:36.043+01:00 r=4e84063fd91f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:36.045+01:00 r=4e84063fd91f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:36.047+01:00 r=4e84063fd91f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:11:39.555+01:00 r=846c0f1bfd6b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:39.557+01:00 r=846c0f1bfd6b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:39.561+01:00 r=846c0f1bfd6b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:11:39.562+01:00 r=3a15b6237dd7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:39.562+01:00 r=3a15b6237dd7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:39.565+01:00 r=3a15b6237dd7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:11:45.675+01:00 r=7c50e9c56658 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:45.679+01:00 r=7c50e9c56658 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:45.686+01:00 r=7c50e9c56658 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=11ms
+2025-03-15T13:11:46.242+01:00 r=2efbfedf590f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:46.245+01:00 r=2efbfedf590f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:46.247+01:00 r=2efbfedf590f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T13:11:46.343+01:00 r=d3e5c15966e5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:46.344+01:00 r=d3e5c15966e5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:46.345+01:00 r=d3e5c15966e5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:11:47.012+01:00 r=0753bc90177a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:47.014+01:00 r=0753bc90177a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:47.014+01:00 r=0753bc90177a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:11:47.203+01:00 r=6611aee68a14 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:11:47.207+01:00 r=6611aee68a14 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:11:47.208+01:00 r=6611aee68a14 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:13:04.155+01:00 r=ba354c09d3e1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:13:04.156+01:00 r=ba354c09d3e1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:13:04.161+01:00 r=ba354c09d3e1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T13:13:10.711+01:00 r=1659911c48a2 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:13:10.712+01:00 r=1659911c48a2 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:13:10.715+01:00 r=1659911c48a2 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:14:18.243+01:00 r=fff331c2588f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:14:18.244+01:00 r=fff331c2588f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:14:18.247+01:00 r=fff331c2588f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:14:40.866+01:00 r=44521854fcd8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:14:40.867+01:00 r=44521854fcd8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:14:40.870+01:00 r=44521854fcd8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:16:03.412+01:00 r=9261e7e15019 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:16:03.418+01:00 r=9261e7e15019 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:16:03.425+01:00 r=9261e7e15019 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=11ms
+2025-03-15T13:16:06.869+01:00 r=1c4822d07f91 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:16:06.871+01:00 r=1c4822d07f91 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:16:06.877+01:00 r=1c4822d07f91 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T13:16:11.727+01:00 r=ccd2a3b62e8c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:16:11.728+01:00 r=ccd2a3b62e8c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:16:11.730+01:00 r=ccd2a3b62e8c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:16:39.734+01:00 r=95a91eae1e1b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:16:39.737+01:00 r=95a91eae1e1b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:16:39.747+01:00 r=95a91eae1e1b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=11ms
+2025-03-15T13:17:01.733+01:00 r=8b0fe113891a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:17:01.735+01:00 r=8b0fe113891a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:17:01.741+01:00 r=8b0fe113891a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T13:17:11.717+01:00 r=ac8e11c468a9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:17:11.718+01:00 r=ac8e11c468a9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:17:11.721+01:00 r=ac8e11c468a9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:17:14.779+01:00 r=386f43ba494e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:17:14.780+01:00 r=386f43ba494e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:17:14.784+01:00 r=386f43ba494e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:17:29.634+01:00 r=bf0ef2b73bcb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:17:29.635+01:00 r=bf0ef2b73bcb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:17:29.638+01:00 r=bf0ef2b73bcb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:27:51.984+01:00 r=421c9e763ff9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:27:51.987+01:00 r=421c9e763ff9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:27:51.995+01:00 r=421c9e763ff9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=10ms
+2025-03-15T13:28:00.232+01:00 r=2cadf4f2273b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:00.234+01:00 r=2cadf4f2273b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:00.238+01:00 r=2cadf4f2273b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:28:01.588+01:00 r=f6393b40ccc9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:01.592+01:00 r=f6393b40ccc9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:01.598+01:00 r=f6393b40ccc9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=9ms
+2025-03-15T13:28:12.170+01:00 r=cfa98765b235 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:12.172+01:00 r=cfa98765b235 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:12.175+01:00 r=cfa98765b235 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:28:30.689+01:00 r=3a1eca819f19 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:30.692+01:00 r=3a1eca819f19 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:30.696+01:00 r=3a1eca819f19 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:28:43.949+01:00 r=549ebdf8ecf1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:43.951+01:00 r=549ebdf8ecf1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:43.957+01:00 r=549ebdf8ecf1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T13:28:46.032+01:00 r=1d4da8f34fa8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:46.033+01:00 r=1d4da8f34fa8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:46.037+01:00 r=1d4da8f34fa8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:28:57.086+01:00 r=c2deba062f12 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:57.087+01:00 r=c2deba062f12 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:57.091+01:00 r=c2deba062f12 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:28:57.153+01:00 r=a2684f8b5bb1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:57.154+01:00 r=a2684f8b5bb1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:57.156+01:00 r=a2684f8b5bb1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:28:57.471+01:00 r=31bf47bbff0c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:57.472+01:00 r=31bf47bbff0c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:57.473+01:00 r=31bf47bbff0c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:28:57.493+01:00 r=f90efa0ac53d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:57.495+01:00 r=f90efa0ac53d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:57.496+01:00 r=f90efa0ac53d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:28:58.250+01:00 r=ffb37aa2454e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:58.254+01:00 r=ffb37aa2454e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:58.256+01:00 r=ffb37aa2454e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:28:58.390+01:00 r=b850e5536b27 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:58.392+01:00 r=b850e5536b27 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:58.394+01:00 r=b850e5536b27 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:28:58.533+01:00 r=52ba4fc4f026 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:58.535+01:00 r=52ba4fc4f026 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:58.537+01:00 r=52ba4fc4f026 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:28:58.675+01:00 r=15aa7ea59f60 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:28:58.676+01:00 r=15aa7ea59f60 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:28:58.680+01:00 r=15aa7ea59f60 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:29:01.315+01:00 r=3d66f5c6944b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:01.316+01:00 r=3d66f5c6944b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:01.321+01:00 r=3d66f5c6944b ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:29:03.142+01:00 r=48d70d770f03 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:03.145+01:00 r=48d70d770f03 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:03.147+01:00 r=48d70d770f03 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:29:03.195+01:00 r=b2c0b3d27924 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:03.197+01:00 r=b2c0b3d27924 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:03.201+01:00 r=b2c0b3d27924 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:29:03.396+01:00 r=2d257b18b977 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:03.398+01:00 r=2d257b18b977 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:03.400+01:00 r=2d257b18b977 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:29:03.409+01:00 r=dd526ce5a6c6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:03.410+01:00 r=dd526ce5a6c6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:03.412+01:00 r=dd526ce5a6c6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:29:04.073+01:00 r=bf98d756c889 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:04.075+01:00 r=bf98d756c889 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:04.076+01:00 r=bf98d756c889 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:29:04.224+01:00 r=958c332f0b7c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:04.225+01:00 r=958c332f0b7c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:04.228+01:00 r=958c332f0b7c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:29:04.399+01:00 r=3380aa2fff67 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:04.404+01:00 r=3380aa2fff67 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:04.408+01:00 r=3380aa2fff67 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T13:29:04.569+01:00 r=598a462e34c8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:04.572+01:00 r=598a462e34c8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:04.574+01:00 r=598a462e34c8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:29:10.174+01:00 r=15b094af6601 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:29:10.176+01:00 r=15b094af6601 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:29:10.181+01:00 r=15b094af6601 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:30:20.894+01:00 r=63086a54c498 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:20.896+01:00 r=63086a54c498 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:20.906+01:00 r=63086a54c498 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=11ms
+2025-03-15T13:30:29.462+01:00 r=b1ccb95d4d24 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:29.464+01:00 r=b1ccb95d4d24 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:29.466+01:00 r=b1ccb95d4d24 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:30:29.468+01:00 r=d7486e821fef ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:29.469+01:00 r=d7486e821fef ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:29.472+01:00 r=d7486e821fef ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:32.166+01:00 r=89db544cec9a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:32.166+01:00 r=89db544cec9a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:32.170+01:00 r=89db544cec9a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:32.171+01:00 r=21351c9c2b4c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:32.173+01:00 r=21351c9c2b4c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:32.175+01:00 r=21351c9c2b4c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:33.641+01:00 r=a1223fdbc972 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:33.642+01:00 r=a1223fdbc972 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:33.644+01:00 r=a1223fdbc972 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:33.646+01:00 r=a6c5f6ea42ec ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:33.647+01:00 r=a6c5f6ea42ec ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:33.649+01:00 r=a6c5f6ea42ec ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:30:34.995+01:00 r=b1717d8d4ed9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:34.995+01:00 r=b1717d8d4ed9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:34.999+01:00 r=b1717d8d4ed9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:35.322+01:00 r=ec70f88965a3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:35.322+01:00 r=ec70f88965a3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:35.325+01:00 r=ec70f88965a3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:36.097+01:00 r=ced0dc7cf2fd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:36.097+01:00 r=ced0dc7cf2fd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:36.100+01:00 r=ced0dc7cf2fd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:36.102+01:00 r=0fbcf5fbb4c9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:36.103+01:00 r=0fbcf5fbb4c9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:36.105+01:00 r=0fbcf5fbb4c9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:30:37.181+01:00 r=fb33b2b5fea1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:37.182+01:00 r=fb33b2b5fea1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:37.183+01:00 r=fb33b2b5fea1 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:37.185+01:00 r=6f99ff53f959 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:37.187+01:00 r=6f99ff53f959 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:37.189+01:00 r=6f99ff53f959 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:30:39.296+01:00 r=035ef9d2fa2e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:39.297+01:00 r=035ef9d2fa2e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:39.299+01:00 r=035ef9d2fa2e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:30:39.301+01:00 r=7223e79b1ac6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:39.304+01:00 r=7223e79b1ac6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:39.307+01:00 r=7223e79b1ac6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:30:53.736+01:00 r=f1d0a8238c85 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:53.738+01:00 r=f1d0a8238c85 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:53.740+01:00 r=f1d0a8238c85 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:30:53.741+01:00 r=d1656c5e831e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:53.742+01:00 r=d1656c5e831e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:53.745+01:00 r=d1656c5e831e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:30:57.173+01:00 r=7066c24ed0c4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:57.175+01:00 r=7066c24ed0c4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:57.176+01:00 r=7066c24ed0c4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:30:57.178+01:00 r=db6c850b829e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:30:57.179+01:00 r=db6c850b829e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:30:57.181+01:00 r=db6c850b829e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:12.642+01:00 r=61393a5aad7a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:12.646+01:00 r=61393a5aad7a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:12.650+01:00 r=61393a5aad7a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=8ms
+2025-03-15T13:31:14.538+01:00 r=566aa9270e72 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:14.539+01:00 r=566aa9270e72 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:14.542+01:00 r=566aa9270e72 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:15.373+01:00 r=2ff1613ab8c3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:15.374+01:00 r=2ff1613ab8c3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:15.377+01:00 r=2ff1613ab8c3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:16.009+01:00 r=aeca74243142 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:16.010+01:00 r=aeca74243142 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:16.012+01:00 r=aeca74243142 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:31:16.538+01:00 r=576cf6adccd7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:16.539+01:00 r=576cf6adccd7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:16.541+01:00 r=576cf6adccd7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:17.101+01:00 r=460374770df9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:17.103+01:00 r=460374770df9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:17.104+01:00 r=460374770df9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:31:17.306+01:00 r=aad4552c198e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:17.309+01:00 r=aad4552c198e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:17.312+01:00 r=aad4552c198e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:31:18.431+01:00 r=78c3cff43503 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:18.432+01:00 r=78c3cff43503 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:18.435+01:00 r=78c3cff43503 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:18.614+01:00 r=3d9af579494d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:18.615+01:00 r=3d9af579494d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:18.618+01:00 r=3d9af579494d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:18.994+01:00 r=68931b18daf9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:18.995+01:00 r=68931b18daf9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:18.997+01:00 r=68931b18daf9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:31:20.147+01:00 r=491ae4ceb3d3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:20.149+01:00 r=491ae4ceb3d3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:20.150+01:00 r=491ae4ceb3d3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:20.424+01:00 r=59be201f2f15 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:20.426+01:00 r=59be201f2f15 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:20.427+01:00 r=59be201f2f15 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:20.881+01:00 r=618c89c41f35 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:20.883+01:00 r=618c89c41f35 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:20.883+01:00 r=618c89c41f35 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:21.189+01:00 r=f5071cf5a05c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:21.190+01:00 r=f5071cf5a05c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:21.195+01:00 r=f5071cf5a05c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:31:21.410+01:00 r=8922df5c6fbc ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:21.414+01:00 r=8922df5c6fbc ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:21.418+01:00 r=8922df5c6fbc ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T13:31:21.659+01:00 r=624ac12c2cb3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:21.660+01:00 r=624ac12c2cb3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:21.661+01:00 r=624ac12c2cb3 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:22.109+01:00 r=ef6dc2618360 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:22.111+01:00 r=ef6dc2618360 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:22.113+01:00 r=ef6dc2618360 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:31:24.096+01:00 r=f6986af3c57c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:24.098+01:00 r=f6986af3c57c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:24.101+01:00 r=f6986af3c57c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:31:25.043+01:00 r=230d70c4ba70 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:25.043+01:00 r=230d70c4ba70 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:25.047+01:00 r=230d70c4ba70 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:27.664+01:00 r=95703a26f4c7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:27.665+01:00 r=95703a26f4c7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:27.666+01:00 r=95703a26f4c7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:31:28.905+01:00 r=50bb1ff1a4c0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:28.906+01:00 r=50bb1ff1a4c0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:28.909+01:00 r=50bb1ff1a4c0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:29.204+01:00 r=d37ddc90f72d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:29.206+01:00 r=d37ddc90f72d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:29.208+01:00 r=d37ddc90f72d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:31:29.773+01:00 r=56ff3bd97dad ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:29.775+01:00 r=56ff3bd97dad ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:29.776+01:00 r=56ff3bd97dad ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:31:30.123+01:00 r=20fbfb4b4aef ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:31:30.125+01:00 r=20fbfb4b4aef ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:31:30.126+01:00 r=20fbfb4b4aef ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:32:26.080+01:00 r=f153465cb5bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:26.081+01:00 r=f153465cb5bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:26.082+01:00 r=f153465cb5bf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:32:28.173+01:00 r=d5afa5e778a4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:28.175+01:00 r=d5afa5e778a4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:28.179+01:00 r=d5afa5e778a4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:32:29.293+01:00 r=ca81d17f9f9c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:29.296+01:00 r=ca81d17f9f9c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:29.297+01:00 r=ca81d17f9f9c ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:32:29.460+01:00 r=553ba90c6c8a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:29.461+01:00 r=553ba90c6c8a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:29.463+01:00 r=553ba90c6c8a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:32:29.882+01:00 r=8fe987267ad7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:29.883+01:00 r=8fe987267ad7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:29.886+01:00 r=8fe987267ad7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:32:30.159+01:00 r=b05e4ed2abdb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:30.160+01:00 r=b05e4ed2abdb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:30.163+01:00 r=b05e4ed2abdb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:32:30.542+01:00 r=2abb410617d6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:30.544+01:00 r=2abb410617d6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:30.546+01:00 r=2abb410617d6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:32:30.719+01:00 r=c346cf0ef671 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:32:30.720+01:00 r=c346cf0ef671 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:32:30.723+01:00 r=c346cf0ef671 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:33:18.141+01:00 r=6fc22b40b7e0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:18.142+01:00 r=6fc22b40b7e0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:18.145+01:00 r=6fc22b40b7e0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:33:22.868+01:00 r=7e8aeabc9e6a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:22.870+01:00 r=7e8aeabc9e6a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:22.873+01:00 r=7e8aeabc9e6a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:33:23.245+01:00 r=c8c073683f92 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:23.246+01:00 r=c8c073683f92 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:23.248+01:00 r=c8c073683f92 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:33:24.128+01:00 r=17bb1170a90e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:24.130+01:00 r=17bb1170a90e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:24.132+01:00 r=17bb1170a90e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:33:24.280+01:00 r=3e1ae636fbc6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:24.281+01:00 r=3e1ae636fbc6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:24.285+01:00 r=3e1ae636fbc6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:33:24.626+01:00 r=5f0c83378fcf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:24.630+01:00 r=5f0c83378fcf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:24.631+01:00 r=5f0c83378fcf ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:33:25.232+01:00 r=75b65fd552b9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:25.233+01:00 r=75b65fd552b9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:25.236+01:00 r=75b65fd552b9 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:33:25.417+01:00 r=9fdc8ed79263 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:25.419+01:00 r=9fdc8ed79263 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:25.421+01:00 r=9fdc8ed79263 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:33:25.780+01:00 r=f179844ca997 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:25.783+01:00 r=f179844ca997 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:25.785+01:00 r=f179844ca997 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:33:25.971+01:00 r=e4b4984bf96e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:25.972+01:00 r=e4b4984bf96e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:25.974+01:00 r=e4b4984bf96e ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:33:32.566+01:00 r=baae266e45dd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:33:32.567+01:00 r=baae266e45dd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:33:32.570+01:00 r=baae266e45dd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:34:01.026+01:00 r=704fa62206b8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:01.029+01:00 r=704fa62206b8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:01.031+01:00 r=704fa62206b8 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:34:01.960+01:00 r=5825c107102f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:01.962+01:00 r=5825c107102f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:01.963+01:00 r=5825c107102f ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:34:02.041+01:00 r=ed01bf7c61e0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:02.042+01:00 r=ed01bf7c61e0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:02.044+01:00 r=ed01bf7c61e0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:34:02.992+01:00 r=b14b1d1a50de ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:02.994+01:00 r=b14b1d1a50de ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:02.997+01:00 r=b14b1d1a50de ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:34:03.126+01:00 r=19f70c0cd372 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:03.127+01:00 r=19f70c0cd372 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:03.129+01:00 r=19f70c0cd372 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:34:03.396+01:00 r=19c79694a71a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:03.397+01:00 r=19c79694a71a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:03.402+01:00 r=19c79694a71a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=6ms
+2025-03-15T13:34:03.827+01:00 r=70bf3651b1d7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:03.828+01:00 r=70bf3651b1d7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:03.830+01:00 r=70bf3651b1d7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:34:05.027+01:00 r=e058ef7e5ac6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:05.029+01:00 r=e058ef7e5ac6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:05.035+01:00 r=e058ef7e5ac6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=7ms
+2025-03-15T13:34:05.230+01:00 r=32d1054934fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:05.230+01:00 r=32d1054934fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:05.236+01:00 r=32d1054934fb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:34:05.526+01:00 r=0a2c43bcf991 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:05.529+01:00 r=0a2c43bcf991 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:05.531+01:00 r=0a2c43bcf991 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:34:05.721+01:00 r=de5b50539837 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:34:05.723+01:00 r=de5b50539837 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:34:05.725+01:00 r=de5b50539837 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:35:07.504+01:00 r=670698643262 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:07.505+01:00 r=670698643262 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:07.506+01:00 r=670698643262 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:35:07.756+01:00 r=25e0919fe9cb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:07.756+01:00 r=25e0919fe9cb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:07.759+01:00 r=25e0919fe9cb ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=2ms
+2025-03-15T13:35:07.917+01:00 r=6bed79da02f5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:07.920+01:00 r=6bed79da02f5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:07.921+01:00 r=6bed79da02f5 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:35:08.215+01:00 r=fb74a2e8dc58 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:08.218+01:00 r=fb74a2e8dc58 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:08.220+01:00 r=fb74a2e8dc58 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:35:08.398+01:00 r=26b17b182ab4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:08.401+01:00 r=26b17b182ab4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:08.402+01:00 r=26b17b182ab4 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-6] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:35:08.543+01:00 r=bbd1d41b3107 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:08.546+01:00 r=bbd1d41b3107 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:08.548+01:00 r=bbd1d41b3107 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-7] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:35:08.957+01:00 r=4e6ec4e9a962 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:08.958+01:00 r=4e6ec4e9a962 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:08.962+01:00 r=4e6ec4e9a962 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-8] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:35:09.119+01:00 r=2b17cb2f6af6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:09.124+01:00 r=2b17cb2f6af6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:09.126+01:00 r=2b17cb2f6af6 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-9] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:35:09.183+01:00 r=cd1770ca4aa0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:09.184+01:00 r=cd1770ca4aa0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:09.187+01:00 r=cd1770ca4aa0 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-10] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:35:09.363+01:00 r=4f9ef93cb50d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:09.366+01:00 r=4f9ef93cb50d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:09.368+01:00 r=4f9ef93cb50d ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-1] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=4ms
+2025-03-15T13:35:09.681+01:00 r=794507b339fd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:09.683+01:00 r=794507b339fd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:09.685+01:00 r=794507b339fd ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-3] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:35:09.852+01:00 r=3305bce2de97 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:09.852+01:00 r=3305bce2de97 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:09.856+01:00 r=3305bce2de97 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-2] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms
+2025-03-15T13:35:10.018+01:00 r=ca435b29aae7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:10.021+01:00 r=ca435b29aae7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:10.024+01:00 r=ca435b29aae7 ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-4] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=5ms
+2025-03-15T13:35:10.175+01:00 r=2fda7b3ff40a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : >>> GET /horses UA=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0
+2025-03-15T13:35:10.176+01:00 r=2fda7b3ff40a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.rest.HorseEndpoint  : GET /horses
+2025-03-15T13:35:10.179+01:00 r=2fda7b3ff40a ip=0:0:0:0:0:0:0:1  INFO 14668 --- [wendys-family-tree] [http-nio-8080-exec-5] a.a.t.s.a.individual.config.LogFilter    : <<< GET /horses status=200 time=3ms

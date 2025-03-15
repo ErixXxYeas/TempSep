@@ -1,10 +1,13 @@
 package at.ac.tuwien.sepr.assignment.individual.persistence.impl;
 
+import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Owner;
 import at.ac.tuwien.sepr.assignment.individual.exception.FatalException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.persistence.OwnerDao;
+
+import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,18 +36,38 @@ public class OwnerJdbcDao implements OwnerDao {
       "SELECT * FROM " + TABLE_NAME
           + " WHERE id IN (:ids)";
 
+  private static final String SQL_INSERT =
+          "INSERT INTO "
+                  + TABLE_NAME
+                  + " (first_name, last_name, description) "
+                  + "VALUES (:first_name, :last_name, :description)";
+
   private static final String SQL_SELECT_SEARCH =
       "SELECT * FROM " + TABLE_NAME
           + " WHERE UPPER(first_name || ' ' || last_name) LIKE UPPER('%%' || COALESCE(:name, '') || '%%')";
 
   private static final String SQL_SELECT_SEARCH_LIMIT_CLAUSE = " LIMIT :limit";
 
-
   private final JdbcClient jdbcClient;
 
   @Autowired
   public OwnerJdbcDao(JdbcClient jdbcClient) {
     this.jdbcClient = jdbcClient;
+  }
+
+  @Override
+  public void create(OwnerCreateDto owner) throws IOException {
+    LOG.trace("create()");
+
+    if(owner != null){
+      jdbcClient.sql(SQL_INSERT).param("first_name", owner.firstName())
+              .param("last_name", owner.lastName())
+              .param("description", owner.description())
+              .update();
+    } else {
+      LOG.error("Error: Owner is null");
+    }
+
   }
 
   @Override
@@ -102,6 +125,6 @@ public class OwnerJdbcDao implements OwnerDao {
         resultSet.getLong("id"),
         resultSet.getString("first_name"),
         resultSet.getString("last_name"),
-        resultSet.getString("email"));
+        resultSet.getString("description"));
   }
 }
