@@ -23,19 +23,17 @@ export interface HorseCreate {
   description?: string;
   dateOfBirth: Date;
   sex: Sex;
-  image?: File;
   ownerId?: number;
   parentId1?: number;
   parentId2?: number;
 }
 
-export function convertFromHorseToCreate(horse: Horse, image: File | null): HorseCreate {
+export function convertFromHorseToCreate(horse: Horse): HorseCreate {
   return {
     name: horse.name,
     description: horse.description,
     dateOfBirth: horse.dateOfBirth,
     sex: horse.sex,
-    image: image || undefined,
     ownerId: horse.owner?.id,
     parentId1: horse.parent1?.id,
     parentId2: horse.parent2?.id

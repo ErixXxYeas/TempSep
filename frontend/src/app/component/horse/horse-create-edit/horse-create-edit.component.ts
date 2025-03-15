@@ -152,15 +152,13 @@ export class HorseCreateEditComponent implements OnInit {
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
           this.horseBirthDateIsSet = true;
-          if (data.parent1){
+
             this.horse.parent1 = data.parent1
-          }
-          if (data.parent2){
+
             this.horse.parent2 = data.parent2
-          }
-          if(data.owner){
+
             this.horse.owner = data.owner
-          }
+
           console.log(data)
           if (data.image) {
             this.imageFile = this.imageToFile(data.image,"image")
@@ -201,6 +199,7 @@ export class HorseCreateEditComponent implements OnInit {
   }
 
   public formatOwnerName(owner: Owner | null | undefined): string {
+
     return (owner == null)
       ? ''
       : `${owner.firstName} ${owner.lastName}`;
@@ -258,14 +257,15 @@ export class HorseCreateEditComponent implements OnInit {
       switch (this.mode) {
         case HorseCreateEditMode.create:
           observable = this.service.create(
-            convertFromHorseToCreate(this.horse, this.imageFile)
+            convertFromHorseToCreate(this.horse) , this.imageFile
           );
           break;
-        case HorseCreateEditMode.edit:
-          observable = this.service.update(
-            convertFromHorseToCreate(this.horse, this.imageFile), Number(this.route.snapshot.paramMap.get('id'))
-          );
+          /* case HorseCreateEditMode.edit:
+             observable = this.service.update(
+               convertFromHorseToCreate(this.horse, this.imageFile), Number(this.route.snapshot.paramMap.get('id'))
+             );
           break;
+          */
         default:
           console.error('Unknown HorseCreateEditMode', this.mode);
           return;

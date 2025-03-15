@@ -3,11 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AutocompleteComponent } from 'src/app/component/autocomplete/autocomplete.component';
-import { HorseService } from 'src/app/service/horse.service';
-import { Horse } from 'src/app/dto/horse';
 import { Owner } from 'src/app/dto/owner';
 import { ConfirmDeleteDialogComponent } from 'src/app/component/confirm-delete-dialog/confirm-delete-dialog.component';
-import {formatIsoDate} from "../../utils/date-helper";
 import {OwnerService} from "../../service/owner.service";
 
 
@@ -40,9 +37,15 @@ export class OwnerComponent implements OnInit {
   }
 
   reloadOwners() {
+
+
+
     this.service.searchByName().subscribe({
       next: (data) => {
-        this.owners = data;
+        this.owners = data.filter(owner =>
+          (!this.searchOwner || (owner && this.ownerName(owner).toLowerCase().includes(this.searchOwner.toLowerCase())))&&
+          (!this.searchDescription || (owner.description?.toLowerCase().includes(this.searchDescription.toLowerCase())))
+        );
         this.bannerError = null;
       },
       error: (error) => {

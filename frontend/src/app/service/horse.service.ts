@@ -48,36 +48,19 @@ export class HorseService {
    * Create a new horse in the system.
    *
    * @param horse the data for the horse that should be created
+   * @param image
    * @return an Observable for the created horse
    */
-  create(horse: HorseCreate): Observable<Horse> {
+  create(horse: HorseCreate, image: File | null): Observable<Horse> {
     console.log(horse);
     // Cast the object to any, so that we can circumvent the type checker.
     // We _need_ the date to be a string here, and just passing the object with the
     // “type error” to the HTTP client is unproblematic
     (horse as any).dateOfBirth = formatIsoDate(horse.dateOfBirth);
     const formData = new FormData();
-
-    formData.append('name', horse.name);
-    formData.append('dateOfBirth', horse.dateOfBirth.toString());
-    formData.append('sex', horse.sex.toString());
-
-    if (horse.description) {
-      formData.append('description', horse.description);
-    }
-    if (horse.image != null) {
-      formData.append('image', horse.image, horse.image.name);
-    }
-    if (horse.ownerId !== undefined) {
-      formData.append('ownerId', horse.ownerId.toString());
-    }
-
-    if (horse.parentId1 !== undefined) {
-      formData.append('parentId1', horse.parentId1.toString());
-    }
-
-    if (horse.parentId2 !== undefined) {
-      formData.append('parentId2', horse.parentId2.toString());
+    formData.append('horse', JSON.stringify(horse))
+    if (image != null) {
+      formData.append('image', image);
     }
 
     return this.http.post<Horse>(
@@ -103,9 +86,7 @@ export class HorseService {
     if (horse.description) {
       formData.append('description', horse.description);
     }
-    if (horse.image) {
-      formData.append('image', horse.image, horse.image.name);
-    }
+
     if (horse.ownerId !== undefined) {
       formData.append('ownerId', horse.ownerId.toString());
     }

@@ -121,15 +121,11 @@ public class HorseEndpoint {
    */
   @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
   public HorseCreateDto create(
-          @RequestParam("name") String name,
-          @RequestParam("dateOfBirth")LocalDate dateOfBirth,
-          @RequestParam("sex") Sex sex,
-          @RequestParam(value = "description", required = false) String description,
-          @RequestParam(value = "ownerId", required = false) Long ownerId,
-          @RequestParam(value = "parentId1", required = false) Long parentId1,
-          @RequestParam(value = "parentId2", required = false) Long parentId2,
+          @RequestPart("horse") String horse,
           @RequestPart(value = "image", required = false) MultipartFile image)
         throws IOException {
+
+
 
     HorseCreateDto toCreate = new HorseCreateDto(name,description,dateOfBirth,sex,ownerId,parentId1,parentId2);
 
