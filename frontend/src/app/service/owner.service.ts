@@ -21,4 +21,11 @@ export class OwnerService {
       .set('maxAmount', limitTo);
     return this.http.get<Owner[]>(baseUri, { params });
   }
+
+  create(owner: Owner): Observable<Owner>{
+
+    return this.http.post<Owner>(baseUri,owner)
+
+  }
+
 }
