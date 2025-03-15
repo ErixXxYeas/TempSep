@@ -1,0 +1,75 @@
+
+<div class="d-flex flex-row w-auto">
+  <button class="btn btn-primary mr-1" (click)="reloadOwners()" aria-label="Reload horses">
+    <i class="bi bi-arrow-clockwise"></i>
+    Reload
+  </button>
+  <span style="flex: 1"></span>
+  <a class="btn btn-secondary" routerLink="create" aria-label="New horse">
+    <i class="bi bi-plus-lg"></i>
+    New owner
+  </a>
+
+</div>
+
+<form class="d-flex flex-row w-auto mb-3" (submit)="reloadOwners()">
+  <button type="submit" hidden>submit</button>
+
+  <div class="flex-grow-2 ms-1">
+    <label for="searchHorseOwner" class="col-form-label">Owner</label>
+    <input
+      type="text"
+      id="searchHorseOwner"
+      name="searchHorseOwner"
+      class="form-control"
+      (input)="reloadOwners()"
+      [(ngModel)]="searchOwner">
+  </div>
+
+  <div class="flex-grow-1 ms-1">
+    <label for="searchHorseDescription" class="col-form-label">Description</label>
+    <input
+      type="text"
+      id="searchHorseDescription"
+      name="searchHorseDescription"
+      class="form-control"
+      (input)="reloadOwners()"
+      [(ngModel)]="searchDescription">
+
+  </div>
+
+</form>
+
+<div class="mt-3">
+  <table class="table table-hover">
+    <thead [hidden]="owners.length === 0">
+    <th>Name</th>
+    <th>Description</th>
+    <th class="min-width">Actions</th>
+    </thead>
+    <thead [hidden]="owners.length != 0">EMPTY</thead>
+    <tbody>
+      @for (owner of owners; track owner.id) {
+        <tr class="center-td">
+          <td>{{ ownerName(owner) }}</td>
+          <td>{{ owner.description }}</td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-sm responsive-danger-button" (click)="ownerForDeletion = owner"
+                      data-bs-toggle="modal" data-bs-target="#delete-dialog" aria-label="Delete horse">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<app-confirm-delete-dialog
+  id="delete-dialog"
+  [hidden]="!ownerForDeletion"
+  [deleteWhat]="ownerName(ownerForDeletion)"
+  (confirm)="deleteOwner(ownerForDeletion)">
+</app-confirm-delete-dialog>

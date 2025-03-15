@@ -40,8 +40,6 @@ export class HorseService {
   }
 
   deleteById(id: number | undefined): Observable<Horse>{
-    console.log("JO")
-    console.log(id)
     return this.http.delete<Horse>(`${baseUri}/${id}`);
   }
 

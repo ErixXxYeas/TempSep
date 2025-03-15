@@ -36,6 +36,13 @@ public class OwnerJdbcDao implements OwnerDao {
       "SELECT * FROM " + TABLE_NAME
           + " WHERE id IN (:ids)";
 
+  private static final String SQL_DELETE_BY_ID =
+          "DELETE FROM " + TABLE_NAME
+                  + " WHERE ID = :id";
+
+  private static final String SQL_GET_ALL =
+          "SELECT * FROM " + TABLE_NAME;
+
   private static final String SQL_INSERT =
           "INSERT INTO "
                   + TABLE_NAME
@@ -118,6 +125,24 @@ public class OwnerJdbcDao implements OwnerDao {
         .params(params)
         .query(this::mapRow)
         .list();
+  }
+
+  @Override
+  public Collection<Owner> getAll() {
+    LOG.trace("getAll()");
+    return jdbcClient
+            .sql(SQL_GET_ALL)
+            .query(this::mapRow)
+            .list();
+  }
+
+  @Override
+  public void delete(Long id) throws NotFoundException {
+    LOG.trace("delete()");
+
+    jdbcClient.sql(SQL_DELETE_BY_ID)
+            .param("id", id).update();
+
   }
 
   private Owner mapRow(ResultSet resultSet, int i) throws SQLException {

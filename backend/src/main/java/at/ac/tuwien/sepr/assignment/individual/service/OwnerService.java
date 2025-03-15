@@ -17,6 +17,10 @@ public interface OwnerService {
 
   OwnerCreateDto create(OwnerCreateDto owner) throws IOException;
 
+  Stream<OwnerDto> getAll() throws NotFoundException;
+
+  void deleteById(long id) throws NotFoundException;
+
   /**
    * Fetch an owner from the persistent data store by its ID.
    *

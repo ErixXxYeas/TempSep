@@ -138,7 +138,6 @@ public class HorseServiceImpl implements HorseService {
     dao.delete(id);
   }
 
-
   private Map<Long, OwnerDto> ownerMapForSingleId(Long ownerId) {
     try {
       return ownerId == null

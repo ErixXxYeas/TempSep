@@ -48,5 +48,7 @@ public interface OwnerDao {
    * @return a stream containing owners matching the criteria in {@code searchParameters}
    */
   Collection<Owner> search(OwnerSearchDto searchParameters);
+  Collection<Owner> getAll();
+  void delete (Long id) throws NotFoundException;
 
 }

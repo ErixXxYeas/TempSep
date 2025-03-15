@@ -8,7 +8,7 @@ import {Owner} from 'src/app/dto/owner';
 import {ErrorFormatterService} from 'src/app/service/error-formatter.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {convertFromHorseToCreate, Horse} from "../../../dto/horse";
-import {HorseCreateEditMode} from "../horse-create-edit/horse-create-edit.component";
+import {HorseCreateEditMode} from "../../horse/horse-create-edit/horse-create-edit.component";
 
 export enum OwnerCreate {
   create,
@@ -120,7 +120,7 @@ export class OwnerCreateComponent implements OnInit {
       observable.subscribe({
         next: data => {
           this.notification.success(`Owner ${this.owner.firstName + " " + this.owner.lastName}  successfully ${this.modeActionFinished}.`);
-          this.router.navigate(['/horses']);
+          this.router.navigate(['/owners']);
         },
         error: error => {
           console.error('Error creating horse', error);

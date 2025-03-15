@@ -46,6 +46,19 @@ public class OwnerServiceImpl implements OwnerService {
     return owner;
   }
 
+  @Override
+  public Stream<OwnerDto> getAll() throws NotFoundException {
+    LOG.trace("getAll()");
+    return dao.getAll().stream()
+            .map(mapper::entityToDto);
+  }
+
+  @Override
+  public void deleteById(long id) throws NotFoundException {
+    LOG.trace("delete()");
+    dao.delete(id);
+  }
+
   /**
    * Retrieves an owner by ID.
    *
