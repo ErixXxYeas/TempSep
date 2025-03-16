@@ -97,8 +97,10 @@ public class HorseEndpoint {
     try {
 
       JsonObject horseJson = (JsonObject) JsonParser.parseString(horse);
+
+      System.out.println(horseJson.has("description"));
       HorseUpdateRestDto toUpdate = new HorseUpdateRestDto(horseJson.get("name").getAsString(),
-              horseJson.get("description").getAsString(),
+              horseJson.has("description") ? horseJson.get("description").getAsString() : null,
               LocalDate.parse(horseJson.get("dateOfBirth").getAsString()),
               Sex.valueOf(horseJson.get("sex").getAsString().toUpperCase()),
               horseJson.has("ownerId") ? horseJson.get("ownerId").getAsLong() : null,
@@ -125,7 +127,7 @@ public class HorseEndpoint {
    * @throws ConflictException       if a conflict occurs while creating
    */
   @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-  public HorseCreateDto create(
+  public void create(
           @RequestPart("horse") String horse,
           @RequestPart(value = "image", required = false) MultipartFile image)
         throws IOException {
@@ -141,8 +143,7 @@ public class HorseEndpoint {
 
     LOG.info("POST " + BASE_PATH);
     LOG.debug("Body of request:\n{}", toCreate);
-
-    return service.create(toCreate, image);
+    service.create(toCreate, image);
   }
 
   @DeleteMapping("{id}")

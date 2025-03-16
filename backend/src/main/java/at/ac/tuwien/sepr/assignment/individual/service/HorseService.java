@@ -52,7 +52,7 @@ public interface HorseService {
   HorseDetailDto getById(long id) throws NotFoundException;
 
   // TODO Desc
-  HorseCreateDto create(HorseCreateDto horse, MultipartFile image) throws IOException; //TODO exception
+  void create(HorseCreateDto horse, MultipartFile image) throws IOException; //TODO exception
 
   // TODO Desc
   void deleteById(long id) throws NotFoundException;

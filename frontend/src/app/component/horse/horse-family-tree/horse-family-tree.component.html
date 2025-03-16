@@ -1,147 +1,48 @@
 <h1 class="display-1">Horse Family Tree</h1>
 
+<div class="familyTreeContainer">
 
+  <div class="container" *ngIf="horse">
+    <ng-container *ngTemplateOutlet="familyTree; context: { $implicit: horse}"></ng-container>
+  </div>
 
-  <div class="row">
-    <div class="mb-2 col-lg-6">
-      <div class="row">
-        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Name
-        </label>
-        <div class="col-md-10 col-lg-8">
-          <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
-            {{horse.name}}
-          </label>
+  <ng-template #familyTree let-horse>
+    <div class="node" *ngIf="horse  && containsHorse(horse) ">
+      <div class="nodeContent">
+        <div class="nodeHeader" (click)="toggleNode(horse)">
+          <span
+            *ngIf="(horse.parent1 || horse.parent2) && containsHorse(horse.parent1) || containsHorse(horse.parent2)">
+            <span *ngIf="!isExtended(horse)"><i class="bi-plus-circle"></i></span>
+            <span *ngIf="isExtended(horse)"><i class="bi-dash-circle"></i></span>
+          </span>
+            <span class="horseName ">
+            {{ horse.name }}
+          </span>
+          <div>
+            <span class="horseDate">{{ horseBirthDateText }}</span>
+            <a class="btn btn-info " (click)="visitHorse(horse.id)"
+               aria-label="Show horse details">
+              <i class="bi bi-info-lg"></i>
+            </a>
+            <a type="button" class="btn btn-danger " (click)="horseForDeletion = horse"
+               data-bs-toggle="modal" data-bs-target="#delete-dialog">
+              <i class="bi bi-trash-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nodeChildren" *ngIf="isExtended(horse)">
+        <div class="parentContainer" *ngIf="horse.parent1">
+          <ng-container *ngTemplateOutlet="familyTree; context: { $implicit: horse.parent1 }"></ng-container>
+        </div>
+        <div class="parentContainer" *ngIf="horse.parent2">
+          <ng-container *ngTemplateOutlet="familyTree; context: { $implicit: horse.parent2 }"></ng-container>
         </div>
       </div>
     </div>
-
-    <div class="mb-2 col-lg-6">
-      <div class="row">
-        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Date of Birth
-        </label>
-        <div class="col-md-10 col-lg-8">
-          <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
-            {{horseBirthDateText}}
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="mb-2 col-lg-6">
-      <div class="row">
-        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Sex
-        </label>
-        <div class="col-md-10 col-lg-8">
-          <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
-            {{horse.sex}}
-          </label>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="mb-2 col-lg-6">
-      <div class="row">
-        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Owner
-        </label>
-        <label
-          class="col-form-label text-md-start col-md-2 col-lg-4"
-          type="text">
-          {{formatOwnerName(horse.owner) || "N/A"}}
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="mb-2 col-lg-6">
-      <div class="row">
-        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Mom
-        </label>
-        <div class="col-md-10 col-lg-8">
-          <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
-            {{horse.parent1?.name || "N/A"}}
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="mb-2 col-lg-6">
-      <div class="row">
-        <label class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Dad
-        </label>
-        <label
-          class="col-form-label text-md-start col-md-2 col-lg-4"
-          type="text">
-          {{horse.parent2?.name || "N/A"}}
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="row mb-2">
-    <label class="col-form-label text-md-end text-muted col-md-2">
-      Description
-    </label>
-    <div class="col-md-10">
-      <p
-        class="col-form-label text-md-start col-md-2 col-lg-4"
-        type="text">
-        {{horse.description || "N/A"}}
-      </p>
-    </div>
-  </div>
-
-  <div class="row mb-2" >
-    <label class="col-form-label text-md-end text-muted col-md-2">
-      Picture
-    </label>
-      <div class="col-md-10" >
-        <label [hidden]="imageAvailable" class="col-form-label text-md-start col-md-2 col-lg-4">
-          N/A
-        </label>
-        <img [hidden]="!imageAvailable" [src]="imagePreview" class="image-preview"  >
-      </div>
-  </div>
-
-  <div class="mt-4 d-flex flex-row">
-    <a class="btn btn-info mt-2"
-       aria-label="Show horse details"
-       [hidden]="!horse.parent1"
-       (click)="visitHorse(horse.parent1.id)">
-      <i class="bi bi-info-lg"></i>
-      Mom
-    </a>
-    <a class="btn btn-info mt-2"
-       aria-label="Show horse details"
-       [hidden]="!horse.parent2"
-        (click)="visitHorse(horse.parent2.id)"
-    >
-      <i class="bi bi-info-lg"></i>
-      Dad
-    </a>
-    <a class="btn btn-warning mt-2"  (click)="editHorse()" aria-label="Edit horse">
-      <i class="bi bi-alipay"></i>
-    </a>
-    <a type="button" class="btn btn-danger mt-2" (click)="horseForDeletion = horse"
-            data-bs-toggle="modal" data-bs-target="#delete-dialog" aria-label="Delete horse">
-      <i class="bi bi-trash"></i>
-    </a>
-  </div>
+  </ng-template>
+</div>
 
 <app-confirm-delete-dialog
   id="delete-dialog"

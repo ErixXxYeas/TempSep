@@ -32,6 +32,9 @@ export class HorseService {
       );
   }
 
+  getDepth(id: number, depth: number | undefined): Observable<any> {
+    return this.http.get(`${baseUri}/${id}/ancestors?generations=${depth}`);
+  }
 
   getById(id: number): Observable<Horse>{
     return this.http.get<Horse>(`${baseUri}/${id}`).pipe(
@@ -66,9 +69,7 @@ export class HorseService {
     return this.http.post<Horse>(
       baseUri,
       formData
-    ).pipe(
-      map(this.fixHorseDate)
-    );
+    )
   }
 
   update(horse: HorseCreate, image: File | null, id: number): Observable<Horse> {

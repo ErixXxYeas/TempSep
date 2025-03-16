@@ -118,7 +118,7 @@
       </div>
   </div>
 
-  <div class="mt-4 d-flex flex-row">
+<div class="d-flex flex-row w-auto">
     <a class="btn btn-info mt-2"
        aria-label="Show horse details"
        [hidden]="!horse.parent1"
@@ -141,6 +141,15 @@
             data-bs-toggle="modal" data-bs-target="#delete-dialog" aria-label="Delete horse">
       <i class="bi bi-trash"></i>
     </a>
+
+  <span style="flex: 1"></span>
+    <a class="btn btn-info mt-2" (click)="viewFamilyTree(horseId)"
+       aria-label="Show horse details">
+      <i class="bi bi-tree-fill"></i>
+      View Family-tree
+    </a>
+  <input type="number" id="depth" [(ngModel)]="depth" min="1" max="10">
+
   </div>
 
 <app-confirm-delete-dialog

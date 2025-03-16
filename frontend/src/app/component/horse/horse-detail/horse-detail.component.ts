@@ -37,7 +37,8 @@ export class HorseDetailComponent implements OnInit {
   imageAvailable = false;
   imagePreview: string | ArrayBuffer | null = null;
   horseForDeletion: Horse | undefined;
-  horseId: number | undefined
+  horseId: number | undefined;
+  depth: number | undefined;
 
   constructor(
     private service: HorseService,
@@ -64,12 +65,13 @@ export class HorseDetailComponent implements OnInit {
       this.service.getById(this.horseId).subscribe({
         next: data => {
           this.horse.name = data.name;
+
           this.horse.description = data.description;
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
           this.horse.owner = data.owner;
           this.horse.parent1 = data.parent1;
-
+          this.depth = 1;
           this.horse.parent2 = data.parent2;
 
           if (data.image) {
@@ -120,6 +122,10 @@ export class HorseDetailComponent implements OnInit {
     console.log(horseId)
     this.resetHorse();
     this.router.navigate(['/horses', horseId])
+  }
+
+  viewFamilyTree(id: number){
+    this.router.navigate(['/horses', id, 'familytree'],{queryParams: {generations: this.depth}})
   }
 
   deleteHorse(horse: Horse) {

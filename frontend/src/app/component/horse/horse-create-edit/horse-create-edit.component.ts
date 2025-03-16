@@ -162,7 +162,9 @@ export class HorseCreateEditComponent implements OnInit {
       this.service.getById(this.horseId).subscribe({
         next: data =>{
           this.horse.name = data.name;
-          this.horse.description = data.description;
+          if(data.description){
+            this.horse.description = data.description;
+          }
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
           this.horseBirthDateIsSet = true;

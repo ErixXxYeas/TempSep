@@ -139,7 +139,7 @@ public class HorseServiceImpl implements HorseService {
 
 
   @Override
-  public HorseCreateDto create(HorseCreateDto horse, MultipartFile image) throws IOException {
+  public void create(HorseCreateDto horse, MultipartFile image) throws IOException {
     LOG.trace("create()");
     //Validate Hores
 
@@ -149,7 +149,6 @@ public class HorseServiceImpl implements HorseService {
     }
 
     dao.create(horse, imageBytes);
-    return horse;
   }
 
   @Override
