@@ -146,15 +146,11 @@ export class HorseCreateEditComponent implements OnInit {
       return false
     }
     if (potentialParent.id === this.horseId){
-      console.log("JFJDJD")
       return true;
     } else {
-
       return this.isAncestor( potentialParent.parent1) || this.isAncestor(potentialParent.parent2);
     }
   }
-
-
 
 
   ngOnInit(): void {
