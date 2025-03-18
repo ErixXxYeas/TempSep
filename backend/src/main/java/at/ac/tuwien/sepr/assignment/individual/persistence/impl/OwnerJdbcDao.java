@@ -64,8 +64,8 @@ public class OwnerJdbcDao implements OwnerDao {
 
   @Override
   public void create(OwnerCreateDto owner) throws IOException {
-    LOG.trace("create()");
-
+    LOG.trace("create() with parameters: {}", owner);
+    LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, owner);
     if(owner != null){
       jdbcClient.sql(SQL_INSERT).param("first_name", owner.firstName())
               .param("last_name", owner.lastName())
@@ -73,13 +73,15 @@ public class OwnerJdbcDao implements OwnerDao {
               .update();
     } else {
       LOG.error("Error: Owner is null");
+      throw new IOException("Owner is null");
     }
-
+    LOG.info("Successfully created Owner with name: {}", owner.firstName());
   }
 
   @Override
   public Owner getById(long id) throws NotFoundException {
-    LOG.trace("getById({})", id);
+    LOG.trace("getById() with parameters: {}", id);
+    LOG.debug("SQL: {} with parameters: {}", SQL_SELECT_BY_ID, id);
     List<Owner> owners = jdbcClient
         .sql(SQL_SELECT_BY_ID)
         .param("id", id)
@@ -92,23 +94,30 @@ public class OwnerJdbcDao implements OwnerDao {
       // If this happens, something is wrong with either the DB or the select
       throw new FatalException("Found more than one owner with ID %d".formatted(id));
     }
+    LOG.info("Successfully fetched Owner with id: {}", id);
     return owners.getFirst();
   }
 
 
   @Override
   public Collection<Owner> getAllById(Collection<Long> ids) {
-    LOG.trace("getAllById({})", ids);
+    LOG.trace("getAllById() with parameters: {}", ids);
+    LOG.debug("SQL: {} with parameters: {}", SQL_SELECT_ALL, ids);
+    LOG.info("Successfully fetched Owners by ids");
     return jdbcClient
         .sql(SQL_SELECT_ALL)
         .param("ids", ids)
         .query(this::mapRow)
         .list();
+
+
+
   }
 
   @Override
-  public Collection<Owner> search(OwnerSearchDto searchParameters) {
-    LOG.trace("search({})", searchParameters);
+  public Collection<Owner> search(OwnerSearchDto searchParameters) throws NotFoundException {
+    LOG.trace("search() with parameters: {}", searchParameters);
+    LOG.debug("SQL: {} with parameters: {}", SQL_SELECT_SEARCH, searchParameters);
     var query = SQL_SELECT_SEARCH;
 
     Map<String, Object> params = new HashMap<>();
@@ -120,16 +129,24 @@ public class OwnerJdbcDao implements OwnerDao {
       params.put("limit", maxAmount);
     }
 
-    return jdbcClient
+    Collection<Owner> owners = jdbcClient
         .sql(query)
         .params(params)
         .query(this::mapRow)
         .list();
+
+    if (owners.isEmpty()){
+      throw new NotFoundException("No horse with ID %d found");
+    }
+    LOG.info("Successfully fetched Owners");
+    return owners;
+
   }
 
   @Override
   public Collection<Owner> getAll() {
     LOG.trace("getAll()");
+    LOG.debug("SQL: {} ", SQL_SELECT_ALL);
     return jdbcClient
             .sql(SQL_GET_ALL)
             .query(this::mapRow)
@@ -138,14 +155,15 @@ public class OwnerJdbcDao implements OwnerDao {
 
   @Override
   public void delete(Long id) throws NotFoundException {
-    LOG.trace("delete()");
-
+    LOG.trace("delete()  with parameters: {}", id);
+    LOG.debug("SQL: {} with parameters: {}", SQL_DELETE_BY_ID, id);
     jdbcClient.sql(SQL_DELETE_BY_ID)
             .param("id", id).update();
 
   }
 
   private Owner mapRow(ResultSet resultSet, int i) throws SQLException {
+    LOG.trace("mapRow()  with parameters: {} , {}", resultSet, i);
     return new Owner(
         resultSet.getLong("id"),
         resultSet.getString("first_name"),

@@ -1,9 +1,6 @@
 package at.ac.tuwien.sepr.assignment.individual.mapper;
 
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.*;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.FatalException;
 import java.lang.invoke.MethodHandles;
@@ -20,6 +17,7 @@ import javax.swing.text.html.parser.Entity;
 @Component
 public class HorseMapper {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
   /**
    * Converts a {@link Horse} entity into a {@link HorseListDto}.
    * The given map of owners must contain the owner referenced by the horse.
@@ -77,7 +75,20 @@ public class HorseMapper {
     );
   }
 
+  public HorseCreateDto updateDTOToCreateDTO(HorseUpdateDto horse){
+
+    return new HorseCreateDto(horse.name(),
+            horse.description(),
+            horse.dateOfBirth(),
+            horse.sex(),
+            horse.ownerId(),
+            horse.parentId1(),
+            horse.parentId2());
+
+  }
+
   private OwnerDto getOwner(Horse horse, Map<Long, OwnerDto> owners) {
+    LOG.trace("getOwner() with parameters: {}, {}", horse, owners);
     OwnerDto owner = null;
     var ownerId = horse.ownerId();
     if (ownerId != null) {

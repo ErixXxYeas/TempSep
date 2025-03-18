@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.util.Base64;
 import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -39,28 +40,52 @@ public class OwnerEndpoint {
    */
   @GetMapping
   public Stream<OwnerDto> search(OwnerSearchDto searchParameters) throws NotFoundException {
-    LOG.info("GET " + BASE_PATH + " query parameters: {}", searchParameters);
-    if(searchParameters == null){
-      return service.getAll();
+    LOG.info("GET {} query parameters: {}", BASE_PATH, searchParameters);
+    try {
+      if (searchParameters == null) {
+        return service.getAll();
+      }
+      return service.search(searchParameters);
+    } catch (NotFoundException e) {
+      LOG.warn("GET {} - No owners found with parameters: {}", BASE_PATH, searchParameters);
+      throw new NotFoundException(e);
     }
-    return service.search(searchParameters);
+
   }
 
+  /**
+   * Creates a new Owner with the provided data
+   *
+   * @param toCreate contains the data for the new Owner
+   * @throws IOException if the given data is Invalid
+   */
   @PostMapping
-  public OwnerCreateDto create(
-          @RequestBody OwnerCreateDto toCreate)throws IOException{
-    LOG.info("Post " + BASE_PATH, toCreate);
+  public void create(
+          @RequestBody OwnerCreateDto toCreate) throws ValidationException {
+    LOG.info("POST: {} " + BASE_PATH, toCreate);
 
-      return service.create(toCreate);
+    try {
+      service.create(toCreate);
+    } catch ( ValidationException e) {
+      LOG.error("Error while creating owner: {}", toCreate, e);
+      throw e;
+    }
+
   }
 
+  /**
+   * Deletes an Owner by their ID
+   *
+   * @param id Unique number which determines what owner will be deleted
+   */
   @DeleteMapping("{id}")
   public void deleteById(@PathVariable("id") long id) {
-    LOG.info("Delete " + BASE_PATH + "/{}", id);
+    LOG.info("DELETE: {} " + BASE_PATH, id);
     try {
       service.deleteById(id);
     } catch (NotFoundException e) {
       HttpStatus status = HttpStatus.NOT_FOUND;
+      LOG.warn("DELETE: {} " + BASE_PATH + " not found", id);
       throw new ResponseStatusException(status, e.getMessage(), e);
     }
   }

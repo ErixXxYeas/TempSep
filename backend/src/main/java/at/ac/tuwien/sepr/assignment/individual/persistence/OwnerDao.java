@@ -32,8 +32,9 @@ public interface OwnerDao {
    *
    * @param ids a collection of ids, to fetch the referenced owners by.
    * @return the collection of all found owners, without those, that are not in the persistent data store
+   * @throws NotFoundException if the Owner with the given IDs do not exist in the persistent data store
    */
-  Collection<Owner> getAllById(Collection<Long> ids);
+  Collection<Owner> getAllById(Collection<Long> ids) throws NotFoundException;
 
   /**
    * Search for owners matching the criteria in {@code searchParameters}.
@@ -46,9 +47,23 @@ public interface OwnerDao {
    *
    * @param searchParameters object containing the search parameters to match
    * @return a stream containing owners matching the criteria in {@code searchParameters}
+   * @throws NotFoundException if the Owner with the given does not exist in the persistent data store
    */
-  Collection<Owner> search(OwnerSearchDto searchParameters);
+  Collection<Owner> search(OwnerSearchDto searchParameters) throws NotFoundException;
+
+  /**
+   * Get all Owners stored in the persistent data store.
+   *
+   * @return a list of all stored horses
+   */
   Collection<Owner> getAll();
+
+  /**
+   * Deletes the horse with the ID given in {@code horse}
+   * in the persistent data store.
+   * @param id the ID of the horse to get
+   * @throws NotFoundException if the Owner with the given ID does not exist in the persistent data store
+   */
   void delete (Long id) throws NotFoundException;
 
 }

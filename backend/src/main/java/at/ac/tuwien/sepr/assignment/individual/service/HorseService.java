@@ -51,10 +51,24 @@ public interface HorseService {
    */
   HorseDetailDto getById(long id) throws NotFoundException;
 
-  // TODO Desc
-  void create(HorseCreateDto horse, MultipartFile image) throws IOException; //TODO exception
+  /**
+   * Creates a horse with the given Information
+   * in {@code horse} with the data given in
+   * {@code horse} in the persistent data store.
+   *
+   * @param horse the horse to create
+   * @param image the image which belongs to the horse
+   * @throws ValidationException if the update data given for the horse is in itself incorrect (description too long, no name, …)
+   * @throws ConflictException if the update data given for the horse is in conflict the data currently in the system (owner does not exist, …)
+   */
+  void create(HorseCreateDto horse, MultipartFile image) throws ValidationException, ConflictException, NotFoundException;
 
-  // TODO Desc
+  /**
+   * Deletes the horse with given ID.
+   *
+   * @param id the ID of the horse to delete
+   * @throws NotFoundException if the horse with the ID does not exist in the persistent data store
+   */
   void deleteById(long id) throws NotFoundException;
 
 

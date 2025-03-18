@@ -44,15 +44,20 @@ public interface HorseDao {
   Horse getById(long id) throws NotFoundException;
 
   /**
-   * Creates a horse
+   * Creates a horse with the data given in
+   * {@code horse} in the persistent data store.
    *
-   * @param horse the horse
+   * @param horse the horse that will get created
    * @throws IOException if there is no Data
    */
   void create(HorseCreateDto horse, byte[] image) throws IOException;
 
-  // TODO desc
-
+  /**
+   * Deletes the horse with the ID given in {@code horse}
+   * in the persistent data store.
+   * @param id the ID of the horse to get
+   * @throws NotFoundException if the Horse with the given ID does not exist in the persistent data store
+   */
   void delete (Long id) throws NotFoundException;
 
 

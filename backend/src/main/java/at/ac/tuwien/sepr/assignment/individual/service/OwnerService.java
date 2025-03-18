@@ -3,7 +3,9 @@ package at.ac.tuwien.sepr.assignment.individual.service;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerSearchDto;
+import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
+import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -15,10 +17,29 @@ import java.util.stream.Stream;
  */
 public interface OwnerService {
 
-  OwnerCreateDto create(OwnerCreateDto owner) throws IOException;
+  /**
+   * Creates an Owner with the given Information
+   * in {@code owner} with the data given in
+   *
+   * @param owner the horse to create
+   * @throws ValidationException if the update data given for the horse is in itself incorrect (description too long, no name, …)
+   */
+  void create(OwnerCreateDto owner) throws ValidationException;
 
+  /**
+   * Lists all owners stored in the system.
+   *
+   * @return list of all stored owners
+   * @throws NotFoundException if there are no owners
+   */
   Stream<OwnerDto> getAll() throws NotFoundException;
 
+  /**
+   * Deletes the owner with given ID.
+   *
+   * @param id the ID of the horse to delete
+   * @throws NotFoundException if the owner with the ID does not exist in the persistent data store
+   */
   void deleteById(long id) throws NotFoundException;
 
   /**
@@ -51,7 +72,7 @@ public interface OwnerService {
    * @param searchParameters object containing the search parameters to match
    * @return a stream containing owners matching the criteria in {@code searchParameters}
    */
-  Stream<OwnerDto> search(OwnerSearchDto searchParameters);
+  Stream<OwnerDto> search(OwnerSearchDto searchParameters) throws NotFoundException;
 
 
 }

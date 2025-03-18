@@ -4,6 +4,7 @@ import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
+import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import at.ac.tuwien.sepr.assignment.individual.mapper.OwnerMapper;
 import at.ac.tuwien.sepr.assignment.individual.persistence.OwnerDao;
 import at.ac.tuwien.sepr.assignment.individual.service.OwnerService;
@@ -16,7 +17,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.apache.juli.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -30,33 +30,52 @@ public class OwnerServiceImpl implements OwnerService {
 
   private final OwnerDao dao;
   private final OwnerMapper mapper;
+  private final OwnerValidator validator;
 
   public OwnerServiceImpl(
-      OwnerDao dao,
-      OwnerMapper mapper) {
+          OwnerDao dao,
+          OwnerMapper mapper, OwnerValidator validator) {
     this.dao = dao;
     this.mapper = mapper;
+    this.validator = validator;
   }
 
   @Override
-  public OwnerCreateDto create(OwnerCreateDto owner) throws IOException {
-    LOG.trace("create()");
-
-    dao.create(owner);
-    return owner;
+  public void create(OwnerCreateDto owner) throws ValidationException {
+    LOG.trace("create() mit parameter: {}", owner);
+    validator.validateForCreate(owner);
+    try {
+      dao.create(owner);
+          }
+    catch (IOException e) {
+      LOG.error("Error while creating owner: {}", owner, e);
+      throw new RuntimeException(e);
+    }
   }
 
   @Override
   public Stream<OwnerDto> getAll() throws NotFoundException {
     LOG.trace("getAll()");
-    return dao.getAll().stream()
+    Stream<OwnerDto> owners = dao.getAll().stream()
             .map(mapper::entityToDto);
+    if (owners.findAny().isEmpty()) {
+      LOG.warn("getAll(): No owners found");
+      throw new NotFoundException("No owners found");
+    }
+    return owners;
   }
 
   @Override
   public void deleteById(long id) throws NotFoundException {
-    LOG.trace("delete()");
-    dao.delete(id);
+    LOG.trace("delete() mit parameter: {}", id);
+
+    try{
+      dao.delete(id);
+    } catch (NotFoundException e){
+      LOG.warn("deleteById(): - Owner not found");
+      throw new NotFoundException(e);
+    }
+
   }
 
   /**
@@ -68,7 +87,7 @@ public class OwnerServiceImpl implements OwnerService {
    */
   @Override
   public OwnerDto getById(long id) throws NotFoundException {
-    LOG.trace("getById({})", id);
+    LOG.trace("getById(): mit parameter: {}", id);
     return mapper.entityToDto(dao.getById(id));
   }
 
@@ -81,7 +100,7 @@ public class OwnerServiceImpl implements OwnerService {
    */
   @Override
   public Map<Long, OwnerDto> getAllById(Collection<Long> ids) throws NotFoundException {
-    LOG.trace("getAllById({})", ids);
+    LOG.trace("getAllById() mit parameter: {}", ids);
     Map<Long, OwnerDto> owners =
         dao.getAllById(ids).stream()
             .map(mapper::entityToDto)
@@ -101,8 +120,8 @@ public class OwnerServiceImpl implements OwnerService {
    * @return a stream of matching {@link OwnerDto} objects
    */
   @Override
-  public Stream<OwnerDto> search(OwnerSearchDto searchParameters) {
-    LOG.trace("search({})", searchParameters);
+  public Stream<OwnerDto> search(OwnerSearchDto searchParameters) throws NotFoundException {
+    LOG.trace("search() mit parameter: {}", searchParameters);
     return dao.search(searchParameters).stream()
         .map(mapper::entityToDto);
   }

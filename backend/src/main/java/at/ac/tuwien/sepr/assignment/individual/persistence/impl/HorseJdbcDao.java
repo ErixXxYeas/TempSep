@@ -70,6 +70,7 @@ public class HorseJdbcDao implements HorseDao {
   @Override
   public List<Horse> getAll() {
     LOG.trace("getAll()");
+    LOG.debug("SQL: {}", SQL_SELECT_ALL);
     return jdbcClient
         .sql(SQL_SELECT_ALL)
         .query(this::mapRow)
@@ -78,7 +79,8 @@ public class HorseJdbcDao implements HorseDao {
 
   @Override
   public Horse getById(long id) throws NotFoundException {
-    LOG.trace("getById({})", id);
+    LOG.trace("getById() with parameters: {}", id);
+    LOG.debug("SQL: {}", SQL_SELECT_BY_ID);
     List<Horse> horses = jdbcClient
         .sql(SQL_SELECT_BY_ID)
         .param("id", id)
@@ -99,10 +101,9 @@ public class HorseJdbcDao implements HorseDao {
 
   @Override
   public void create(HorseCreateDto horse, byte[] image) throws IOException {
-    LOG.trace("create()");
-
-    if (horse != null) {
-      jdbcClient.sql(SQL_INSERT).param("name", horse.name())
+    LOG.trace("create() with parameters: {}", horse);
+    LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, horse);
+    int created = jdbcClient.sql(SQL_INSERT).param("name", horse.name())
               .param("description", horse.description())
               .param("dateOfBirth", horse.dateOfBirth())
               .param("sex", horse.sex().toString())
@@ -111,24 +112,28 @@ public class HorseJdbcDao implements HorseDao {
               .param("parentId1", horse.parentId1())
               .param("parentId2", horse.parentId2())
               .update();
-    } else {
+
+    if (created == 0){
       LOG.error("Error: Horse data is null.");
+      throw new IOException("Could not create horse: "+ horse);
     }
-  }
+    LOG.info("Successfully inserted horse with name: {}", horse.name());
+    }
+
 
   @Override
   public void delete(Long id) throws NotFoundException {
-    LOG.trace("delete()");
-
+    LOG.trace("delete()  with parameters: {}", id );
+    LOG.debug("SQL: {} with id: {}", SQL_DELETE_BY_ID, id);
     jdbcClient.sql(SQL_DELETE_BY_ID)
             .param("id", id).update();
-
   }
 
 
   @Override
   public Horse update(HorseUpdateDto horse, byte[] image) throws NotFoundException {
-    LOG.trace("update({})", horse);
+    LOG.trace("update() with parameters: {} , {}", horse, image);
+    LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, horse);
     int updated = jdbcClient
         .sql(SQL_UPDATE)
         .param("id", horse.id())
@@ -147,6 +152,7 @@ public class HorseJdbcDao implements HorseDao {
             "Could not update horse with ID " + horse.id() + ", because it does not exist"
         );
     }
+    LOG.info("Successfully updated horse with name: {}", horse.name());
     return new Horse(
             horse.id(),
             horse.name(),
@@ -161,6 +167,7 @@ public class HorseJdbcDao implements HorseDao {
 
 
   private Horse mapRow(ResultSet result, int rownum) throws SQLException {
+    LOG.trace("maptRow() with parameters: {} , {}", result, rownum);
     return new Horse(
             result.getLong("id"),
             result.getString("name"),

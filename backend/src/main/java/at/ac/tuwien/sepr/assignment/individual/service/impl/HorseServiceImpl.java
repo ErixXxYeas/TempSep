@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,29 +55,29 @@ public class HorseServiceImpl implements HorseService {
   @Override
   public Stream<HorseListDto> allHorses() {
     LOG.trace("allHorses()");
+    LOG.debug("Fetching all horses from the database");
     var horses = dao.getAll();
     var ownerIds = horses.stream()
-        .map(Horse::ownerId)
-        .filter(Objects::nonNull)
-        .collect(Collectors.toUnmodifiableSet());
+            .map(Horse::ownerId)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toUnmodifiableSet());
     Map<Long, OwnerDto> ownerMap;
     try {
-
       ownerMap = ownerService.getAllById(ownerIds);
     } catch (NotFoundException e) {
       throw new FatalException("Horse, that is already persisted, refers to non-existing owner", e);
     }
     return horses.stream()
-        .map(horse ->{
-
-          HorseDetailDto parent1 = fetchParent(horse.parentId1());
-          HorseDetailDto parent2 = fetchParent(horse.parentId2());
-
-           return mapper.entityToListDto(horse, ownerMap, parent1, parent2);
-        });
+            .map(horse -> {
+              HorseDetailDto parent1 = fetchParent(horse.parentId1());
+              HorseDetailDto parent2 = fetchParent(horse.parentId2());
+              return mapper.entityToListDto(horse, ownerMap, parent1, parent2);
+            });
 
   }
+
   private HorseDetailDto fetchParent(Long parentId) {
+    LOG.trace("fetchParent() with parameters: {}", parentId);
     if (parentId != null) {
       try {
         return getById(parentId);
@@ -90,8 +91,9 @@ public class HorseServiceImpl implements HorseService {
 
   @Override
   public HorseDetailDto update(HorseUpdateDto horse, MultipartFile image) throws NotFoundException, ValidationException, ConflictException, IOException {
-    LOG.trace("update({})", horse);
+    LOG.trace("update() with parameters: {}", horse);
     validator.validateForUpdate(horse);
+
 
     byte[] imageBytes = null;
     if (image != null) {
@@ -101,67 +103,82 @@ public class HorseServiceImpl implements HorseService {
     HorseDetailDto parent1 = null;
     HorseDetailDto parent2 = null;
 
-    if (horse.parentId1() != null){
+    if (horse.parentId1() != null) {
       parent1 = getById(horse.parentId1());
     }
 
-    if (horse.parentId2() != null){
+    if (horse.parentId2() != null) {
       parent2 = getById(horse.parentId2());
     }
 
     var updatedHorse = dao.update(horse, imageBytes);
     return mapper.entityToDetailDto(
-        updatedHorse,
-        ownerMapForSingleId(updatedHorse.ownerId()), parent1, parent2);
+            updatedHorse,
+            ownerMapForSingleId(updatedHorse.ownerId()), parent1, parent2);
   }
 
 
   @Override
   public HorseDetailDto getById(long id) throws NotFoundException {
-
-      LOG.trace("details({})", id);
+    LOG.trace("getById() with parameters: {}", id);
+    try {
       Horse horse = dao.getById(id);
-
       HorseDetailDto parent1 = null;
       HorseDetailDto parent2 = null;
-
       if (horse.parentId1() != null) {
         parent1 = getById(horse.parentId1());
       }
-
       if (horse.parentId2() != null) {
         parent2 = getById(horse.parentId2());
       }
       return mapper.entityToDetailDto(
               horse,
               ownerMapForSingleId(horse.ownerId()), parent1, parent2);
+    } catch (NotFoundException e) {
+      LOG.warn("Horse with ID {} not found, throwing exception", id);
+      throw new NotFoundException("Horse couldn't be found");
     }
+  }
 
 
   @Override
-  public void create(HorseCreateDto horse, MultipartFile image) throws IOException {
-    LOG.trace("create()");
-    //Validate Hores
+  public void create(HorseCreateDto horse, MultipartFile image) throws ValidationException, ConflictException, NotFoundException {
+    LOG.trace("create() with parameters: {} , {}", horse, image);
+    validator.validateForCreate(horse);
 
-    byte[] imageBytes = null;
-    if (image != null) {
-      imageBytes = image.getBytes();
+
+    try {
+      byte[] imageBytes = null;
+      if (image != null) {
+        imageBytes = image.getBytes();
+      }
+      dao.create(horse, imageBytes);
+    } catch (Exception e){
+      LOG.error("Error while creating horse: {}", horse, e);
     }
 
-    dao.create(horse, imageBytes);
   }
 
   @Override
   public void deleteById(long id) throws NotFoundException {
-    LOG.trace("delete()");
-    dao.delete(id);
+    LOG.trace("delete() with parameters: {}", id);
+
+    try {
+      dao.delete(id);
+    } catch (NotFoundException e){
+      LOG.warn("deleteById(): - Horse not found");
+      throw new NotFoundException(e);
+    }
+
+
   }
 
   private Map<Long, OwnerDto> ownerMapForSingleId(Long ownerId) {
+    LOG.trace("ownerMapForSingleId() with parameters: {}", ownerId);
     try {
       return ownerId == null
-          ? null
-          : Collections.singletonMap(ownerId, ownerService.getById(ownerId));
+              ? null
+              : Collections.singletonMap(ownerId, ownerService.getById(ownerId));
     } catch (NotFoundException e) {
       throw new FatalException("Owner %d referenced by horse not found".formatted(ownerId));
     }
