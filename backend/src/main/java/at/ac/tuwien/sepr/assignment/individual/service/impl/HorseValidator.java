@@ -2,6 +2,7 @@ package at.ac.tuwien.sepr.assignment.individual.service.impl;
 
 
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Owner;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
@@ -51,7 +52,7 @@ public class HorseValidator {
    * @throws ValidationException if validation fails
    * @throws ConflictException   if conflicts with existing data are detected
    */
-  public void validateForCreate(HorseCreateDto horse) throws ValidationException, ConflictException {
+  public void validateForCreate(HorseCreateDto horse) throws ValidationException {
     LOG.trace("validateForCreate({})", horse);
     List<String> validationErrors = new ArrayList<>();
 
@@ -79,6 +80,19 @@ public class HorseValidator {
 
     if (!validationErrors.isEmpty()) {
       throw new ValidationException("Validation of horse for update failed", validationErrors);
+    }
+  }
+
+  public void validateHorseParents(HorseDetailDto horse) throws ValidationException {
+    LOG.trace("validateHorseParents({})", horse);
+
+    validateForCreate(mapper.detailDTOToCreateDTO(horse));
+
+    if (horse.parent1() != null){
+      validateHorseParents(horse.parent1());
+    }
+    if (horse.parent2() != null){
+      validateHorseParents(horse.parent2());
     }
 
 

@@ -76,7 +76,6 @@ public class HorseMapper {
   }
 
   public HorseCreateDto updateDTOToCreateDTO(HorseUpdateDto horse){
-
     return new HorseCreateDto(horse.name(),
             horse.description(),
             horse.dateOfBirth(),
@@ -84,7 +83,16 @@ public class HorseMapper {
             horse.ownerId(),
             horse.parentId1(),
             horse.parentId2());
+  }
 
+  public HorseCreateDto detailDTOToCreateDTO(HorseDetailDto horse){
+    return new HorseCreateDto(horse.name(),
+            horse.description(),
+            horse.dateOfBirth(),
+            horse.sex(),
+            horse.owner() != null ? horse.owner().id() : null,
+            horse.parent1() != null ? horse.parent1().id() : null,
+            horse.parent2() != null ? horse.parent2().id() : null);
   }
 
   private OwnerDto getOwner(Horse horse, Map<Long, OwnerDto> owners) {

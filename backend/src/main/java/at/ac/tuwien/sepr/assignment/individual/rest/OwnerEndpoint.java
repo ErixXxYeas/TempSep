@@ -39,15 +39,17 @@ public class OwnerEndpoint {
    * @return a stream of {@link OwnerDto} matching the search criteria
    */
   @GetMapping
-  public Stream<OwnerDto> search(OwnerSearchDto searchParameters) throws NotFoundException {
-    LOG.info("GET {} query parameters: {}", BASE_PATH, searchParameters);
+  public Stream<OwnerDto> search(@RequestParam(value = "name", required = false) String name,
+                                 @RequestParam(value = "maxAmount", required = false) Integer maxAmount) throws NotFoundException {
+    LOG.info("GET {} query parameters: {}, {}", BASE_PATH, name, maxAmount );
     try {
-      if (searchParameters == null) {
+      if (name == null && maxAmount == null) {
         return service.getAll();
       }
+      OwnerSearchDto searchParameters = new OwnerSearchDto(name, maxAmount);
       return service.search(searchParameters);
     } catch (NotFoundException e) {
-      LOG.warn("GET {} - No owners found with parameters: {}", BASE_PATH, searchParameters);
+      LOG.warn("GET {} - No owners found with parameters: {} , {}", BASE_PATH, name, maxAmount );
       throw new NotFoundException(e);
     }
 

@@ -19,12 +19,15 @@ export class OwnerService {
   public searchByName(name?: string, limitTo?: number): Observable<Owner[]> {
     const params = new HttpParams()
 
+
     if (name) {
+
       params.set('name', name);
     }
     if (limitTo !== undefined && limitTo > 0) {
         params.set('maxAmount', limitTo);
     }
+
     return this.http.get<Owner[]>(baseUri, { params });
   }
 

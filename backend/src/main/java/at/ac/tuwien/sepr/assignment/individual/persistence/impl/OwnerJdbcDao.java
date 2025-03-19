@@ -136,13 +136,11 @@ public class OwnerJdbcDao implements OwnerDao {
         .list();
 
     if (owners.isEmpty()){
-      throw new NotFoundException("No horse with ID %d found");
+      throw new NotFoundException("No owner with ID %d found");
     }
     LOG.info("Successfully fetched Owners");
     return owners;
-
   }
-
   @Override
   public Collection<Owner> getAll() {
     LOG.trace("getAll()");

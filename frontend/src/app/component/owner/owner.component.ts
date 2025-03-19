@@ -37,9 +37,6 @@ export class OwnerComponent implements OnInit {
   }
 
   reloadOwners() {
-
-
-
     this.service.searchByName().subscribe({
       next: (data) => {
         this.owners = data.filter(owner =>

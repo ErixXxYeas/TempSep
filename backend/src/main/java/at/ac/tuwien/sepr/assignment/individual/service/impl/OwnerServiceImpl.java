@@ -54,15 +54,15 @@ public class OwnerServiceImpl implements OwnerService {
   }
 
   @Override
-  public Stream<OwnerDto> getAll() throws NotFoundException {
+  public Stream<OwnerDto> getAll(){
     LOG.trace("getAll()");
     Stream<OwnerDto> owners = dao.getAll().stream()
             .map(mapper::entityToDto);
     if (owners.findAny().isEmpty()) {
       LOG.warn("getAll(): No owners found");
-      throw new NotFoundException("No owners found");
     }
-    return owners;
+    return dao.getAll().stream()
+            .map(mapper::entityToDto);
   }
 
   @Override

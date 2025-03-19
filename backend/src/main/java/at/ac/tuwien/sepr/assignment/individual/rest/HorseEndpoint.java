@@ -143,7 +143,7 @@ public class HorseEndpoint {
       LOG.info("POST " + BASE_PATH);
       LOG.debug("Body of request:\n{}", toCreate);
       service.create(toCreate, image);
-    } catch (ConflictException | ValidationException e) {
+    } catch (ConflictException | ValidationException | NotFoundException e) {
 
       HttpStatus status = HttpStatus.CONFLICT;
       LOG.warn(e.getMessage(), e);

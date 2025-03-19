@@ -15,6 +15,13 @@ import java.util.Collection;
  */
 public interface OwnerDao {
 
+
+  /**
+   * Creates an owner with the given data
+   *
+   * @param owner contains the data for the created owner
+   * @throws IOException if there is no Data
+   */
   void create(OwnerCreateDto owner) throws IOException;
 
   /**

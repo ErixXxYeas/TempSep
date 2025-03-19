@@ -93,7 +93,12 @@ public class HorseServiceImpl implements HorseService {
   public HorseDetailDto update(HorseUpdateDto horse, MultipartFile image) throws NotFoundException, ValidationException, ConflictException, IOException {
     LOG.trace("update() with parameters: {}", horse);
     validator.validateForUpdate(horse);
-
+    if(horse.parentId1() != null){
+      validator.validateHorseParents(getById(horse.parentId1()));
+    }
+    if(horse.parentId2() != null){
+      validator.validateHorseParents(getById(horse.parentId2()));
+    }
 
     byte[] imageBytes = null;
     if (image != null) {
@@ -146,6 +151,12 @@ public class HorseServiceImpl implements HorseService {
     LOG.trace("create() with parameters: {} , {}", horse, image);
     validator.validateForCreate(horse);
 
+    if(horse.parentId1() != null){
+      validator.validateHorseParents(getById(horse.parentId1()));
+    }
+    if(horse.parentId2() != null){
+      validator.validateHorseParents(getById(horse.parentId2()));
+    }
 
     try {
       byte[] imageBytes = null;
