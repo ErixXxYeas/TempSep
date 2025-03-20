@@ -1,6 +1,5 @@
 package at.ac.tuwien.sepr.assignment.individual.service;
 
-
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
@@ -24,7 +23,6 @@ public interface HorseService {
    * @return list of all stored horses
    */
   Stream<HorseListDto> allHorses();
-
 
   /**
    * Updates the horse with the ID given in {@code horse}

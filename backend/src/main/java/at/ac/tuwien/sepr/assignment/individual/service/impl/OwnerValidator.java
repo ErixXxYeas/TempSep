@@ -1,7 +1,5 @@
 package at.ac.tuwien.sepr.assignment.individual.service.impl;
 
-
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
@@ -12,7 +10,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
+
 
 /**
  * Validator for horse-related operations, ensuring that all horse data meets the required constraints.

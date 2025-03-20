@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import javax.swing.text.html.parser.Entity;
 
 /**
  * Mapper class responsible for converting {@link Horse} entities into various DTOs.
@@ -75,7 +74,15 @@ public class HorseMapper {
     );
   }
 
+  /**
+   * Converts a {@link HorseUpdateDto} DTO into a {@link HorseDetailDto}.
+   * The given maps must contain the owners and parents referenced by the horse.
+   *
+   * @param horse the horse we want to convert into a {@link HorseDetailDto}.
+   * @return the converted {{@link HorseCreateDto}
+   */
   public HorseCreateDto updateDTOToCreateDTO(HorseUpdateDto horse){
+    LOG.trace("updateDTOToCreateDTO({})", horse);
     return new HorseCreateDto(horse.name(),
             horse.description(),
             horse.dateOfBirth(),
@@ -85,7 +92,15 @@ public class HorseMapper {
             horse.parentId2());
   }
 
+  /**
+   * Converts a {@link HorseDetailDto} DTO into a {@link HorseCreateDto}.
+   * The given maps must contain the owners and parents referenced by the horse.
+   *
+   * @param horse the horse we want to convert into a {@link HorseCreateDto}.
+   * @return the converted {@link HorseCreateDto}
+   */
   public HorseCreateDto detailDTOToCreateDTO(HorseDetailDto horse){
+    LOG.trace("detailDTOToCreateDTO({})", horse);
     return new HorseCreateDto(horse.name(),
             horse.description(),
             horse.dateOfBirth(),
@@ -94,6 +109,14 @@ public class HorseMapper {
             horse.parent1() != null ? horse.parent1().id() : null,
             horse.parent2() != null ? horse.parent2().id() : null);
   }
+
+  /**
+   * Fetches the owner of a horse from a map of owners
+   *
+   * @param horse the horse which we're searching the owner of
+   * @param owners a map of owners
+   * @return The owner of the horse
+   */
 
   private OwnerDto getOwner(Horse horse, Map<Long, OwnerDto> owners) {
     LOG.trace("getOwner() with parameters: {}, {}", horse, owners);

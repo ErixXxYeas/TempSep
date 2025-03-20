@@ -5,12 +5,8 @@ import static org.assertj.core.api.Assertions.tuple;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
-import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
-import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

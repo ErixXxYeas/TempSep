@@ -3,11 +3,8 @@ package at.ac.tuwien.sepr.assignment.individual.service;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.OwnerSearchDto;
-import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
-
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Stream;

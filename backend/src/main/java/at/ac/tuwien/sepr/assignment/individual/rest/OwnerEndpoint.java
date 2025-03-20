@@ -1,14 +1,12 @@
 package at.ac.tuwien.sepr.assignment.individual.rest;
 
 import at.ac.tuwien.sepr.assignment.individual.dto.*;
-import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import at.ac.tuwien.sepr.assignment.individual.service.OwnerService;
 
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
-import java.util.Base64;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -35,8 +33,10 @@ public class OwnerEndpoint {
   /**
    * Searches for owners based on the given search parameters.
    *
-   * @param searchParameters the parameters to filter the owner search
+   * @param name the name of the owner
+   * @param maxAmount the Amount of owners fetched
    * @return a stream of {@link OwnerDto} matching the search criteria
+   * @throws NotFoundException
    */
   @GetMapping
   public Stream<OwnerDto> search(@RequestParam(value = "name", required = false) String name,

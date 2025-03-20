@@ -4,8 +4,6 @@ import {map, Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
 import {Horse, HorseCreate} from '../dto/horse';
 import {formatIsoDate} from "../utils/date-helper";
-import {Block} from "@angular/compiler";
-import {Owner} from "../dto/owner";
 
 
 const baseUri = environment.backendUrl + '/horses';
@@ -17,8 +15,7 @@ export class HorseService {
 
   constructor(
     private http: HttpClient
-  ) {
-  }
+  ) {}
 
   /**
    * Get all horses stored in the system
@@ -32,10 +29,6 @@ export class HorseService {
       );
   }
 
-  getDepth(id: number, depth: number | undefined): Observable<any> {
-    return this.http.get(`${baseUri}/${id}/ancestors?generations=${depth}`);
-  }
-
   getById(id: number): Observable<Horse>{
     return this.http.get<Horse>(`${baseUri}/${id}`).pipe(
       map(this.fixHorseDate)
@@ -45,7 +38,6 @@ export class HorseService {
   deleteById(id: number | undefined): Observable<Horse>{
     return this.http.delete<Horse>(`${baseUri}/${id}`);
   }
-
 
   /**
    * Create a new horse in the system.

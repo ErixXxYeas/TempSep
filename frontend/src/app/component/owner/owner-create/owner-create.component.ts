@@ -2,13 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {FormsModule, NgForm, NgModel} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {map, Observable, of} from 'rxjs';
+import { Observable, of} from 'rxjs';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
 import {Owner} from 'src/app/dto/owner';
 import {ErrorFormatterService} from 'src/app/service/error-formatter.service';
 import {OwnerService} from 'src/app/service/owner.service';
-import {convertFromHorseToCreate, Horse} from "../../../dto/horse";
-import {HorseCreateEditMode} from "../../horse/horse-create-edit/horse-create-edit.component";
+
 
 export enum OwnerCreate {
   create,
@@ -119,7 +118,7 @@ export class OwnerCreateComponent implements OnInit {
       }
       observable.subscribe({
         next: data => {
-          this.notification.success(`Owner ${this.owner.firstName + " " + this.owner.lastName}  successfully ${this.modeActionFinished}.`);
+          this.notification.success(`Owner ${data.firstName + " " + data.lastName}  successfully ${this.modeActionFinished}.`);
           this.router.navigate(['/owners']);
         },
         error: error => {

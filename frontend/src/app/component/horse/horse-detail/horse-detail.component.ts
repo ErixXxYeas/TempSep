@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsModule, NgForm, NgModel} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {map, Observable, of} from 'rxjs';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
-import {Horse, convertFromHorseToCreate} from 'src/app/dto/horse';
+import {Horse} from 'src/app/dto/horse';
 import {Owner} from 'src/app/dto/owner';
 import {Sex} from 'src/app/dto/sex';
-import {ErrorFormatterService} from 'src/app/service/error-formatter.service';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {formatIsoDate} from "../../../utils/date-helper";
@@ -65,7 +63,6 @@ export class HorseDetailComponent implements OnInit {
       this.service.getById(this.horseId).subscribe({
         next: data => {
           this.horse.name = data.name;
-
           this.horse.description = data.description;
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
@@ -129,9 +126,9 @@ export class HorseDetailComponent implements OnInit {
   }
 
   deleteHorse(horse: Horse) {
-    console.log("Attempting to delete horse with ID:", this.horseId);
+    console.log("Attempting to delete horse with ID:", horse.id);
 
-    this.service.deleteById(this.horseId).subscribe({
+    this.service.deleteById(horse.id).subscribe({
       next: (deletedHorse) => {
         console.log("Deleted successfully:", deletedHorse);
         this.router.navigate(["/horses"])

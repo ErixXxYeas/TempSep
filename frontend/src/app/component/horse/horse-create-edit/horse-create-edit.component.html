@@ -5,14 +5,14 @@
   <div class="row">
     <div class="mb-2 col-lg-6">
       <div class="row">
-        <label for="horseName" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+        <label for="horse-name" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
           Name
         </label>
         <div class="col-md-10 col-lg-8">
           <input
             type="text"
-            id="horseName"
-            name="horseName"
+            id="horse-name"
+            name="horse-name"
             placeholder="Horse name"
             class="form-control"
             [class]="dynamicCssClassesForInput(horseNameModel)"
@@ -28,14 +28,14 @@
 
     <div class="mb-2 col-lg-6">
       <div class="row">
-        <label for="horseDateOfBirth" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+        <label for="horse-date-of-birth" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
           Date of Birth
         </label>
         <div class="col-md-10 col-lg-8">
           <input
             type="date"
-            id="horseDateOfBirth"
-            name="horseDateOfBirth"
+            id="horse-date-of-birth"
+            name="horse-date-of-birth"
             class="form-control"
             [class]="dynamicCssClassesForInput(horseDateOfBirthModel)"
             [(ngModel)]="horseBirthDateText"
@@ -52,14 +52,14 @@
   <div class="row">
     <div class="mb-2 col-lg-6">
       <div class="row">
-        <label for="horseSex" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+        <label for="horse-sex" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
           Sex
         </label>
         <div class="col-md-10 col-lg-8">
           <select
             class="form-select"
-            id="horseSex"
-            name="horseSex"
+            id="horse-sex"
+            name="horse-sex"
             [(ngModel)]="horse.sex"
             required>
             <option value="FEMALE">Female</option>
@@ -71,12 +71,12 @@
 
     <div class="mb-2 col-lg-6">
       <div class="row">
-        <label for="horseOwner" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+        <label for="horse-owner" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
           Owner
         </label>
         <app-autocomplete
-          id="horseOwner"
-          name="horseOwner"
+          id="horse-owner"
+          name="horse-owner"
           class="col-md-10 col-lg-8"
           textInputClass="form-control"
           valueNeedsToMatchSuggestion="true"
@@ -96,8 +96,8 @@
         </label>
         <div class="col-md-10 col-lg-8">
           <app-autocomplete
-            id="mom"
-            name="mom"
+            id="parent-1"
+            name="parent-1"
             class="col-md-10 col-lg-8"
             textInputClass="form-control"
             valueNeedsToMatchSuggestion="true"
@@ -116,8 +116,8 @@
           Dad
         </label>
         <app-autocomplete
-          id="dad"
-          name="dad"
+          id="parent-2"
+          name="parent-2"
           class="col-md-10 col-lg-8"
           textInputClass="form-control"
           valueNeedsToMatchSuggestion="true"
@@ -133,14 +133,14 @@
 
 
   <div class="row mb-2">
-    <label for="horseDescription" class="col-form-label text-md-end text-muted col-md-2">
+    <label for="horse-description" class="col-form-label text-md-end text-muted col-md-2">
       Description
     </label>
     <div class="col-md-10">
         <textarea
           class="form-control"
-          id="horseDescription"
-          name="horseDescription"
+          id="horse-description"
+          name="horse-description"
           [(ngModel)]="horse.description">
         </textarea>
     </div>
@@ -161,7 +161,7 @@
     </label>
     <div class="col-md-10">
       <div class="col-md-10">
-        <img [src]="imagePreview" class="image-preview" >
+        <img [src]="imagePreview" class="image-preview" alt="image-preview" >
       </div>
       <button type="button" class="btn btn-danger mt-2" (click)="removeImage()">Remove Image</button>
     </div>

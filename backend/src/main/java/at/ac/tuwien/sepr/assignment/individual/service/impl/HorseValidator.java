@@ -4,7 +4,6 @@ package at.ac.tuwien.sepr.assignment.individual.service.impl;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
-import at.ac.tuwien.sepr.assignment.individual.entity.Owner;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import java.lang.invoke.MethodHandles;
@@ -16,7 +15,7 @@ import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
+
 
 /**
  * Validator for horse-related operations, ensuring that all horse data meets the required constraints.

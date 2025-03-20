@@ -28,7 +28,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HorseJdbcDao implements HorseDao {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
   private static final String TABLE_NAME = "horse";
 
   private static final String SQL_SELECT_ALL =
@@ -52,8 +51,8 @@ public class HorseJdbcDao implements HorseDao {
                   sex = :sex,
                   image = :image,
                   owner_id = :owner_id,
-                  parent1_id = :parentId1,
-                  parent2_id = :parentId2
+                  parent1_id = :parent1_id,
+                  parent2_id = :parent2_id
               WHERE id = :id
           """;
 
@@ -61,7 +60,7 @@ public class HorseJdbcDao implements HorseDao {
           "INSERT INTO "
                   + TABLE_NAME
                   + " (name, description, date_of_birth, sex, image, owner_id, parent1_id, parent2_id) "
-                  + "VALUES (:name, :description, :dateOfBirth, :sex, :image, :ownerId, :parentId1, :parentId2)"
+                  + "VALUES (:name, :description, :date_of_birth, :sex, :image, :ownerId, :parent1_id, :parent2_id)"
           ;
 
   private final JdbcClient jdbcClient;
@@ -110,12 +109,12 @@ public class HorseJdbcDao implements HorseDao {
     KeyHolder keyHolder = new GeneratedKeyHolder();
     int created = jdbcClient.sql(SQL_INSERT).param("name", horse.name())
               .param("description", horse.description())
-              .param("dateOfBirth", horse.dateOfBirth())
+              .param("date_of_birth", horse.dateOfBirth())
               .param("sex", horse.sex().toString())
               .param("image", image)
               .param("ownerId", horse.ownerId())
-              .param("parentId1", horse.parentId1())
-              .param("parentId2", horse.parentId2())
+              .param("parent1_id", horse.parentId1())
+              .param("parent2_id", horse.parentId2())
               .update(keyHolder);
     if (created == 0){
       LOG.error("Error: Horse data is null.");
@@ -158,8 +157,8 @@ public class HorseJdbcDao implements HorseDao {
         .param("sex", horse.sex().toString())
         .param("image", image)
         .param("owner_id", horse.ownerId())
-        .param("parentId1", horse.parentId1())
-        .param("parentId2", horse.parentId2())
+        .param("parent1_id", horse.parentId1())
+        .param("parent2_id", horse.parentId2())
         .update();
 
     if (updated == 0) {

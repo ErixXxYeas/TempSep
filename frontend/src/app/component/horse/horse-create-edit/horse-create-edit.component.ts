@@ -99,16 +99,7 @@ export class HorseCreateEditComponent implements OnInit {
   get modeIsCreate(): boolean {
     return this.mode === HorseCreateEditMode.create;
   }
-  get sex(): string {
-    switch (this.horse.sex) {
-      case Sex.male:
-        return 'Male';
-      case Sex.female:
-        return 'Female';
-      default:
-        return '';
-    }
-  }
+
   private get modeActionFinished(): string {
     switch (this.mode) {
       case HorseCreateEditMode.create:
@@ -152,7 +143,6 @@ export class HorseCreateEditComponent implements OnInit {
     }
   }
 
-
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.mode = data.mode;
@@ -171,7 +161,7 @@ export class HorseCreateEditComponent implements OnInit {
           this.horse.parent1 = data.parent1
           this.horse.parent2 = data.parent2
           this.horse.owner = data.owner
-          console.log(data)
+
           if (data.image) {
             this.imageFile = this.imageToFile(data.image,"image")
             this.imagePreview = 'data:image/jpeg;base64,' + data.image;
@@ -280,8 +270,13 @@ export class HorseCreateEditComponent implements OnInit {
       }
       observable.subscribe({
         next: data => {
-          this.notification.success(`Horse ${this.horse.name} successfully ${this.modeActionFinished}.`);
-          this.router.navigate(['/horses']);
+          if(this.modeIsCreate){
+            this.notification.success(`Horse ${this.horse.name} successfully ${this.modeActionFinished}.`);
+            this.router.navigate(['/horses']);
+          } else {
+            this.notification.success(`Horse ${data.name} successfully ${this.modeActionFinished}.`);
+            this.router.navigate(['/horses']);
+          }
         },
         error: error => {
           console.error('Error creating horse', error);

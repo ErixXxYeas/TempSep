@@ -5,12 +5,10 @@ import static org.assertj.core.api.Assertions.tuple;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.List;
 

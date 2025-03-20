@@ -16,22 +16,22 @@
   <button type="submit" hidden>submit</button>
 
   <div class="flex-grow-2 ms-1">
-    <label for="searchHorseOwner" class="col-form-label">Owner</label>
+    <label for="search-horse-owner" class="col-form-label">Owner</label>
     <input
       type="text"
-      id="searchHorseOwner"
-      name="searchHorseOwner"
+      id="search-horse-owner"
+      name="search-horse-owner"
       class="form-control"
       (input)="reloadOwners()"
       [(ngModel)]="searchOwner">
   </div>
 
   <div class="flex-grow-1 ms-1">
-    <label for="searchOwnerDescription" class="col-form-label">Description</label>
+    <label for="search-owner-description" class="col-form-label">Description</label>
     <input
       type="text"
-      id="searchOwnerDescription"
-      name="searchOwnerDescription"
+      id="search-owner-description"
+      name="search-owner-description"
       class="form-control"
       (input)="reloadOwners()"
       [(ngModel)]="searchDescription">

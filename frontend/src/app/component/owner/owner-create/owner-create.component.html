@@ -1,18 +1,17 @@
 <h1 class="display-1">{{ heading }}</h1>
 
-
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="row">
     <div class="mb-2 col-lg-6">
       <div class="row">
-        <label for="ownerFirstName" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+        <label for="owner-first-name" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
           First Name
         </label>
         <div class="col-md-10 col-lg-8">
           <input
             type="text"
-            id="ownerFirstName"
-            name="ownerFirstName"
+            id="owner-first-name"
+            name="owner-first-name"
             placeholder="Max"
             class="form-control"
             [class]="dynamicCssClassesForInput(ownerFirstNameModel)"
@@ -27,14 +26,14 @@
     </div>
     <div class="mb-2 col-lg-6">
       <div class="row">
-        <label for="ownerLastName" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
+        <label for="owner-last-name" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
           Last Name
         </label>
         <div class="col-md-10 col-lg-8">
           <input
             type="text"
-            id="ownerLastName"
-            name="ownerLastName"
+            id="owner-last-name"
+            name="owner-last-name"
             placeholder="Mustermann"
             class="form-control"
             [class]="dynamicCssClassesForInput(ownerLastNameModel)"
@@ -51,14 +50,14 @@
 
 
   <div class="row mb-2">
-    <label for="ownerDescription" class="col-form-label text-md-end text-muted col-md-2">
+    <label for="owner-description" class="col-form-label text-md-end text-muted col-md-2">
       Description
     </label>
     <div class="col-md-10">
         <textarea
           class="form-control"
-          id="ownerDescription"
-          name="ownerDescription"
+          id="owner-description"
+          name="owner-description"
           [(ngModel)]="owner.description">
         </textarea>
     </div>

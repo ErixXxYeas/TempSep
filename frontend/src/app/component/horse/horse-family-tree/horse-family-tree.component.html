@@ -1,25 +1,25 @@
 <h1 class="display-1">Horse Family Tree</h1>
 
-<div class="familyTreeContainer">
+<div class="family-tree-container">
 
   <div class="container" *ngIf="horse">
-    <ng-container *ngTemplateOutlet="familyTree; context: { $implicit: horse}"></ng-container>
+    <ng-container *ngTemplateOutlet="familyTree; context: {$implicit: horse}"></ng-container>
   </div>
 
   <ng-template #familyTree let-horse>
     <div class="node" *ngIf="horse  && containsHorse(horse) ">
-      <div class="nodeContent">
-        <div class="nodeHeader" (click)="toggleNode(horse)">
+      <div class="node-content">
+        <div class="node-header" (click)="toggleNode(horse)">
           <span
             *ngIf="(horse.parent1 || horse.parent2) && containsHorse(horse.parent1) || containsHorse(horse.parent2)">
             <span *ngIf="!isExtended(horse)"><i class="bi-plus-circle"></i></span>
             <span *ngIf="isExtended(horse)"><i class="bi-dash-circle"></i></span>
           </span>
-            <span class="horseName ">
+            <span class="horse-name">
             {{ horse.name }}
           </span>
           <div>
-            <span class="horseDate">{{ horseBirthDateText }}</span>
+            <span class="horse-date">{{ horseBirthDateText }}</span>
             <a class="btn btn-info " (click)="visitHorse(horse.id)"
                aria-label="Show horse details">
               <i class="bi bi-info-lg"></i>
@@ -32,11 +32,11 @@
         </div>
       </div>
 
-      <div class="nodeChildren" *ngIf="isExtended(horse)">
-        <div class="parentContainer" *ngIf="horse.parent1">
+      <div class="node-children" *ngIf="isExtended(horse)">
+        <div class="parent-container" *ngIf="horse.parent1">
           <ng-container *ngTemplateOutlet="familyTree; context: { $implicit: horse.parent1 }"></ng-container>
         </div>
-        <div class="parentContainer" *ngIf="horse.parent2">
+        <div class="parent-container" *ngIf="horse.parent2">
           <ng-container *ngTemplateOutlet="familyTree; context: { $implicit: horse.parent2 }"></ng-container>
         </div>
       </div>
