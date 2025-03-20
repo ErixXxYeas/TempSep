@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -124,7 +125,7 @@ public class HorseEndpoint {
    * @throws ValidationException if the horse has invalid Data
    */
   @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-  public void create(
+  public ResponseEntity<Void> create(
           @RequestPart("horse") String horse,
           @RequestPart(value = "image", required = false) MultipartFile image)
           throws ConflictException, ValidationException {
@@ -143,6 +144,7 @@ public class HorseEndpoint {
       LOG.info("POST " + BASE_PATH);
       LOG.debug("Body of request:\n{}", toCreate);
       service.create(toCreate, image);
+      return ResponseEntity.ok().build();
     } catch (ConflictException | ValidationException | NotFoundException e) {
 
       HttpStatus status = HttpStatus.CONFLICT;
@@ -160,10 +162,11 @@ public class HorseEndpoint {
    * @param id Unique number to delete by
    */
   @DeleteMapping("{id}")
-  public void deleteById(@PathVariable("id") long id) {
+  public ResponseEntity<Void> deleteById(@PathVariable("id") long id) {
     LOG.info("Delete " + BASE_PATH + "/{}", id);
     try {
       service.deleteById(id);
+      return ResponseEntity.noContent().build();
     } catch (NotFoundException e) {
       HttpStatus status = HttpStatus.NOT_FOUND;
       LOG.warn("Error deleting horse with ID {}: {}", id, e.getMessage(), e);

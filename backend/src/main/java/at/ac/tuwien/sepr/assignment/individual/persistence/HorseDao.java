@@ -50,7 +50,7 @@ public interface HorseDao {
    * @param horse the horse that will get created
    * @throws IOException if there is no Data
    */
-  void create(HorseCreateDto horse, byte[] image) throws IOException;
+  Horse create(HorseCreateDto horse, byte[] image) throws IOException;
 
   /**
    * Deletes the horse with the ID given in {@code horse}

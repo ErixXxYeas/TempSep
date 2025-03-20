@@ -147,7 +147,7 @@ public class HorseServiceImpl implements HorseService {
 
 
   @Override
-  public void create(HorseCreateDto horse, MultipartFile image) throws ValidationException, ConflictException, NotFoundException {
+  public Horse create(HorseCreateDto horse, MultipartFile image) throws ValidationException, ConflictException, NotFoundException {
     LOG.trace("create() with parameters: {} , {}", horse, image);
     validator.validateForCreate(horse);
 
@@ -163,9 +163,10 @@ public class HorseServiceImpl implements HorseService {
       if (image != null) {
         imageBytes = image.getBytes();
       }
-      dao.create(horse, imageBytes);
+      return dao.create(horse, imageBytes);
     } catch (Exception e){
       LOG.error("Error while creating horse: {}", horse, e);
+      throw new ConflictException(e.getMessage(), null);
     }
 
   }

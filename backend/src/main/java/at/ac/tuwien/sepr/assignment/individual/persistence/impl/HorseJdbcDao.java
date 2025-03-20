@@ -18,6 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -35,6 +37,7 @@ public class HorseJdbcDao implements HorseDao {
   private static final String SQL_SELECT_BY_ID =
       "SELECT * FROM " + TABLE_NAME
           + " WHERE ID = :id";
+
 
   private static final String SQL_DELETE_BY_ID =
           "DELETE FROM " + TABLE_NAME
@@ -58,7 +61,8 @@ public class HorseJdbcDao implements HorseDao {
           "INSERT INTO "
                   + TABLE_NAME
                   + " (name, description, date_of_birth, sex, image, owner_id, parent1_id, parent2_id) "
-                  + "VALUES (:name, :description, :dateOfBirth, :sex, :image, :ownerId, :parentId1, :parentId2)";
+                  + "VALUES (:name, :description, :dateOfBirth, :sex, :image, :ownerId, :parentId1, :parentId2)"
+          ;
 
   private final JdbcClient jdbcClient;
 
@@ -100,9 +104,10 @@ public class HorseJdbcDao implements HorseDao {
   }
 
   @Override
-  public void create(HorseCreateDto horse, byte[] image) throws IOException {
+  public Horse create(HorseCreateDto horse, byte[] image) throws IOException {
     LOG.trace("create() with parameters: {}", horse);
     LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, horse);
+    KeyHolder keyHolder = new GeneratedKeyHolder();
     int created = jdbcClient.sql(SQL_INSERT).param("name", horse.name())
               .param("description", horse.description())
               .param("dateOfBirth", horse.dateOfBirth())
@@ -111,14 +116,24 @@ public class HorseJdbcDao implements HorseDao {
               .param("ownerId", horse.ownerId())
               .param("parentId1", horse.parentId1())
               .param("parentId2", horse.parentId2())
-              .update();
-
+              .update(keyHolder);
     if (created == 0){
       LOG.error("Error: Horse data is null.");
       throw new IOException("Could not create horse: "+ horse);
     }
     LOG.info("Successfully inserted horse with name: {}", horse.name());
-    }
+
+    return new Horse(keyHolder.getKey().longValue(),
+            horse.name(),
+            horse.description(),
+            horse.dateOfBirth(),
+            horse.sex(),
+            image,
+            horse.ownerId(),
+            horse.parentId1(),
+            horse.parentId2());
+
+  }
 
 
   @Override
@@ -164,6 +179,7 @@ public class HorseJdbcDao implements HorseDao {
             horse.parentId1(),
             horse.parentId2());
   }
+
 
 
   private Horse mapRow(ResultSet result, int rownum) throws SQLException {
