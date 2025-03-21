@@ -1,12 +1,11 @@
 <h1 class="display-1">{{ heading }}</h1>
 
-
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="row">
     <div class="mb-2 col-lg-6">
       <div class="row">
         <label for="horse-name" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Name
+          Name*
         </label>
         <div class="col-md-10 col-lg-8">
           <input
@@ -29,7 +28,7 @@
     <div class="mb-2 col-lg-6">
       <div class="row">
         <label for="horse-date-of-birth" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Date of Birth
+          Date of Birth*
         </label>
         <div class="col-md-10 col-lg-8">
           <input
@@ -53,7 +52,7 @@
     <div class="mb-2 col-lg-6">
       <div class="row">
         <label for="horse-sex" class="col-form-label text-md-end text-muted col-md-2 col-lg-4">
-          Sex
+          Sex*
         </label>
         <div class="col-md-10 col-lg-8">
           <select
@@ -96,6 +95,7 @@
         </label>
         <div class="col-md-10 col-lg-8">
           <app-autocomplete
+            list="parent-1-list"
             id="parent-1"
             name="parent-1"
             class="col-md-10 col-lg-8"
@@ -103,8 +103,8 @@
             valueNeedsToMatchSuggestion="true"
             [(ngModel)]="horse.parent1"
             [formatModel]="formatHorseName"
-            [suggestions]="parentSuggestions('mom')"
-            (ngModelChange)="onParentSelected('mom', $event)">
+            [suggestions]="parentSuggestions(Sex.female)"
+            (ngModelChange)="onParentSelected(Sex.female, $event)">
           </app-autocomplete>
         </div>
       </div>
@@ -123,8 +123,8 @@
           valueNeedsToMatchSuggestion="true"
           [(ngModel)]="horse.parent2"
           [formatModel]="formatHorseName"
-          [suggestions]="parentSuggestions('dad')"
-          (ngModelChange)="onParentSelected('dad', $event)">
+          [suggestions]="parentSuggestions(Sex.male)"
+          (ngModelChange)="onParentSelected(Sex.male, $event)">
 
         </app-autocomplete>
       </div>
@@ -141,8 +141,13 @@
           class="form-control"
           id="horse-description"
           name="horse-description"
-          [(ngModel)]="horse.description">
+          [(ngModel)]="horse.description"
+          (input)="updateRemainingCharacter()"
+          maxlength="4095">
         </textarea>
+      <small class="text-muted">
+        {{ remainingCharacters }}/4095 Characters
+      </small>
     </div>
   </div>
 
@@ -165,9 +170,8 @@
       </div>
       <button type="button" class="btn btn-danger mt-2" (click)="removeImage()">Remove Image</button>
     </div>
+
   </div>
-
-
 
   <div class="mt-4 d-flex flex-row">
     <button
@@ -177,6 +181,9 @@
       {{ submitButtonText }}
     </button>
   </div>
+  <small>
+    all fields with "*" must be filled
+  </small>
 </form>
 
 

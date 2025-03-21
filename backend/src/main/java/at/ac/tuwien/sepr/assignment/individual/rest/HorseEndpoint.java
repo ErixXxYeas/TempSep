@@ -132,6 +132,7 @@ public class HorseEndpoint {
     LOG.info("POST " + BASE_PATH + "/{}, {}", horse, image);
     LOG.debug("Received JSON horse: {}", horse);
     try {
+
       JsonObject horseJson = (JsonObject) JsonParser.parseString(horse);
       HorseCreateDto toCreate = new HorseCreateDto(horseJson.get("name").getAsString(),
               horseJson.has("description") ? horseJson.get("description").getAsString() : null,

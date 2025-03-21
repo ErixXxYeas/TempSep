@@ -37,10 +37,12 @@ public class OwnerValidator {
       validationErrors.add("Owner last name is not given");
     }
 
-    if (owner.firstName() != null && owner.lastName() != null){
-      if (owner.firstName().length() >= 255 || owner.lastName().length() >= 255){
-        validationErrors.add("Owner name it too long");
-      }
+    if (owner.firstName() != null && owner.firstName().length() >= 255){
+        validationErrors.add("Owner firstname is too long");
+    }
+
+    if(owner.lastName() != null && owner.lastName().length() >= 255){
+      validationErrors.add("Owner lastname is too long");
     }
 
     if (owner.description() != null) {

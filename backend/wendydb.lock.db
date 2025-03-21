@@ -1,6 +1,6 @@
 #FileLock
-#Thu Mar 20 14:09:42 CET 2025
-hostName=EricDesktop.telekom.ip
-id=195b3ac81d2533d30133dc363e6533a5d1143284224
+#Fri Mar 21 17:04:52 CET 2025
+hostName=128.130.242.243
+id=195b9733f2397205bcf34a2960ea3e47e0376f5baef
 method=file
-server=192.168.0.164\:53335
+server=128.130.242.243\:58534

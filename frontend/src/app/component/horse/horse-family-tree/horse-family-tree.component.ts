@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsModule, NgForm, NgModel} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
-import {Horse, convertFromHorseToCreate} from 'src/app/dto/horse';
+import {Horse} from 'src/app/dto/horse';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {formatIsoDate} from "../../../utils/date-helper";
@@ -88,9 +88,17 @@ export class HorseFamilyTreeComponent implements OnInit {
   toggleNode(horse: Horse){
     if (this.allAncestors.has(horse) && this.workingAncestors.has(horse) ){
       this.workingAncestors.delete(horse)
-    } else if( this.allAncestors.has(horse)) {
+    } else if(this.allAncestors.has(horse)) {
       this.workingAncestors.add(horse);
     }
+    if (!horse.parent1 && !horse.parent2){
+      this.notification.warning("No Parent")
+    }
+
+    if((horse.parent1 && !this.containsHorse(horse.parent1)) || (horse.parent2 && !this.containsHorse(horse.parent2)) ){
+      this.notification.warning("Max depth reached")
+    }
+
   }
 
   isExtended(horse: Horse): boolean{

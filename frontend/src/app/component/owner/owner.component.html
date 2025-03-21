@@ -52,7 +52,7 @@
       @for (owner of owners; track owner.id) {
         <tr class="center-td">
           <td>{{ ownerName(owner) }}</td>
-          <td>{{ owner.description }}</td>
+          <td>{{ owner.description?.length < 100 ? owner.description : owner.description.slice(0,100) + " ..."  }}</td>
           <td>
             <div class="btn-group">
               <button class="btn btn-sm responsive-danger-button" (click)="ownerForDeletion = owner"

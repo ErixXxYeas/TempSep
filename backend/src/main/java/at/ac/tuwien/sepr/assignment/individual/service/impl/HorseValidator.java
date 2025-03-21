@@ -58,6 +58,8 @@ public class HorseValidator {
 
     if (horse.name() == null){
       validationErrors.add("No Name given");
+    } else if(horse.name().length() >= 255){
+      validationErrors.add("Name is too long");
     }
 
     if (horse.dateOfBirth() == null){

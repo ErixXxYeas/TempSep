@@ -26,7 +26,7 @@ export class HorseDetailComponent implements OnInit {
   bannerError: string | null = null;
   horse: Horse = {
     name: '',
-    description: '',
+    description: '  ',
     dateOfBirth: new Date(),
     sex: Sex.female,
     parent1: undefined,
@@ -122,7 +122,9 @@ export class HorseDetailComponent implements OnInit {
   }
 
   viewFamilyTree(id: number){
-    this.router.navigate(['/horses', id, 'familytree'],{queryParams: {generations: this.depth}})
+    if (typeof this.depth === "number") {
+      this.router.navigate(['/horses', id, 'familytree'], {queryParams: {generations: Math.min(this.depth, 10)}})
+    }
   }
 
   deleteHorse(horse: Horse) {

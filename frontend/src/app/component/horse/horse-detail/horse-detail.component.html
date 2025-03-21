@@ -10,8 +10,7 @@
         </label>
         <div class="col-md-10 col-lg-8">
           <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
+            class="col-form-label text-md-start col-md-2 col-lg-4">
             {{horse.name}}
           </label>
         </div>
@@ -25,8 +24,7 @@
         </label>
         <div class="col-md-10 col-lg-8">
           <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
+            class="col-form-label text-md-start col-md-2 col-lg-4">
             {{horseBirthDateText}}
           </label>
         </div>
@@ -42,8 +40,7 @@
         </label>
         <div class="col-md-10 col-lg-8">
           <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
+            class="col-form-label text-md-start col-md-2 col-lg-4">
             {{horse.sex}}
           </label>
         </div>
@@ -57,8 +54,7 @@
           Owner
         </label>
         <label
-          class="col-form-label text-md-start col-md-2 col-lg-4"
-          type="text">
+          class="col-form-label text-md-start col-md-2 col-lg-4">
           {{formatOwnerName(horse.owner) || "N/A"}}
         </label>
       </div>
@@ -73,8 +69,7 @@
         </label>
         <div class="col-md-10 col-lg-8">
           <label
-            class="col-form-label text-md-start col-md-2 col-lg-4"
-            type="text">
+            class="col-form-label text-md-start col-md-2 col-lg-4">
             {{horse.parent1?.name || "N/A"}}
           </label>
         </div>
@@ -87,7 +82,7 @@
         </label>
         <label
           class="col-form-label text-md-start col-md-2 col-lg-4"
-          type="text">
+        >
           {{horse.parent2?.name || "N/A"}}
         </label>
       </div>
@@ -97,12 +92,13 @@
     <label class="col-form-label text-md-end text-muted col-md-2">
       Description
     </label>
-    <div class="col-md-10">
-      <p
-        class="col-form-label text-md-start col-md-2 col-lg-4"
-        type="text">
+    <div class="col-md-8">
+      <textarea class="form-control"
+                rows="5"
+                readonly
+                style="white-space: pre-line;">
         {{horse.description || "N/A"}}
-      </p>
+      </textarea>
     </div>
   </div>
 
@@ -114,7 +110,7 @@
         <label [hidden]="imageAvailable" class="col-form-label text-md-start col-md-2 col-lg-4">
           N/A
         </label>
-        <img [hidden]="!imageAvailable" [src]="imagePreview" class="image-preview"  >
+        <img [hidden]="!imageAvailable" [src]="imagePreview" class="image-preview"   alt="preview-image">
       </div>
   </div>
 
@@ -135,7 +131,7 @@
       Dad
     </a>
     <a class="btn btn-warning mt-2"  (click)="editHorse()" aria-label="Edit horse">
-      <i class="bi bi-alipay"></i>
+      <i class="bi bi bi-gear"></i>
     </a>
     <a type="button" class="btn btn-danger mt-2" (click)="horseForDeletion = horse"
             data-bs-toggle="modal" data-bs-target="#delete-dialog" aria-label="Delete horse">
@@ -143,12 +139,13 @@
     </a>
 
   <span style="flex: 1"></span>
-    <a class="btn btn-info mt-2" (click)="viewFamilyTree(horseId)"
+    <a class="btn btn-secondary mt-2" (click)="viewFamilyTree(horseId)"
        aria-label="Show horse details">
       <i class="bi bi-tree-fill"></i>
       View Family-tree
     </a>
-  <input type="number" id="depth" [(ngModel)]="depth" min="1" max="10">
+    <input class="mt-2" type="number" id="depth" [(ngModel)]="depth" min="1" max="10">
+
 
   </div>
 

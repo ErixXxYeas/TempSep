@@ -4,13 +4,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {map, Observable, of} from 'rxjs';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
-import {Horse, convertFromHorseToCreate} from 'src/app/dto/horse';
+import {convertFromHorseToCreate, Horse} from 'src/app/dto/horse';
 import {Owner} from 'src/app/dto/owner';
 import {Sex} from 'src/app/dto/sex';
 import {ErrorFormatterService} from 'src/app/service/error-formatter.service';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {formatIsoDate} from "../../../utils/date-helper";
+import {NgForOf} from "@angular/common";
 
 export enum HorseCreateEditMode {
   create,
@@ -23,6 +24,7 @@ export enum HorseCreateEditMode {
   imports: [
     FormsModule,
     AutocompleteComponent,
+    NgForOf,
   ],
   standalone: true,
   styleUrls: ['./horse-create-edit.component.scss']
@@ -45,6 +47,7 @@ export class HorseCreateEditComponent implements OnInit {
   mom: Horse | null = null;
   dad: Horse | null = null;
   horseId : number | undefined;
+  remainingCharacters : number = 4095;
 
 
   constructor(
@@ -55,6 +58,11 @@ export class HorseCreateEditComponent implements OnInit {
     private notification: ToastrService,
     private errorFormatter: ErrorFormatterService
   ) {
+  }
+
+
+  updateRemainingCharacter(){
+    this.remainingCharacters = 4095 - (this.horse.description?.length || 0);
   }
 
   public get heading(): string {
@@ -115,7 +123,7 @@ export class HorseCreateEditComponent implements OnInit {
     ? of([])
     : this.ownerService.searchByName(input, 5);
 
-  parentSuggestions = (parent: string) => {
+  parentSuggestions = (parent: Sex) => {
     return (input: string) => this.parentSuggestionsByGender(input,parent)
   };
 
@@ -126,7 +134,7 @@ export class HorseCreateEditComponent implements OnInit {
         map(horses =>
           horses.filter(
           (horse =>
-          (parent === 'mom' ? horse.sex === 'FEMALE' : horse.sex === 'MALE') &&
+          ( horse.sex === parent) &&
           !this.isAncestor(horse))
           ))
          );
@@ -154,13 +162,15 @@ export class HorseCreateEditComponent implements OnInit {
           this.horse.name = data.name;
           if(data.description){
             this.horse.description = data.description;
+            this.updateRemainingCharacter()
           }
           this.horse.sex = data.sex;
-          this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
+          this.horse.dateOfBirth = data.dateOfBirth;
           this.horseBirthDateIsSet = true;
           this.horse.parent1 = data.parent1
           this.horse.parent2 = data.parent2
           this.horse.owner = data.owner
+
 
           if (data.image) {
             this.imageFile = this.imageToFile(data.image,"image")
@@ -210,13 +220,12 @@ export class HorseCreateEditComponent implements OnInit {
       : `${horse.name} `;
   }
 
-  public onParentSelected(parent: string, horse: Horse){
-
+  public onParentSelected(parent: Sex, horse: Horse){
     if (horse){
-      if(parent === "mom"){
+      if(parent === Sex.female){
         this.horse.parent1 = horse
       }
-      if(parent === "dad"){
+      if(parent === Sex.male){
         this.horse.parent2 = horse
       }
     }
@@ -288,4 +297,6 @@ export class HorseCreateEditComponent implements OnInit {
       });
     }
   }
+
+  protected readonly Sex = Sex;
 }

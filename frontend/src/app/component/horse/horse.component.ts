@@ -8,6 +8,7 @@ import { Horse } from 'src/app/dto/horse';
 import { Owner } from 'src/app/dto/owner';
 import { ConfirmDeleteDialogComponent } from 'src/app/component/confirm-delete-dialog/confirm-delete-dialog.component';
 import {formatIsoDate} from "../../utils/date-helper";
+import {CommonModule} from "@angular/common";
 
 
 @Component({
@@ -17,7 +18,8 @@ import {formatIsoDate} from "../../utils/date-helper";
     RouterLink,
     FormsModule,
     AutocompleteComponent,
-    ConfirmDeleteDialogComponent
+    ConfirmDeleteDialogComponent,
+    CommonModule
   ],
   standalone: true,
   styleUrls: ['./horse.component.scss']
@@ -46,12 +48,13 @@ export class HorseComponent implements OnInit {
       next: (data) => {
         this.horses = data.filter(horse =>
           (!this.searchName || horse.name.toLowerCase().includes(this.searchName.toLowerCase())) &&
-          (!this.searchDescription || horse.description?.toLowerCase().includes(this.searchDescription.toLowerCase())) &&
+          (!this.searchDescription || (horse.description && horse.description.toLowerCase().includes(this.searchDescription.toLowerCase()))) &&
           (!this.searchDateOfBirth || formatIsoDate(horse.dateOfBirth) === formatIsoDate(this.searchDateOfBirth)) &&
           (!this.searchSex || horse.sex === this.searchSex) &&
           (!this.searchOwner || (horse.owner && this.ownerName(horse.owner).toLowerCase().includes(this.searchOwner.toLowerCase())))
         );
         this.bannerError = null;
+        console.log(data)
       },
       error: (error) => {
         console.error('Error fetching horses', error);
