@@ -41,6 +41,14 @@ public class HorseServiceImpl implements HorseService {
   private final OwnerService ownerService;
 
 
+  /**
+   * Constructor of the HorseServiceImpl.
+   *
+   * @param dao Persistence Layer of the horse
+   * @param mapper mapper used to map entities to horses and vice versa
+   * @param validator validator used to validate horses
+   * @param ownerService used to access services for owners
+   */
   @Autowired
   public HorseServiceImpl(HorseDao dao,
                           HorseMapper mapper,
@@ -93,10 +101,10 @@ public class HorseServiceImpl implements HorseService {
   public HorseDetailDto update(HorseUpdateDto horse, MultipartFile image) throws NotFoundException, ValidationException, ConflictException, IOException {
     LOG.trace("update() with parameters: {}", horse);
     validator.validateForUpdate(horse);
-    if(horse.parentId1() != null){
+    if (horse.parentId1() != null) {
       validator.validateHorseParents(getById(horse.parentId1()));
     }
-    if(horse.parentId2() != null){
+    if (horse.parentId2() != null) {
       validator.validateHorseParents(getById(horse.parentId2()));
     }
 
@@ -151,10 +159,10 @@ public class HorseServiceImpl implements HorseService {
     LOG.trace("create() with parameters: {} , {}", horse, image);
     validator.validateForCreate(horse);
 
-    if(horse.parentId1() != null){
+    if (horse.parentId1() != null) {
       validator.validateHorseParents(getById(horse.parentId1()));
     }
-    if(horse.parentId2() != null){
+    if (horse.parentId2() != null) {
       validator.validateHorseParents(getById(horse.parentId2()));
     }
 
@@ -164,7 +172,7 @@ public class HorseServiceImpl implements HorseService {
         imageBytes = image.getBytes();
       }
       return dao.create(horse, imageBytes);
-    } catch (Exception e){
+    } catch (Exception e) {
       LOG.error("Error while creating horse: {}", horse, e);
       throw new ConflictException(e.getMessage(), null);
     }
@@ -177,7 +185,7 @@ public class HorseServiceImpl implements HorseService {
 
     try {
       dao.delete(id);
-    } catch (NotFoundException e){
+    } catch (NotFoundException e) {
       LOG.warn("deleteById(): - Horse not found");
       throw new NotFoundException(e);
     }

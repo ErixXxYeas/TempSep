@@ -1,10 +1,17 @@
 package at.ac.tuwien.sepr.assignment.individual.mapper;
 
-import at.ac.tuwien.sepr.assignment.individual.dto.*;
+
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.FatalException;
+
 import java.lang.invoke.MethodHandles;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -32,14 +39,14 @@ public class HorseMapper {
     }
 
     return new HorseListDto(
-        horse.id(),
-        horse.name(),
-        horse.description(),
-        horse.dateOfBirth(),
-        horse.sex(),
-        getOwner(horse, owners),
-        parent1,
-        parent2
+            horse.id(),
+            horse.name(),
+            horse.description(),
+            horse.dateOfBirth(),
+            horse.sex(),
+            getOwner(horse, owners),
+            parent1,
+            parent2
 
     );
   }
@@ -48,29 +55,29 @@ public class HorseMapper {
    * Converts a {@link Horse} entity into a {@link HorseDetailDto}.
    * The given maps must contain the owners and parents referenced by the horse.
    *
-   * @param horse   the horse entity to convert
-   * @param owners  a map of horse owners by their ID
+   * @param horse  the horse entity to convert
+   * @param owners a map of horse owners by their ID
    * @return the converted {@link HorseDetailDto}
    */
   public HorseDetailDto entityToDetailDto(
-      Horse horse,
-      Map<Long, OwnerDto> owners,
-      HorseDetailDto parent1,
-      HorseDetailDto parent2) {
+          Horse horse,
+          Map<Long, OwnerDto> owners,
+          HorseDetailDto parent1,
+          HorseDetailDto parent2) {
     LOG.trace("entityToDto({})", horse);
     if (horse == null) {
       return null;
     }
     return new HorseDetailDto(
-        horse.id(),
-        horse.name(),
-        horse.description(),
-        horse.dateOfBirth(),
-        horse.sex(),
-        horse.image(),
-        getOwner(horse, owners),
-        parent1,
-        parent2
+            horse.id(),
+            horse.name(),
+            horse.description(),
+            horse.dateOfBirth(),
+            horse.sex(),
+            horse.image(),
+            getOwner(horse, owners),
+            parent1,
+            parent2
     );
   }
 
@@ -81,7 +88,7 @@ public class HorseMapper {
    * @param horse the horse we want to convert into a {@link HorseDetailDto}.
    * @return the converted {{@link HorseCreateDto}
    */
-  public HorseCreateDto updateDTOToCreateDTO(HorseUpdateDto horse){
+  public HorseCreateDto updateDTOToCreateDTO(HorseUpdateDto horse) {
     LOG.trace("updateDTOToCreateDTO({})", horse);
     return new HorseCreateDto(horse.name(),
             horse.description(),
@@ -99,7 +106,7 @@ public class HorseMapper {
    * @param horse the horse we want to convert into a {@link HorseCreateDto}.
    * @return the converted {@link HorseCreateDto}
    */
-  public HorseCreateDto detailDTOToCreateDTO(HorseDetailDto horse){
+  public HorseCreateDto detailDTOToCreateDTO(HorseDetailDto horse) {
     LOG.trace("detailDTOToCreateDTO({})", horse);
     return new HorseCreateDto(horse.name(),
             horse.description(),
@@ -113,7 +120,7 @@ public class HorseMapper {
   /**
    * Fetches the owner of a horse from a map of owners
    *
-   * @param horse the horse which we're searching the owner of
+   * @param horse  the horse which we're searching the owner of
    * @param owners a map of owners
    * @return The owner of the horse
    */

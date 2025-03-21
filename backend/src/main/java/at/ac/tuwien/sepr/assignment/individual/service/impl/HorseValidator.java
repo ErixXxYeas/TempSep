@@ -6,6 +6,7 @@ import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
+
 import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class HorseValidator {
       validationErrors.add("No ID given");
     }
 
-   validateForCreate(mapper.updateDTOToCreateDTO(horse));
+    validateForCreate(mapper.updateDTOToCreateDTO(horse));
   }
 
   /**
@@ -49,24 +50,23 @@ public class HorseValidator {
    *
    * @param horse the {@link HorseUpdateDto} to validate
    * @throws ValidationException if validation fails
-   * @throws ConflictException   if conflicts with existing data are detected
    */
   public void validateForCreate(HorseCreateDto horse) throws ValidationException {
     LOG.trace("validateForCreate({})", horse);
     List<String> validationErrors = new ArrayList<>();
 
 
-    if (horse.name() == null){
+    if (horse.name() == null) {
       validationErrors.add("No Name given");
-    } else if(horse.name().length() >= 255){
+    } else if (horse.name().length() >= 255) {
       validationErrors.add("Name is too long");
     }
 
-    if (horse.dateOfBirth() == null){
+    if (horse.dateOfBirth() == null) {
       validationErrors.add("No Date of Birth given");
     }
 
-    if (horse.sex() != Sex.FEMALE && horse.sex() != Sex.MALE){
+    if (horse.sex() != Sex.FEMALE && horse.sex() != Sex.MALE) {
       validationErrors.add("Unknown Sex given");
     }
 
@@ -84,15 +84,21 @@ public class HorseValidator {
     }
   }
 
+  /**
+   * Validates the parents of a horse
+   *
+   * @param horse the Parent horse of a horse
+   * @throws ValidationException if parents fail to validate
+   */
   public void validateHorseParents(HorseDetailDto horse) throws ValidationException {
     LOG.trace("validateHorseParents({})", horse);
 
     validateForCreate(mapper.detailDTOToCreateDTO(horse));
 
-    if (horse.parent1() != null){
+    if (horse.parent1() != null) {
       validateHorseParents(horse.parent1());
     }
-    if (horse.parent2() != null){
+    if (horse.parent2() != null) {
       validateHorseParents(horse.parent2());
     }
 

@@ -24,24 +24,23 @@ public class OwnerValidator {
    *
    * @param owner the {@link HorseUpdateDto} to validate
    * @throws ValidationException if validation fails
-   * @throws ConflictException   if conflicts with existing data are detected
    */
   public void validateForCreate(OwnerCreateDto owner) throws ValidationException {
     LOG.trace("validateForCreate({})", owner);
     List<String> validationErrors = new ArrayList<>();
 
-    if (owner.firstName() == null){
+    if (owner.firstName() == null) {
       validationErrors.add("Owner first name is not given");
     }
-    if (owner.lastName() == null){
+    if (owner.lastName() == null) {
       validationErrors.add("Owner last name is not given");
     }
 
-    if (owner.firstName() != null && owner.firstName().length() >= 255){
-        validationErrors.add("Owner firstname is too long");
+    if (owner.firstName() != null && owner.firstName().length() >= 255) {
+      validationErrors.add("Owner firstname is too long");
     }
 
-    if(owner.lastName() != null && owner.lastName().length() >= 255){
+    if (owner.lastName() != null && owner.lastName().length() >= 255) {
       validationErrors.add("Owner lastname is too long");
     }
 

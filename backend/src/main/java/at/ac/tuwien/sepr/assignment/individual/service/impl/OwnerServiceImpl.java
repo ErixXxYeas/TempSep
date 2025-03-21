@@ -32,6 +32,13 @@ public class OwnerServiceImpl implements OwnerService {
   private final OwnerMapper mapper;
   private final OwnerValidator validator;
 
+  /**
+   * Constructor for the OwnerServiceImpl
+   *
+   * @param dao       the Persistence layer
+   * @param mapper    mapper which will be used to map entities to owners and vice versa
+   * @param validator check if the owner is valid
+   */
   public OwnerServiceImpl(
           OwnerDao dao,
           OwnerMapper mapper, OwnerValidator validator) {
@@ -46,15 +53,14 @@ public class OwnerServiceImpl implements OwnerService {
     validator.validateForCreate(owner);
     try {
       dao.create(owner);
-          }
-    catch (IOException e) {
+    } catch (IOException e) {
       LOG.error("Error while creating owner: {}", owner, e);
       throw new RuntimeException(e);
     }
   }
 
   @Override
-  public Stream<OwnerDto> getAll(){
+  public Stream<OwnerDto> getAll() {
     LOG.trace("getAll()");
     Stream<OwnerDto> owners = dao.getAll().stream()
             .map(mapper::entityToDto);
@@ -69,9 +75,9 @@ public class OwnerServiceImpl implements OwnerService {
   public void deleteById(long id) throws NotFoundException {
     LOG.trace("delete() mit parameter: {}", id);
 
-    try{
+    try {
       dao.delete(id);
-    } catch (NotFoundException e){
+    } catch (NotFoundException e) {
       LOG.warn("deleteById(): - Owner not found");
       throw new NotFoundException(e);
     }
@@ -102,9 +108,9 @@ public class OwnerServiceImpl implements OwnerService {
   public Map<Long, OwnerDto> getAllById(Collection<Long> ids) throws NotFoundException {
     LOG.trace("getAllById() mit parameter: {}", ids);
     Map<Long, OwnerDto> owners =
-        dao.getAllById(ids).stream()
-            .map(mapper::entityToDto)
-            .collect(Collectors.toUnmodifiableMap(OwnerDto::id, Function.identity()));
+            dao.getAllById(ids).stream()
+                    .map(mapper::entityToDto)
+                    .collect(Collectors.toUnmodifiableMap(OwnerDto::id, Function.identity()));
     for (final var id : ids) {
       if (!owners.containsKey(id)) {
         throw new NotFoundException("Owner with ID %d not found".formatted(id));
@@ -123,7 +129,7 @@ public class OwnerServiceImpl implements OwnerService {
   public Stream<OwnerDto> search(OwnerSearchDto searchParameters) throws NotFoundException {
     LOG.trace("search() mit parameter: {}", searchParameters);
     return dao.search(searchParameters).stream()
-        .map(mapper::entityToDto);
+            .map(mapper::entityToDto);
   }
 
 }

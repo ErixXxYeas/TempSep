@@ -45,11 +45,11 @@ public interface OwnerDao {
 
   /**
    * Search for owners matching the criteria in {@code searchParameters}.
-   * 
+   *
    * <p>
    * A owner is considered matched, if its name contains {@code searchParameters.name} as a substring.
    * The returned stream of owners never contains more than {@code searchParameters.maxAmount} elements,
-   *  even if there would be more matches in the persistent data store.
+   * even if there would be more matches in the persistent data store.
    * </p>
    *
    * @param searchParameters object containing the search parameters to match
@@ -68,9 +68,10 @@ public interface OwnerDao {
   /**
    * Deletes the horse with the ID given in {@code horse}
    * in the persistent data store.
+   *
    * @param id the ID of the horse to get
    * @throws NotFoundException if the Owner with the given ID does not exist in the persistent data store
    */
-  void delete (Long id) throws NotFoundException;
+  void delete(Long id) throws NotFoundException;
 
 }

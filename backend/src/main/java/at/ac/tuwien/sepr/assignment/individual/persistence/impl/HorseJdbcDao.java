@@ -31,11 +31,11 @@ public class HorseJdbcDao implements HorseDao {
   private static final String TABLE_NAME = "horse";
 
   private static final String SQL_SELECT_ALL =
-      "SELECT * FROM " + TABLE_NAME;
+          "SELECT * FROM " + TABLE_NAME;
 
   private static final String SQL_SELECT_BY_ID =
-      "SELECT * FROM " + TABLE_NAME
-          + " WHERE ID = :id";
+          "SELECT * FROM " + TABLE_NAME
+                  + " WHERE ID = :id";
 
 
   private static final String SQL_DELETE_BY_ID =
@@ -43,25 +43,24 @@ public class HorseJdbcDao implements HorseDao {
                   + " WHERE ID = :id";
 
   private static final String SQL_UPDATE =
-      "UPDATE " + TABLE_NAME
-          + """
-              SET name = :name,
-                  description = :description,
-                  date_of_birth = :date_of_birth,
-                  sex = :sex,
-                  image = :image,
-                  owner_id = :owner_id,
-                  parent1_id = :parent1_id,
-                  parent2_id = :parent2_id
-              WHERE id = :id
-          """;
+          "UPDATE " + TABLE_NAME
+                  + """
+                      SET name = :name,
+                          description = :description,
+                          date_of_birth = :date_of_birth,
+                          sex = :sex,
+                          image = :image,
+                          owner_id = :owner_id,
+                          parent1_id = :parent1_id,
+                          parent2_id = :parent2_id
+                      WHERE id = :id
+                  """;
 
   private static final String SQL_INSERT =
           "INSERT INTO "
                   + TABLE_NAME
                   + " (name, description, date_of_birth, sex, image, owner_id, parent1_id, parent2_id) "
-                  + "VALUES (:name, :description, :date_of_birth, :sex, :image, :ownerId, :parent1_id, :parent2_id)"
-          ;
+                  + "VALUES (:name, :description, :date_of_birth, :sex, :image, :ownerId, :parent1_id, :parent2_id)";
 
   private final JdbcClient jdbcClient;
 
@@ -75,9 +74,9 @@ public class HorseJdbcDao implements HorseDao {
     LOG.trace("getAll()");
     LOG.debug("SQL: {}", SQL_SELECT_ALL);
     return jdbcClient
-        .sql(SQL_SELECT_ALL)
-        .query(this::mapRow)
-        .list();
+            .sql(SQL_SELECT_ALL)
+            .query(this::mapRow)
+            .list();
   }
 
   @Override
@@ -85,10 +84,10 @@ public class HorseJdbcDao implements HorseDao {
     LOG.trace("getById() with parameters: {}", id);
     LOG.debug("SQL: {}", SQL_SELECT_BY_ID);
     List<Horse> horses = jdbcClient
-        .sql(SQL_SELECT_BY_ID)
-        .param("id", id)
-        .query(this::mapRow)
-        .list();
+            .sql(SQL_SELECT_BY_ID)
+            .param("id", id)
+            .query(this::mapRow)
+            .list();
 
     if (horses.isEmpty()) {
       throw new NotFoundException("No horse with ID %d found".formatted(id));
@@ -108,17 +107,17 @@ public class HorseJdbcDao implements HorseDao {
     LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, horse);
     KeyHolder keyHolder = new GeneratedKeyHolder();
     int created = jdbcClient.sql(SQL_INSERT).param("name", horse.name())
-              .param("description", horse.description())
-              .param("date_of_birth", horse.dateOfBirth())
-              .param("sex", horse.sex().toString())
-              .param("image", image)
-              .param("ownerId", horse.ownerId())
-              .param("parent1_id", horse.parentId1())
-              .param("parent2_id", horse.parentId2())
-              .update(keyHolder);
-    if (created == 0){
+            .param("description", horse.description())
+            .param("date_of_birth", horse.dateOfBirth())
+            .param("sex", horse.sex().toString())
+            .param("image", image)
+            .param("ownerId", horse.ownerId())
+            .param("parent1_id", horse.parentId1())
+            .param("parent2_id", horse.parentId2())
+            .update(keyHolder);
+    if (created == 0) {
       LOG.error("Error: Horse data is null.");
-      throw new IOException("Could not create horse: "+ horse);
+      throw new IOException("Could not create horse: " + horse);
     }
     LOG.info("Successfully inserted horse with name: {}", horse.name());
 
@@ -137,7 +136,7 @@ public class HorseJdbcDao implements HorseDao {
 
   @Override
   public void delete(Long id) throws NotFoundException {
-    LOG.trace("delete()  with parameters: {}", id );
+    LOG.trace("delete()  with parameters: {}", id);
     LOG.debug("SQL: {} with id: {}", SQL_DELETE_BY_ID, id);
     jdbcClient.sql(SQL_DELETE_BY_ID)
             .param("id", id).update();
@@ -149,22 +148,22 @@ public class HorseJdbcDao implements HorseDao {
     LOG.trace("update() with parameters: {} , {}", horse, image);
     LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, horse);
     int updated = jdbcClient
-        .sql(SQL_UPDATE)
-        .param("id", horse.id())
-        .param("name", horse.name())
-        .param("description", horse.description())
-        .param("date_of_birth", horse.dateOfBirth())
-        .param("sex", horse.sex().toString())
-        .param("image", image)
-        .param("owner_id", horse.ownerId())
-        .param("parent1_id", horse.parentId1())
-        .param("parent2_id", horse.parentId2())
-        .update();
+            .sql(SQL_UPDATE)
+            .param("id", horse.id())
+            .param("name", horse.name())
+            .param("description", horse.description())
+            .param("date_of_birth", horse.dateOfBirth())
+            .param("sex", horse.sex().toString())
+            .param("image", image)
+            .param("owner_id", horse.ownerId())
+            .param("parent1_id", horse.parentId1())
+            .param("parent2_id", horse.parentId2())
+            .update();
 
     if (updated == 0) {
       throw new NotFoundException(
-            "Could not update horse with ID " + horse.id() + ", because it does not exist"
-        );
+              "Could not update horse with ID " + horse.id() + ", because it does not exist"
+      );
     }
     LOG.info("Successfully updated horse with name: {}", horse.name());
     return new Horse(
@@ -178,7 +177,6 @@ public class HorseJdbcDao implements HorseDao {
             horse.parentId1(),
             horse.parentId2());
   }
-
 
 
   private Horse mapRow(ResultSet result, int rownum) throws SQLException {

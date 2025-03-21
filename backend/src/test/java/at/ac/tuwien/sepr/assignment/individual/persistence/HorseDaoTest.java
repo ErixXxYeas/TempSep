@@ -36,7 +36,7 @@ public class HorseDaoTest {
    */
   @Test
   public void createHorse() throws IOException {
-    HorseCreateDto horse = new HorseCreateDto("Tesie Test", "Just a test horse", LocalDate.of(2000,02,20), Sex.FEMALE,null,null,null );
+    HorseCreateDto horse = new HorseCreateDto("Tesie Test", "Just a test horse", LocalDate.of(2000, 02, 20), Sex.FEMALE, null, null, null);
     Horse createdHorse = horseDao.create(horse, null);
     assertThat(createdHorse.id()).isNotNull();
     assertThat(createdHorse.name()).isEqualTo("Tesie Test");
@@ -50,8 +50,8 @@ public class HorseDaoTest {
   public void updateHorse() throws NotFoundException {
 
 
-    HorseUpdateDto updateDto = new HorseUpdateDto(-1L, "Terry Test", "Same test horse", LocalDate.of(2000,02,20), Sex.FEMALE, null, null,null);
-    Horse horseUpdated = horseDao.update(updateDto,null);
+    HorseUpdateDto updateDto = new HorseUpdateDto(-1L, "Terry Test", "Same test horse", LocalDate.of(2000, 02, 20), Sex.FEMALE, null, null, null);
+    Horse horseUpdated = horseDao.update(updateDto, null);
     assertThat(horseUpdated.id()).isEqualTo(-1L);
     assertThat(horseUpdated.name()).isEqualTo("Terry Test");
     assertThat(horseUpdated.description()).isEqualTo("Same test horse");
@@ -62,7 +62,7 @@ public class HorseDaoTest {
    */
   @Test
   public void createHorseWithNoData() throws IOException, NotFoundException {
-    HorseCreateDto horse = new HorseCreateDto("Tesie Test", "Just a test horse", LocalDate.of(2000,02,20), Sex.FEMALE,null,null,null );
+    HorseCreateDto horse = new HorseCreateDto("Tesie Test", "Just a test horse", LocalDate.of(2000, 02, 20), Sex.FEMALE, null, null, null);
     Horse createdHorse = horseDao.create(horse, null);
 
     horseDao.delete(createdHorse.id());
@@ -75,7 +75,7 @@ public class HorseDaoTest {
    * Tests that fetching a horse, which does not exist returns an exception
    */
   @Test
-  public void getHorseByIdNotFound(){
+  public void getHorseByIdNotFound() {
     assertThrows(NotFoundException.class, () -> {
       horseDao.getById(-69L);
     });

@@ -1,18 +1,26 @@
 package at.ac.tuwien.sepr.assignment.individual.rest;
 
-import at.ac.tuwien.sepr.assignment.individual.dto.*;
+import at.ac.tuwien.sepr.assignment.individual.dto.OwnerCreateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.OwnerSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import at.ac.tuwien.sepr.assignment.individual.service.OwnerService;
 
-import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
@@ -33,15 +41,15 @@ public class OwnerEndpoint {
   /**
    * Searches for owners based on the given search parameters.
    *
-   * @param name the name of the owner
+   * @param name      the name of the owner
    * @param maxAmount the Amount of owners fetched
    * @return a stream of {@link OwnerDto} matching the search criteria
-   * @throws NotFoundException
+   * @throws NotFoundException if the owner doesn't exist
    */
   @GetMapping
   public Stream<OwnerDto> search(@RequestParam(value = "name", required = false) String name,
                                  @RequestParam(value = "maxAmount", required = false) Integer maxAmount) throws NotFoundException {
-    LOG.info("GET {} query parameters: {}, {}", BASE_PATH, name, maxAmount );
+    LOG.info("GET {} query parameters: {}, {}", BASE_PATH, name, maxAmount);
     try {
       if (name == null && maxAmount == null) {
         return service.getAll();
@@ -49,7 +57,7 @@ public class OwnerEndpoint {
       OwnerSearchDto searchParameters = new OwnerSearchDto(name, maxAmount);
       return service.search(searchParameters);
     } catch (NotFoundException e) {
-      LOG.warn("GET {} - No owners found with parameters: {} , {}", BASE_PATH, name, maxAmount );
+      LOG.warn("GET {} - No owners found with parameters: {} , {}", BASE_PATH, name, maxAmount);
       throw new NotFoundException(e);
     }
 
@@ -59,7 +67,7 @@ public class OwnerEndpoint {
    * Creates a new Owner with the provided data
    *
    * @param toCreate contains the data for the new Owner
-   * @throws IOException if the given data is Invalid
+   * @throws ValidationException if the given data is Invalid
    */
   @PostMapping
   public void create(
@@ -68,7 +76,7 @@ public class OwnerEndpoint {
 
     try {
       service.create(toCreate);
-    } catch ( ValidationException e) {
+    } catch (ValidationException e) {
       LOG.error("Error while creating owner: {}", toCreate, e);
       throw e;
     }

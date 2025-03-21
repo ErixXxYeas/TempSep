@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,12 @@ public class OwnerJdbcDao implements OwnerDao {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
   private static final String TABLE_NAME = "owner";
   private static final String SQL_SELECT_BY_ID =
-      "SELECT * FROM " + TABLE_NAME
-          + " WHERE id = :id";
+          "SELECT * FROM " + TABLE_NAME
+                  + " WHERE id = :id";
 
   private static final String SQL_SELECT_ALL =
-      "SELECT * FROM " + TABLE_NAME
-          + " WHERE id IN (:ids)";
+          "SELECT * FROM " + TABLE_NAME
+                  + " WHERE id IN (:ids)";
 
   private static final String SQL_DELETE_BY_ID =
           "DELETE FROM " + TABLE_NAME
@@ -50,8 +51,8 @@ public class OwnerJdbcDao implements OwnerDao {
                   + "VALUES (:first_name, :last_name, :description)";
 
   private static final String SQL_SELECT_SEARCH =
-      "SELECT * FROM " + TABLE_NAME
-          + " WHERE UPPER(first_name || ' ' || last_name) LIKE UPPER('%%' || COALESCE(:name, '') || '%%')";
+          "SELECT * FROM " + TABLE_NAME
+                  + " WHERE UPPER(first_name || ' ' || last_name) LIKE UPPER('%%' || COALESCE(:name, '') || '%%')";
 
   private static final String SQL_SELECT_SEARCH_LIMIT_CLAUSE = " LIMIT :limit";
 
@@ -66,7 +67,7 @@ public class OwnerJdbcDao implements OwnerDao {
   public void create(OwnerCreateDto owner) throws IOException {
     LOG.trace("create() with parameters: {}", owner);
     LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, owner);
-    if(owner != null){
+    if (owner != null) {
       jdbcClient.sql(SQL_INSERT).param("first_name", owner.firstName())
               .param("last_name", owner.lastName())
               .param("description", owner.description())
@@ -83,10 +84,10 @@ public class OwnerJdbcDao implements OwnerDao {
     LOG.trace("getById() with parameters: {}", id);
     LOG.debug("SQL: {} with parameters: {}", SQL_SELECT_BY_ID, id);
     List<Owner> owners = jdbcClient
-        .sql(SQL_SELECT_BY_ID)
-        .param("id", id)
-        .query(this::mapRow)
-        .list();
+            .sql(SQL_SELECT_BY_ID)
+            .param("id", id)
+            .query(this::mapRow)
+            .list();
     if (owners.isEmpty()) {
       throw new NotFoundException("Owner with ID %d not found".formatted(id));
     }
@@ -105,11 +106,10 @@ public class OwnerJdbcDao implements OwnerDao {
     LOG.debug("SQL: {} with parameters: {}", SQL_SELECT_ALL, ids);
     LOG.info("Successfully fetched Owners by ids");
     return jdbcClient
-        .sql(SQL_SELECT_ALL)
-        .param("ids", ids)
-        .query(this::mapRow)
-        .list();
-
+            .sql(SQL_SELECT_ALL)
+            .param("ids", ids)
+            .query(this::mapRow)
+            .list();
 
 
   }
@@ -130,17 +130,18 @@ public class OwnerJdbcDao implements OwnerDao {
     }
 
     Collection<Owner> owners = jdbcClient
-        .sql(query)
-        .params(params)
-        .query(this::mapRow)
-        .list();
+            .sql(query)
+            .params(params)
+            .query(this::mapRow)
+            .list();
 
-    if (owners.isEmpty()){
+    if (owners.isEmpty()) {
       throw new NotFoundException("No owner with ID %d found");
     }
     LOG.info("Successfully fetched Owners");
     return owners;
   }
+
   @Override
   public Collection<Owner> getAll() {
     LOG.trace("getAll()");
@@ -163,9 +164,9 @@ public class OwnerJdbcDao implements OwnerDao {
   private Owner mapRow(ResultSet resultSet, int i) throws SQLException {
     LOG.trace("mapRow()  with parameters: {} , {}", resultSet, i);
     return new Owner(
-        resultSet.getLong("id"),
-        resultSet.getString("first_name"),
-        resultSet.getString("last_name"),
-        resultSet.getString("description"));
+            resultSet.getLong("id"),
+            resultSet.getString("first_name"),
+            resultSet.getString("last_name"),
+            resultSet.getString("description"));
   }
 }
