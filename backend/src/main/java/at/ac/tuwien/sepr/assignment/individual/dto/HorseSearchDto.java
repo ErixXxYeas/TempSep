@@ -13,6 +13,8 @@ public record HorseSearchDto(
     String description,
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     LocalDate bornBefore,
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    LocalDate dateOfBirth,
     Sex sex,
     String ownerName,
     Integer limit

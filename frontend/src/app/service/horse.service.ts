@@ -85,14 +85,30 @@ export class HorseService {
     );
   }
 
-  public searchByParams(name: string , sex: Sex, dateOfBirth: string,limitTo: number): Observable<Horse[]> {
-    const params = new HttpParams()
-      .set('name', name == " " ? "" : name )
-      .set('sex', sex)
-      .set('bornBefore', dateOfBirth)
-      .set('maxAmount', limitTo);
+  public searchByParams(
+    name?: string,
+    sex?: Sex,
+    dateOfBirth?: string,
+    limitTo?: number
+  ): Observable<Horse[]> {
+    let params = new HttpParams();
+
+    if (name) {
+      params = params.set('name', name.trim());
+    }
+    if (sex) {
+      params = params.set('sex', sex);
+    }
+    if (dateOfBirth) {
+      params = params.set('bornBefore', dateOfBirth);
+    }
+    if (limitTo !== undefined) {
+      params = params.set('maxAmount', limitTo.toString());
+    }
+
     return this.http.get<Horse[]>(baseUri, { params });
   }
+
 
   private fixHorseDate(horse: Horse): Horse {
     // Parse the string to a Date
