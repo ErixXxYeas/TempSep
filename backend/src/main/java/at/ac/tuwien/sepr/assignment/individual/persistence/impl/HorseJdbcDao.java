@@ -1,6 +1,7 @@
 package at.ac.tuwien.sepr.assignment.individual.persistence.impl;
 
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.FatalException;
@@ -32,6 +33,13 @@ public class HorseJdbcDao implements HorseDao {
 
   private static final String SQL_SELECT_ALL =
           "SELECT * FROM " + TABLE_NAME;
+  private static final String SQL_SELECT_ALL_BY_PARAMS =
+          "SELECT * FROM " + TABLE_NAME
+                  + " WHERE (:name IS NULL OR UPPER(name) LIKE UPPER('%%' || COALESCE(:name, '') || '%%')) "
+                  + "AND (:description IS NULL OR description LIKE '%' || :description || '%') "
+                  + "AND (:born_before IS NULL OR date_of_birth < :born_before) "
+                  + "AND (:sex IS NULL OR sex = :sex) "
+                  + "LIMIT :limit";
 
   private static final String SQL_SELECT_BY_ID =
           "SELECT * FROM " + TABLE_NAME
@@ -75,6 +83,21 @@ public class HorseJdbcDao implements HorseDao {
     LOG.debug("SQL: {}", SQL_SELECT_ALL);
     return jdbcClient
             .sql(SQL_SELECT_ALL)
+            .query(this::mapRow)
+            .list();
+  }
+
+  @Override
+  public List<Horse> getByParams(HorseSearchDto params) {
+    LOG.trace("getByParams()");
+    LOG.debug("SQL: {}", SQL_SELECT_ALL_BY_PARAMS);
+    LOG.info("Sex param: '{}'", params.bornBefore());
+    return jdbcClient
+            .sql(SQL_SELECT_ALL_BY_PARAMS).param("name", params.name())
+            .param("sex", params.sex() == null ? null : params.sex().toString())
+            .param("born_before", params.bornBefore())
+            .param("description", params.description())
+            .param("limit", params.limit() == null ? Integer.MAX_VALUE : params.limit())
             .query(this::mapRow)
             .list();
   }

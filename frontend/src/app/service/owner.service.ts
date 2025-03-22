@@ -21,7 +21,6 @@ export class OwnerService {
 
 
     if (name) {
-
       params.set('name', name);
     }
     if (limitTo !== undefined && limitTo > 0) {

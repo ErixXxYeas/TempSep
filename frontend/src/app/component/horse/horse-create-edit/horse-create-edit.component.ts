@@ -44,8 +44,6 @@ export class HorseCreateEditComponent implements OnInit {
   imageAvailable = false;
   imageFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
-  mom: Horse | null = null;
-  dad: Horse | null = null;
   horseId : number | undefined;
   remainingCharacters : number = 4095;
 
@@ -99,6 +97,20 @@ export class HorseCreateEditComponent implements OnInit {
     if (date == null || date === '') {
       this.horseBirthDateIsSet = false;
     } else {
+
+      if (this.horse.parent1){
+        if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.horse.parent1.dateOfBirth))) {
+          this.notification.warning("Mother cannot be younger than this horse")
+          this.horse.parent1 = undefined;
+        }
+      }
+      if (this.horse.parent2){
+        if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.horse.parent2.dateOfBirth))) {
+          this.notification.warning("Father cannot be younger than this horse")
+          this.horse.parent2 = undefined;
+        }
+      }
+
       this.horseBirthDateIsSet = true;
       this.horse.dateOfBirth = new Date(date);
     }
@@ -127,14 +139,13 @@ export class HorseCreateEditComponent implements OnInit {
     return (input: string) => this.parentSuggestionsByGender(input,parent)
   };
 
-  parentSuggestionsByGender = (input: string, parent: string) => {
+  parentSuggestionsByGender = (input: string, sex: Sex) => {
     return input === ''
       ? of([])
-      : this.service.searchByName(input, 5).pipe(
+      : this.service.searchByParams(input, sex , this.horseBirthDateText,  5).pipe(
         map(horses =>
           horses.filter(
           (horse =>
-          ( horse.sex === parent) &&
           !this.isAncestor(horse))
           ))
          );
@@ -288,11 +299,19 @@ export class HorseCreateEditComponent implements OnInit {
           }
         },
         error: error => {
+          if(this.modeIsCreate){
           console.error('Error creating horse', error);
           this.notification.error(this.errorFormatter.format(error), 'Could Not Create Horse', {
             enableHtml: true,
             timeOut: 10000,
           });
+          } else {
+            console.error('Error updating horse', error);
+            this.notification.error(this.errorFormatter.format(error), 'Could Not Update Horse', {
+              enableHtml: true,
+              timeOut: 10000,
+            });
+          }
         }
       });
     }

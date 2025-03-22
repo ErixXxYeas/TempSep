@@ -4,6 +4,7 @@ import {map, Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
 import {Horse, HorseCreate} from '../dto/horse';
 import {formatIsoDate} from "../utils/date-helper";
+import {Sex} from "../dto/sex";
 
 
 const baseUri = environment.backendUrl + '/horses';
@@ -84,9 +85,11 @@ export class HorseService {
     );
   }
 
-  public searchByName(name: string, limitTo: number): Observable<Horse[]> {
+  public searchByParams(name: string , sex: Sex, dateOfBirth: string,limitTo: number): Observable<Horse[]> {
     const params = new HttpParams()
-      .set('name', name)
+      .set('name', name == " " ? "" : name )
+      .set('sex', sex)
+      .set('bornBefore', dateOfBirth)
       .set('maxAmount', limitTo);
     return this.http.get<Horse[]>(baseUri, { params });
   }

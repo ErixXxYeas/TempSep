@@ -1,10 +1,6 @@
 package at.ac.tuwien.sepr.assignment.individual.service.impl;
 
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.*;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.FatalException;
@@ -82,6 +78,30 @@ public class HorseServiceImpl implements HorseService {
               return mapper.entityToListDto(horse, ownerMap, parent1, parent2);
             });
 
+  }
+
+  @Override
+  public Stream<HorseListDto> horsesByParameters(HorseSearchDto params) {
+    LOG.trace("horsesByParameters() with the parameters: {}", params);
+    LOG.info("horsesByParameters() with the parameters: {}", params);
+    LOG.debug("Fetching all horses from the database with search parameters");
+    var horses = dao.getByParams(params);
+    var ownerIds = horses.stream()
+            .map(Horse::ownerId)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toUnmodifiableSet());
+    Map<Long, OwnerDto> ownerMap;
+    try {
+      ownerMap = ownerService.getAllById(ownerIds);
+    } catch (NotFoundException e) {
+      throw new FatalException("Horse, that is already persisted, refers to non-existing owner", e);
+    }
+    return horses.stream()
+            .map(horse -> {
+              HorseDetailDto parent1 = fetchParent(horse.parentId1());
+              HorseDetailDto parent2 = fetchParent(horse.parentId2());
+              return mapper.entityToListDto(horse, ownerMap, parent1, parent2);
+            });
   }
 
   private HorseDetailDto fetchParent(Long parentId) {

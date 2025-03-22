@@ -1,9 +1,6 @@
 package at.ac.tuwien.sepr.assignment.individual.service;
 
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.*;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
@@ -23,6 +20,14 @@ public interface HorseService {
    * @return list of all stored horses
    */
   Stream<HorseListDto> allHorses();
+
+  /**
+   * Lists all horses stored in the system, that fit the parameters.
+   *
+   * @param params the parameters which will bes used to search the horses
+   * @return list of all stored horses
+   */
+  Stream<HorseListDto> horsesByParameters(HorseSearchDto params);
 
   /**
    * Updates the horse with the ID given in {@code horse}
@@ -68,6 +73,7 @@ public interface HorseService {
    * @throws NotFoundException if the horse with the ID does not exist in the persistent data store
    */
   void deleteById(long id) throws NotFoundException;
+
 
 
 }
