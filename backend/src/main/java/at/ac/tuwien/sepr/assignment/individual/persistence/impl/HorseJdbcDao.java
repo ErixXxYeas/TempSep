@@ -36,8 +36,9 @@ public class HorseJdbcDao implements HorseDao {
   private static final String SQL_SELECT_ALL_BY_PARAMS =
           "SELECT * FROM " + TABLE_NAME
                   + " WHERE (:name IS NULL OR UPPER(name) LIKE UPPER('%%' || COALESCE(:name, '') || '%%')) "
-                  + "AND (:description IS NULL OR description LIKE '%' || :description || '%') "
+                  + "AND (:description IS NULL OR UPPER(description) LIKE UPPER('%%' || COALESCE(:description, '') || '%%')) "
                   + "AND (:born_before IS NULL OR date_of_birth < :born_before) "
+                  + "AND (:date_of_birth IS NULL OR date_of_birth = :date_of_birth) "
                   + "AND (:sex IS NULL OR sex = :sex) "
                   + "LIMIT :limit";
 
@@ -78,16 +79,6 @@ public class HorseJdbcDao implements HorseDao {
   }
 
   @Override
-  public List<Horse> getAll() {
-    LOG.trace("getAll()");
-    LOG.debug("SQL: {}", SQL_SELECT_ALL);
-    return jdbcClient
-            .sql(SQL_SELECT_ALL)
-            .query(this::mapRow)
-            .list();
-  }
-
-  @Override
   public List<Horse> getByParams(HorseSearchDto params) {
     LOG.trace("getByParams()");
     LOG.debug("SQL: {}", SQL_SELECT_ALL_BY_PARAMS);
@@ -96,6 +87,7 @@ public class HorseJdbcDao implements HorseDao {
             .sql(SQL_SELECT_ALL_BY_PARAMS).param("name", params.name())
             .param("sex", params.sex() == null ? null : params.sex().toString())
             .param("born_before", params.bornBefore())
+            .param("date_of_birth", params.dateOfBirth())
             .param("description", params.description())
             .param("limit", params.limit() == null ? Integer.MAX_VALUE : params.limit())
             .query(this::mapRow)

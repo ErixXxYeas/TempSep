@@ -57,16 +57,12 @@
     <div class="flex-grow-1 ms-1">
       <label for="searchHorseDescription" class="col-form-label">Description</label>
       <input
-        list="horse-description"
         type="text"
         id="searchHorseDescription"
         name="searchHorseDescription"
         class="form-control"
         (input)="reloadHorses()"
         [(ngModel)]="searchDescription">
-      <datalist id="horse-description">
-        <option *ngFor="let horse of horses" [value]="horse.description != null ? horse.description : '' ">
-      </datalist>
     </div>
 
     <div class="ms-1">

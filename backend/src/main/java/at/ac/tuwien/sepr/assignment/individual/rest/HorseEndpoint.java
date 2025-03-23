@@ -62,8 +62,6 @@ public class HorseEndpoint {
     LOG.info("GET " + BASE_PATH + "/{}", searchParameters);
     LOG.debug("request parameters: {}", searchParameters);
     return service.horsesByParameters(searchParameters);
-    // TODO We have the request params in the DTO now, but don't do anything with them yet…
-
   }
 
   /**

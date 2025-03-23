@@ -6,7 +6,6 @@ import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete
 import {Horse} from 'src/app/dto/horse';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
-import {formatIsoDate} from "../../../utils/date-helper";
 import {ConfirmDeleteDialogComponent} from "../../confirm-delete-dialog/confirm-delete-dialog.component";
 import {CommonModule} from "@angular/common";
 @Component({
@@ -43,7 +42,9 @@ export class HorseFamilyTreeComponent implements OnInit {
     if (!this.horse?.dateOfBirth) {
       return '';
     } else {
-      return formatIsoDate(this.horse.dateOfBirth);
+      const date = new Date(this.horse.dateOfBirth.toString())
+      return date.toLocaleDateString();
+
     }
   }
 

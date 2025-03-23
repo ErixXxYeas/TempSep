@@ -9,6 +9,7 @@ import { Owner } from 'src/app/dto/owner';
 import { ConfirmDeleteDialogComponent } from 'src/app/component/confirm-delete-dialog/confirm-delete-dialog.component';
 import {formatIsoDate} from "../../utils/date-helper";
 import {CommonModule} from "@angular/common";
+import {Sex} from "../../dto/sex";
 
 
 @Component({
@@ -31,7 +32,7 @@ export class HorseComponent implements OnInit {
   searchName: string = '';
   searchDescription: string = '';
   searchDateOfBirth: Date | undefined;
-  searchSex: string = '';
+  searchSex: Sex | undefined;
   searchOwner: string = '';
 
   constructor(
@@ -44,15 +45,9 @@ export class HorseComponent implements OnInit {
   }
 
   reloadHorses() {
-    this.service.getAll().subscribe({
+    this.service.searchByParams(this.searchName, this.searchDescription, this.searchSex, undefined, this.searchDateOfBirth ? formatIsoDate(this.searchDateOfBirth) : undefined,  Number.MAX_VALUE ).subscribe({
       next: (data) => {
-        this.horses = data.filter(horse =>
-          (!this.searchName || horse.name.toLowerCase().includes(this.searchName.toLowerCase())) &&
-          (!this.searchDescription || (horse.description && horse.description.toLowerCase().includes(this.searchDescription.toLowerCase()))) &&
-          (!this.searchDateOfBirth || formatIsoDate(horse.dateOfBirth) === formatIsoDate(this.searchDateOfBirth)) &&
-          (!this.searchSex || horse.sex === this.searchSex) &&
-          (!this.searchOwner || (horse.owner && this.ownerName(horse.owner).toLowerCase().includes(this.searchOwner.toLowerCase())))
-        );
+        this.horses = data
         this.bannerError = null;
         console.log(data)
       },
@@ -76,7 +71,7 @@ export class HorseComponent implements OnInit {
     if (date != null && date !== '') {
       this.searchDateOfBirth = new Date(date);
     } else {
-      this.searchDateOfBirth = undefined
+      this.searchDateOfBirth = undefined;
     }
   }
 
@@ -85,9 +80,9 @@ export class HorseComponent implements OnInit {
       ? `${owner.firstName} ${owner.lastName}`
       : '';
   }
-
   dateOfBirthAsLocaleDate(horse: Horse): string {
-    return horse.dateOfBirth.toLocaleDateString();
+    const date = new Date(horse.dateOfBirth.toString())
+    return date.toLocaleDateString();
   }
 
   deleteHorse(horse: Horse) {
@@ -102,7 +97,5 @@ export class HorseComponent implements OnInit {
 
 
   }
-
-
 
 }

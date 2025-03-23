@@ -110,8 +110,6 @@ public class OwnerJdbcDao implements OwnerDao {
             .param("ids", ids)
             .query(this::mapRow)
             .list();
-
-
   }
 
   @Override

@@ -57,33 +57,8 @@ public class HorseServiceImpl implements HorseService {
   }
 
   @Override
-  public Stream<HorseListDto> allHorses() {
-    LOG.trace("allHorses()");
-    LOG.debug("Fetching all horses from the database");
-    var horses = dao.getAll();
-    var ownerIds = horses.stream()
-            .map(Horse::ownerId)
-            .filter(Objects::nonNull)
-            .collect(Collectors.toUnmodifiableSet());
-    Map<Long, OwnerDto> ownerMap;
-    try {
-      ownerMap = ownerService.getAllById(ownerIds);
-    } catch (NotFoundException e) {
-      throw new FatalException("Horse, that is already persisted, refers to non-existing owner", e);
-    }
-    return horses.stream()
-            .map(horse -> {
-              HorseDetailDto parent1 = fetchParent(horse.parentId1());
-              HorseDetailDto parent2 = fetchParent(horse.parentId2());
-              return mapper.entityToListDto(horse, ownerMap, parent1, parent2);
-            });
-
-  }
-
-  @Override
   public Stream<HorseListDto> horsesByParameters(HorseSearchDto params) {
     LOG.trace("horsesByParameters() with the parameters: {}", params);
-    LOG.info("horsesByParameters() with the parameters: {}", params);
     LOG.debug("Fetching all horses from the database with search parameters");
     var horses = dao.getByParams(params);
     var ownerIds = horses.stream()
@@ -104,6 +79,7 @@ public class HorseServiceImpl implements HorseService {
             });
   }
 
+  // TODO PARENTS MÜSSEN NICHT FÜR FETSCH ALL GEHOLT WERDEN
   private HorseDetailDto fetchParent(Long parentId) {
     LOG.trace("fetchParent() with parameters: {}", parentId);
     if (parentId != null) {
@@ -143,7 +119,6 @@ public class HorseServiceImpl implements HorseService {
     if (horse.parentId2() != null) {
       parent2 = getById(horse.parentId2());
     }
-
     var updatedHorse = dao.update(horse, imageBytes);
     return mapper.entityToDetailDto(
             updatedHorse,

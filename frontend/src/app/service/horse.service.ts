@@ -87,7 +87,9 @@ export class HorseService {
 
   public searchByParams(
     name?: string,
+    description?: string,
     sex?: Sex,
+    bornBefore?: string,
     dateOfBirth?: string,
     limitTo?: number
   ): Observable<Horse[]> {
@@ -96,11 +98,17 @@ export class HorseService {
     if (name) {
       params = params.set('name', name.trim());
     }
+    if (description) {
+      params = params.set('description', description.trim());
+    }
     if (sex) {
       params = params.set('sex', sex);
     }
+    if (bornBefore) {
+      params = params.set('bornBefore', bornBefore);
+    }
     if (dateOfBirth) {
-      params = params.set('bornBefore', dateOfBirth);
+      params = params.set('dateOfBirth', dateOfBirth);
     }
     if (limitTo !== undefined) {
       params = params.set('maxAmount', limitTo.toString());

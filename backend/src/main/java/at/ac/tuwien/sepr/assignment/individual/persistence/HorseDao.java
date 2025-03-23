@@ -16,12 +16,6 @@ import java.util.List;
  * Implements access functionality to the application's persistent data store regarding horses.
  */
 public interface HorseDao {
-  /**
-   * Get all horses stored in the persistent data store.
-   *
-   * @return a list of all stored horses
-   */
-  List<Horse> getAll();
 
   /**
    * Get all horses stored in the persistent data store.

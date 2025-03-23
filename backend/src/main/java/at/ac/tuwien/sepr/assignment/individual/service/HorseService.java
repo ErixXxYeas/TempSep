@@ -14,12 +14,6 @@ import java.util.stream.Stream;
  * Service for working with horses.
  */
 public interface HorseService {
-  /**
-   * Lists all horses stored in the system.
-   *
-   * @return list of all stored horses
-   */
-  Stream<HorseListDto> allHorses();
 
   /**
    * Lists all horses stored in the system, that fit the parameters.

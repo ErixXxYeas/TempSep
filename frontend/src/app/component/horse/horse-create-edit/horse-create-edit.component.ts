@@ -97,7 +97,6 @@ export class HorseCreateEditComponent implements OnInit {
     if (date == null || date === '') {
       this.horseBirthDateIsSet = false;
     } else {
-
       if (this.horse.parent1){
         if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.horse.parent1.dateOfBirth))) {
           this.notification.warning("Mother cannot be younger than this horse")
@@ -142,7 +141,7 @@ export class HorseCreateEditComponent implements OnInit {
   parentSuggestionsByGender = (input: string, sex: Sex) => {
     return input === ''
       ? of([])
-      : this.service.searchByParams(input, sex , this.horseBirthDateText,  5).pipe(
+      : this.service.searchByParams(input, undefined, sex , this.horseBirthDateText,  undefined, 5).pipe(
         map(horses =>
           horses.filter(
           (horse =>
