@@ -86,7 +86,6 @@ public class HorseJdbcDao implements HorseDao {
   public List<Horse> getByParams(HorseSearchDto params) {
     LOG.trace("getByParams()");
     LOG.debug("SQL: {}", SQL_SELECT_ALL_BY_PARAMS);
-    LOG.info("Sex param: '{}'", params.bornBefore());
     return jdbcClient
             .sql(SQL_SELECT_ALL_BY_PARAMS).param("name", params.name())
             .param("sex", params.sex() == null ? null : params.sex().toString())

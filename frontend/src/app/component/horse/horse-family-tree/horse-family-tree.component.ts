@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
-import {Horse, HorseNode} from 'src/app/dto/horse';
+import {HorseNode} from 'src/app/dto/horse';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {ConfirmDeleteDialogComponent} from "../../confirm-delete-dialog/confirm-delete-dialog.component";
@@ -23,11 +23,11 @@ import {CommonModule} from "@angular/common";
 })
 export class HorseFamilyTreeComponent implements OnInit {
   bannerError: string | null = null;
-  horse: Horse | null = null;
-  horseForDeletion: Horse | undefined;
+  horse: HorseNode | null = null;
+  horseForDeletion: HorseNode | undefined;
   horseId: number | undefined
-  allAncestors: Set<Horse> = new Set()
-  workingAncestors: Set<Horse> = new Set()
+  allAncestors: Set<HorseNode> = new Set()
+  workingAncestors: Set<HorseNode> = new Set()
   maxDepth: number | undefined;
 
   constructor(
@@ -49,7 +49,7 @@ export class HorseFamilyTreeComponent implements OnInit {
     }
   }
 
-  containsHorse(horse: Horse): boolean {
+  containsHorse(horse: HorseNode): boolean {
     return this.allAncestors.has(horse);
   }
 
@@ -64,8 +64,8 @@ export class HorseFamilyTreeComponent implements OnInit {
   }
 
   fetchHorseData() {
-    if (this.horseId) {
-      this.service.getByIdForTree(this.horseId).subscribe({
+    if (this.horseId && this.maxDepth) {
+      this.service.getByIdForTree(this.horseId, this.maxDepth).subscribe({
         next: data => {
           console.log(data)
           this.horse = data;
@@ -88,20 +88,19 @@ export class HorseFamilyTreeComponent implements OnInit {
     }
   }
 
-  toggleNode(horse: Horse) {
+  toggleNode(horse: HorseNode) {
     if (this.allAncestors.has(horse) && this.workingAncestors.has(horse)) {
       this.workingAncestors.delete(horse)
     } else if (this.allAncestors.has(horse)) {
       this.workingAncestors.add(horse);
     }
-    if (!horse.parent1Id && !horse.parent2Id) {
-      this.notification.warning("No Parent")
+    if (!horse.parent1 && !horse.parent2 ){
+      this.notification.warning("No parent and/or Maximum depth reached")
     }
-
 
   }
 
-  isExtended(horse: Horse): boolean {
+  isExtended(horse: HorseNode): boolean {
     return this.workingAncestors.has(horse)
   }
 
@@ -129,7 +128,7 @@ export class HorseFamilyTreeComponent implements OnInit {
     this.router.navigate(['/horses', horseId])
   }
 
-  deleteHorse(horse: Horse) {
+  deleteHorse(horse: HorseNode) {
     console.log("Attempting to delete horse with ID:", horse);
     this.service.deleteById(horse.id).subscribe({
       next: (deletedHorse) => {

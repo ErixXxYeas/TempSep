@@ -118,22 +118,22 @@ public class HorseServiceImpl implements HorseService {
   }
 
   @Override
-  public HorseTreeNodeDto getByIdForTree(long id) throws NotFoundException {
-    LOG.trace("getById() with parameters: {}", id);
-
+  public HorseTreeNodeDto getByIdForTree(long id, long generations) throws NotFoundException {
+    LOG.trace("getByIdForTree() with parameters: {} , {}", id, generations);
     try {
       HorseTreeNodeDto parent1 = null;
       HorseTreeNodeDto parent2 = null;
       Horse horse = dao.getById(id);
-      if(horse.parentId1() != null){
-        parent1 = getByIdForTree(horse.parentId1());
-      }
-      if(horse.parentId2() != null){
-        parent2 = getByIdForTree(horse.parentId2());
+      if (generations > 1) {
+        if (horse.parentId1() != null) {
+          parent1 = getByIdForTree(horse.parentId1(), generations - 1);
+        }
+        if (horse.parentId2() != null) {
+          parent2 = getByIdForTree(horse.parentId2(), generations - 1);
+        }
       }
       return mapper.entityToTreeNodeDto(
-              horse,
-              ownerMapForSingleId(horse.ownerId()), parent1, parent2);
+              horse, parent1, parent2);
     } catch (NotFoundException e) {
       LOG.warn("Horse with ID {} not found, throwing exception", id);
       throw new NotFoundException("Horse couldn't be found");

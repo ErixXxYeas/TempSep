@@ -97,21 +97,21 @@ export class HorseCreateEditComponent implements OnInit {
     if (date == null || date === '') {
       this.horseBirthDateIsSet = false;
     } else {
-      if (this.parent1){
+      console.log(this.parent1)
+      if (this.horse.parent1Id){
         if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.parent1.dateOfBirth))) {
           this.notification.warning("Mother cannot be younger than this horse")
           this.horse.parent1Id = undefined;
           this.parent1 = {name: '', dateOfBirth: new Date(), sex: Sex.female,}
         }
       }
-      if (this.parent2){
+      if (this.horse.parent2Id){
         if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.parent2.dateOfBirth))) {
           this.notification.warning("Father cannot be younger than this horse")
           this.horse.parent2Id = undefined;
           this.parent2 = {name: '', dateOfBirth: new Date(), sex: Sex.male,}
         }
       }
-
       this.horseBirthDateIsSet = true;
       this.horse.dateOfBirth = new Date(date);
     }

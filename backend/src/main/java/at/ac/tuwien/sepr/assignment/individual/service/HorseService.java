@@ -49,7 +49,18 @@ public interface HorseService {
    */
   HorseDetailDto getById(long id) throws NotFoundException;
 
-  HorseTreeNodeDto getByIdForTree(long id) throws NotFoundException;
+  /**
+   * Get the horse with given ID, with more detail information.
+   * This includes the owner of the horse, and its parents.
+   * The parents of the parents are not included.
+   *
+   * @param id the ID of the horse to get
+   * @param generations the depth of horse generations
+   * @return the horse with ID {@code id}
+   * @throws NotFoundException if the horse with the given ID does not exist in the persistent data store
+   */
+
+  HorseTreeNodeDto getByIdForTree(long id, long generations) throws NotFoundException;
 
   /**
    * Creates a horse with the given Information

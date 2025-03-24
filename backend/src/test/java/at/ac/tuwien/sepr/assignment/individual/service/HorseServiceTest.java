@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
@@ -35,10 +36,10 @@ public class HorseServiceTest {
    */
   @Test
   public void getAllReturnsAllStoredHorses() {
-    List<HorseListDto> horses = horseService.allHorses()
+    HorseSearchDto searchParameters = new HorseSearchDto(null,null,null,null,null,null, null, null);
+    List<HorseListDto> horses = horseService.horsesByParameters(searchParameters)
         .toList();
-
-    assertThat(horses.size()).isGreaterThanOrEqualTo(1); // TODO: Adapt to exact number of test data entries
+    assertThat(horses.size()).isGreaterThanOrEqualTo(1);
 
     assertThat(horses)
         .map(HorseListDto::id, HorseListDto::sex)

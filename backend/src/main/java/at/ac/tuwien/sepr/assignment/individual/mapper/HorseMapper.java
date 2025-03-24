@@ -75,16 +75,17 @@ public class HorseMapper {
   }
 
   /**
-   * Converts a {@link Horse} entity into a {@link HorseDetailDto}.
+   * Converts a {@link Horse} entity into a {@link HorseTreeNodeDto}.
    * The given maps must contain the owners and parents referenced by the horse.
    *
    * @param horse  the horse entity to convert
    * @param owners a map of horse owners by their ID
-   * @return the converted {@link HorseDetailDto}
+   * @param parent1 a map of horse owners by their ID
+   * @param parent2 a map of horse owners by their ID
+   * @return the converted {@link HorseTreeNodeDto}
    */
   public HorseTreeNodeDto entityToTreeNodeDto(
           Horse horse,
-          Map<Long, OwnerDto> owners,
           HorseTreeNodeDto parent1,
           HorseTreeNodeDto parent2
           ) {

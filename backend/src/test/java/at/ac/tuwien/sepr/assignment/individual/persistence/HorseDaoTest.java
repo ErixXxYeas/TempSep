@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.tuple;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 
@@ -87,7 +88,9 @@ public class HorseDaoTest {
    */
   @Test
   public void getAllReturnsAllStoredHorses() {
-    List<Horse> horses = horseDao.getAll();
+    HorseSearchDto searchParameters = new HorseSearchDto(null,null,null,null,null,null, null, null);
+
+    List<Horse> horses = horseDao.getByParams(searchParameters);
     System.out.println(horses);
     assertThat(horses.size()).isGreaterThanOrEqualTo(1);
     assertThat(horses)

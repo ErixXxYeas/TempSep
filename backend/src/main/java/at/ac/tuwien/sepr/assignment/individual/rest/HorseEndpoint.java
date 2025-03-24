@@ -1,5 +1,10 @@
 package at.ac.tuwien.sepr.assignment.individual.rest;
-import at.ac.tuwien.sepr.assignment.individual.dto.*;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateRestDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.HorseTreeNodeDto;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -60,18 +66,16 @@ public class HorseEndpoint {
     return service.horsesByParameters(searchParameters);
   }
 
-
   /**
    * Retrieves the details of a horse by its ID.
    *
    * @param id the unique identifier of the horse
    * @return the detailed information of the requested horse
-   * @throws ResponseStatusException if the horse is not found
+   * @throws NotFoundException if the horse is not found
    */
   @GetMapping("{id}")
-  public HorseDetailDto getById(@PathVariable("id") long id) {
+  public HorseDetailDto getById(@PathVariable("id") long id) throws NotFoundException {
     LOG.info("GET " + BASE_PATH + "/{}", id);
-
     try {
       return service.getById(id);
     } catch (NotFoundException e) {
@@ -83,17 +87,21 @@ public class HorseEndpoint {
   }
 
   /**
-   * Retrieves the details of a horse by its ID.
+   * Retrieves the details of a horse with it's parents
+   * by its ID and depth.
    *
    * @param id the unique identifier of the horse
-   * @return the detailed information of the requested horse
-   * @throws ResponseStatusException if the horse is not found
+   * @param generations how many generations of parents should be fetched
+   * @return A Horse that will act as a tree node
+   * @throws NotFoundException if the horse is not found
    */
   @GetMapping("{id}/familytree")
-  public HorseTreeNodeDto getByIdForTree(@PathVariable("id") long id) {
-    LOG.info("GET " + BASE_PATH + "/{}/familytree", id);
+  public HorseTreeNodeDto getByIdForTree(
+          @PathVariable("id") long id,
+          @RequestParam(value = "generations", defaultValue = "0") int generations) throws NotFoundException{
+    LOG.info("GET " + BASE_PATH + "/{}/familytree?generations={}", id, generations);
     try {
-      return service.getByIdForTree(id);
+      return service.getByIdForTree(id, generations);
     } catch (NotFoundException e) {
       HttpStatus status = HttpStatus.NOT_FOUND;
       LOG.warn("Error getting horse with ID {}: {}", id, e.getMessage(), e);

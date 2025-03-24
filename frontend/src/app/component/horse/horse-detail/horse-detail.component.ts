@@ -108,6 +108,8 @@ export class HorseDetailComponent implements OnInit {
       parent1Id: undefined,
       parent2Id: undefined
     };
+    this.parent1 = undefined;
+    this.parent2 = undefined;
     this.imageAvailable = false;
     this.imagePreview = null;
     this.horseForDeletion = undefined;
@@ -126,14 +128,13 @@ export class HorseDetailComponent implements OnInit {
   }
 
   visitHorse(horseId: number) {
-    console.log("hey")
-    console.log(horseId)
     this.resetHorse();
     this.router.navigate(['/horses', horseId])
   }
 
   viewFamilyTree(id: number){
     if (typeof this.depth === "number") {
+      console.log(this.depth)
       this.router.navigate(['/horses', id, 'familytree'], {queryParams: {generations: Math.min(this.depth, 10)}})
     }
   }

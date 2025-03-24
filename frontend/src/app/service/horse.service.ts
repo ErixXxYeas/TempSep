@@ -25,8 +25,8 @@ export class HorseService {
     );
   }
 
-  getByIdForTree(id: number): Observable<HorseNode>{
-    return this.http.get<HorseNode>(`${baseUri}/${id}/familytree`).pipe(
+  getByIdForTree(id: number, generations: number): Observable<HorseNode>{
+    return this.http.get<HorseNode>(`${baseUri}/${id}/familytree?generations=${generations}`).pipe(
       map(this.fixHorseDate)
     );
   }
