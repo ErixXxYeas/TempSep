@@ -32,7 +32,7 @@ public class HorseMapper {
    * @param owners a map of horse owners by their ID
    * @return the converted {@link HorseListDto}
    */
-  public HorseListDto entityToListDto(Horse horse, Map<Long, OwnerDto> owners, HorseDetailDto parent1, HorseDetailDto parent2) {
+  public HorseListDto entityToListDto(Horse horse, Map<Long, OwnerDto> owners) {
     LOG.trace("entityToDto({})", horse);
     if (horse == null) {
       return null;
@@ -45,8 +45,8 @@ public class HorseMapper {
             horse.dateOfBirth(),
             horse.sex(),
             getOwner(horse, owners),
-            parent1,
-            parent2
+            horse.parentId1(),
+            horse.parentId2()
 
     );
   }
@@ -61,9 +61,7 @@ public class HorseMapper {
    */
   public HorseDetailDto entityToDetailDto(
           Horse horse,
-          Map<Long, OwnerDto> owners,
-          HorseDetailDto parent1,
-          HorseDetailDto parent2) {
+          Map<Long, OwnerDto> owners) {
     LOG.trace("entityToDto({})", horse);
     if (horse == null) {
       return null;
@@ -76,8 +74,8 @@ public class HorseMapper {
             horse.sex(),
             horse.image(),
             getOwner(horse, owners),
-            parent1,
-            parent2
+            horse.parentId1(),
+            horse.parentId2()
     );
   }
 
@@ -113,8 +111,8 @@ public class HorseMapper {
             horse.dateOfBirth(),
             horse.sex(),
             horse.owner() != null ? horse.owner().id() : null,
-            horse.parent1() != null ? horse.parent1().id() : null,
-            horse.parent2() != null ? horse.parent2().id() : null);
+            horse.parent1Id(),
+            horse.parent1Id());
   }
 
   /**

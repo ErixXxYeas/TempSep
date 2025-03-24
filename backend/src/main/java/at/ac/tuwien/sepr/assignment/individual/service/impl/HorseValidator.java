@@ -92,16 +92,7 @@ public class HorseValidator {
    */
   public void validateHorseParents(HorseDetailDto horse) throws ValidationException {
     LOG.trace("validateHorseParents({})", horse);
-
     validateForCreate(mapper.detailDTOToCreateDTO(horse));
-
-    if (horse.parent1() != null) {
-      validateHorseParents(horse.parent1());
-    }
-    if (horse.parent2() != null) {
-      validateHorseParents(horse.parent2());
-    }
-
 
   }
 

@@ -29,9 +29,9 @@ export class HorseDetailComponent implements OnInit {
     description: '  ',
     dateOfBirth: new Date(),
     sex: Sex.female,
-    parent1: undefined,
-    parent2: undefined
   };
+  parent1: string | undefined;
+  parent2: string | undefined;
   imageAvailable = false;
   imagePreview: string | ArrayBuffer | null = null;
   horseForDeletion: Horse | undefined;
@@ -67,9 +67,20 @@ export class HorseDetailComponent implements OnInit {
           this.horse.sex = data.sex;
           this.horse.dateOfBirth = new Date(data.dateOfBirth.toString());
           this.horse.owner = data.owner;
-          this.horse.parent1 = data.parent1;
+          this.horse.parent1Id = data.parent1Id;
+          this.horse.parent2Id = data.parent2Id;
           this.depth = 1;
-          this.horse.parent2 = data.parent2;
+
+          if(data.parent1Id){
+            this.service.getById(data.parent1Id).subscribe({next: data =>
+                this.parent1 = data.name
+            })
+          }
+          if(data.parent2Id){
+            this.service.getById(data.parent2Id).subscribe({next: data =>
+                this.parent2 = data.name
+            })
+          }
 
           if (data.image) {
             this.imagePreview = 'data:image/jpeg;base64,' + data.image;
@@ -94,8 +105,8 @@ export class HorseDetailComponent implements OnInit {
       description: '',
       dateOfBirth: new Date(),
       sex: Sex.female,
-      parent1: undefined,
-      parent2: undefined
+      parent1Id: undefined,
+      parent2Id: undefined
     };
     this.imageAvailable = false;
     this.imagePreview = null;

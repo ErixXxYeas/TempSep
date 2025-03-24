@@ -4,8 +4,8 @@ import {Sex} from './sex';
 export interface Horse {
   image?: string;
   id?: number;
-  parent1?: Horse;
-  parent2?: Horse;
+  parent1Id?: number;
+  parent2Id?: number;
   name: string;
   description?: string;
   dateOfBirth: Date;
@@ -24,8 +24,8 @@ export interface HorseCreate {
   dateOfBirth: Date;
   sex: Sex;
   ownerId?: number;
-  parentId1?: number;
-  parentId2?: number;
+  parent1Id?: number;
+  parent2Id?: number;
 }
 
 export function convertFromHorseToCreate(horse: Horse): HorseCreate {
@@ -35,8 +35,8 @@ export function convertFromHorseToCreate(horse: Horse): HorseCreate {
     dateOfBirth: horse.dateOfBirth,
     sex: horse.sex,
     ownerId: horse.owner?.id,
-    parentId1: horse.parent1?.id,
-    parentId2: horse.parent2?.id
+    parent1Id: horse.parent1Id,
+    parent2Id: horse.parent2Id
   };
 }
 
