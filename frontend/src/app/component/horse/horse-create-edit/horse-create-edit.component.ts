@@ -37,9 +37,9 @@ export class HorseCreateEditComponent implements OnInit {
     description: '',
     dateOfBirth: new Date(),
     sex: Sex.female,
-    parent1: undefined,
-    parent2: undefined
   };
+  parent1: Horse = {name: '', dateOfBirth: new Date(), sex: Sex.female,}
+  parent2: Horse = {name: '', dateOfBirth: new Date(), sex: Sex.male,}
   horseBirthDateIsSet = false;
   imageAvailable = false;
   imageFile: File | null = null;
@@ -97,16 +97,18 @@ export class HorseCreateEditComponent implements OnInit {
     if (date == null || date === '') {
       this.horseBirthDateIsSet = false;
     } else {
-      if (this.horse.parent1){
-        if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.horse.parent1.dateOfBirth))) {
+      if (this.parent1){
+        if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.parent1.dateOfBirth))) {
           this.notification.warning("Mother cannot be younger than this horse")
-          this.horse.parent1 = undefined;
+          this.horse.parent1Id = undefined;
+          this.parent1 = {name: '', dateOfBirth: new Date(), sex: Sex.female,}
         }
       }
-      if (this.horse.parent2){
-        if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.horse.parent2.dateOfBirth))) {
+      if (this.parent2){
+        if (Date.parse(formatIsoDate(this.horse.dateOfBirth)) > Date.parse(formatIsoDate(this.parent2.dateOfBirth))) {
           this.notification.warning("Father cannot be younger than this horse")
-          this.horse.parent2 = undefined;
+          this.horse.parent2Id = undefined;
+          this.parent2 = {name: '', dateOfBirth: new Date(), sex: Sex.male,}
         }
       }
 
@@ -157,7 +159,17 @@ export class HorseCreateEditComponent implements OnInit {
     if (potentialParent.id === this.horseId){
       return true;
     } else {
-      return this.isAncestor( potentialParent.parent1) || this.isAncestor(potentialParent.parent2);
+      let potentialParent1 = undefined;
+      let potentialParent2 = undefined;
+      if (potentialParent.parent1Id) {
+      this.service.getById(potentialParent.parent1Id).subscribe( data => {
+        potentialParent1 = data;})
+      }
+      if (potentialParent.parent2Id) {
+        this.service.getById(potentialParent.parent2Id).subscribe( data => {
+          potentialParent1 = data;})
+      }
+      return this.isAncestor(potentialParent1) || this.isAncestor(potentialParent2);
     }
   }
 
@@ -166,38 +178,65 @@ export class HorseCreateEditComponent implements OnInit {
       this.mode = data.mode;
     });
     if (!this.modeIsCreate){
+      this.fetchHorseData()
+    }
+  }
+
+
+  fetchHorseData(){
     this.horseId = Number(this.route.snapshot.paramMap.get('id'));
-      this.service.getById(this.horseId).subscribe({
-        next: data =>{
-          this.horse.name = data.name;
-          if(data.description){
-            this.horse.description = data.description;
-            this.updateRemainingCharacter()
-          }
-          this.horse.sex = data.sex;
-          this.horse.dateOfBirth = data.dateOfBirth;
-          this.horseBirthDateIsSet = true;
-          this.horse.parent1 = data.parent1
-          this.horse.parent2 = data.parent2
-          this.horse.owner = data.owner
-
-
-          if (data.image) {
-            this.imageFile = this.imageToFile(data.image,"image")
-            this.imagePreview = 'data:image/jpeg;base64,' + data.image;
-            if (data.image != null) {
-              this.imageAvailable = true;
-            }
-          }
-        }, error: error => {
-          console.error('Error fetching horses', error);
-          this.bannerError = 'Could not fetch horses: ' + error.message;
-          const errorMessage = error.status === 0
-            ? 'Is the backend up?'
-            : error.message.message;
-          this.notification.error(errorMessage, 'Could Not Fetch Horses');
+    this.service.getById(this.horseId).subscribe({
+      next: data =>{
+        console.log(data)
+        this.horse.name = data.name;
+        if(data.description){
+          this.horse.description = data.description;
+          this.updateRemainingCharacter()
         }
-      })
+        this.horse.sex = data.sex;
+        this.horse.dateOfBirth = data.dateOfBirth;
+
+
+        this.horse.owner = data.owner
+        if(data.parent1Id != null){
+          this.horse.parent1Id = data.parent1Id
+          this.setParents(data.parent1Id,Sex.female)
+        }
+        if(data.parent2Id){
+          this.horse.parent2Id = data.parent2Id
+          this.setParents(data.parent2Id,Sex.male)
+        }
+
+        this.horseBirthDateIsSet = true;
+        if (data.image) {
+          this.imageFile = this.imageToFile(data.image,"image")
+          this.imagePreview = 'data:image/jpeg;base64,' + data.image;
+          if (data.image != null) {
+            this.imageAvailable = true;
+          }
+        }
+      }, error: error => {
+        console.error('Error fetching horses', error);
+        this.bannerError = 'Could not fetch horses: ' + error.message;
+        const errorMessage = error.status === 0
+          ? 'Is the backend up?'
+          : error.message.message;
+        this.notification.error(errorMessage, 'Could Not Fetch Horses');
+      }
+    })
+  }
+
+  setParents(parentId: number, sex: Sex){
+    if(parentId) {
+      if (sex == Sex.female) {
+        this.service.getById(parentId).subscribe({next: data =>
+            this.parent1 = data
+        })
+      } else {
+        this.service.getById(parentId).subscribe({next: data =>
+            this.parent2 = data
+        })
+      }
     }
   }
 
@@ -233,10 +272,19 @@ export class HorseCreateEditComponent implements OnInit {
   public onParentSelected(parent: Sex, horse: Horse){
     if (horse){
       if(parent === Sex.female){
-        this.horse.parent1 = horse
+        this.horse.parent1Id = horse.id
+        this.parent1 = horse;
       }
       if(parent === Sex.male){
-        this.horse.parent2 = horse
+        this.horse.parent2Id = horse.id
+        this.parent2 = horse;
+      }
+    } else {
+      if(parent === Sex.female){
+        this.horse.parent1Id = undefined
+      }
+      if(parent === Sex.male){
+        this.horse.parent2Id = undefined
       }
     }
 

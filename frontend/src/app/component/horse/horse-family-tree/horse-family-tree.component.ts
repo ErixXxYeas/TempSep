@@ -71,8 +71,8 @@ export class HorseFamilyTreeComponent implements OnInit {
           this.workingAncestors.add(data)
           console.log(this.workingAncestors)
           if(this.maxDepth){
-            this.getAncestors(data.parent1, this.maxDepth - 1 );
-            this.getAncestors(data.parent2, this.maxDepth - 1 );
+            this.getAncestors(data.parent1Id, this.maxDepth - 1 );
+            this.getAncestors(data.parent2Id, this.maxDepth - 1 );
           }
         }, error: error => {
           console.error('Error fetching horses', error);
@@ -92,13 +92,10 @@ export class HorseFamilyTreeComponent implements OnInit {
     } else if(this.allAncestors.has(horse)) {
       this.workingAncestors.add(horse);
     }
-    if (!horse.parent1 && !horse.parent2){
+    if (!horse.parent1Id && !horse.parent2Id){
       this.notification.warning("No Parent")
     }
 
-    if((horse.parent1 && !this.containsHorse(horse.parent1)) || (horse.parent2 && !this.containsHorse(horse.parent2)) ){
-      this.notification.warning("Max depth reached")
-    }
 
   }
 
@@ -106,20 +103,26 @@ export class HorseFamilyTreeComponent implements OnInit {
     return this.workingAncestors.has(horse)
   }
 
-  getAncestors(horse: Horse | undefined, depth: number) {
-    if(!horse || depth <= 0){
+  getAncestors(parentId: number | undefined, depth: number) {
+    if(!parentId || depth <= 0){
       return
     }
     depth = depth - 1;
-    if(horse){
-     this.allAncestors.add(horse)
-     this.workingAncestors.add(horse)
-    }
-    if (horse.parent1) {
-      this.getAncestors(horse.parent1, depth);
-    }
-    if (horse.parent2) {
-      this.getAncestors(horse.parent2, depth);
+    if(parentId){
+      this.service.getById(parentId).subscribe(
+        {
+          next: data =>{
+            this.allAncestors.add(data)
+            this.workingAncestors.add(data)
+            if (data.parent1Id) {
+              this.getAncestors(data.parent1Id, depth);
+            }
+            if (data.parent2Id) {
+              this.getAncestors(data.parent2Id, depth);
+            }
+          }
+        }
+      )
     }
   }
 

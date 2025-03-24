@@ -14,8 +14,8 @@ public record HorseListDto(
     LocalDate dateOfBirth,
     Sex sex,
     OwnerDto owner,
-    HorseDetailDto parent1,
-    HorseDetailDto parent2
+    Long parent1Id,
+    Long parent2Id
 
 ) {
 }

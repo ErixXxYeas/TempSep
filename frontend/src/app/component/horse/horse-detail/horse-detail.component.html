@@ -70,7 +70,7 @@
         <div class="col-md-10 col-lg-8">
           <label
             class="col-form-label text-md-start col-md-2 col-lg-4">
-            {{horse.parent1?.name || "N/A"}}
+            {{parent1 || "N/A"}}
           </label>
         </div>
       </div>
@@ -83,7 +83,7 @@
         <label
           class="col-form-label text-md-start col-md-2 col-lg-4"
         >
-          {{horse.parent2?.name || "N/A"}}
+          {{parent2 || "N/A"}}
         </label>
       </div>
     </div>
@@ -117,15 +117,15 @@
 <div class="d-flex flex-row w-auto">
     <a class="btn btn-info mt-2"
        aria-label="Show horse details"
-       [hidden]="!horse.parent1"
-       (click)="visitHorse(horse.parent1.id)">
+       [hidden]="!horse.parent1Id"
+       (click)="visitHorse(horse.parent1Id)">
       <i class="bi bi-info-lg"></i>
       Mom
     </a>
     <a class="btn btn-info mt-2"
        aria-label="Show horse details"
-       [hidden]="!horse.parent2"
-        (click)="visitHorse(horse.parent2.id)"
+       [hidden]="!horse.parent2Id"
+        (click)="visitHorse(horse.parent2Id)"
     >
       <i class="bi bi-info-lg"></i>
       Dad

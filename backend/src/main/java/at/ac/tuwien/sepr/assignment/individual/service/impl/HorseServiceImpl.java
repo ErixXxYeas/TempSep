@@ -72,36 +72,23 @@ public class HorseServiceImpl implements HorseService {
       throw new FatalException("Horse, that is already persisted, refers to non-existing owner", e);
     }
     return horses.stream()
-            .map(horse -> {
-              HorseDetailDto parent1 = fetchParent(horse.parentId1());
-              HorseDetailDto parent2 = fetchParent(horse.parentId2());
-              return mapper.entityToListDto(horse, ownerMap, parent1, parent2);
-            });
+            .map(horse -> mapper.entityToListDto(horse, ownerMap));
   }
-
-  // TODO PARENTS MÜSSEN NICHT FÜR FETSCH ALL GEHOLT WERDEN
-  private HorseDetailDto fetchParent(Long parentId) {
-    LOG.trace("fetchParent() with parameters: {}", parentId);
-    if (parentId != null) {
-      try {
-        return getById(parentId);
-      } catch (NotFoundException e) {
-        throw new RuntimeException("Parent with ID " + parentId + " not found", e);
-      }
-    }
-    return null;
-  }
-
 
   @Override
   public HorseDetailDto update(HorseUpdateDto horse, MultipartFile image) throws NotFoundException, ValidationException, ConflictException, IOException {
     LOG.trace("update() with parameters: {}", horse);
+
+
     validator.validateForUpdate(horse);
     if (horse.parentId1() != null) {
-      validator.validateHorseParents(getById(horse.parentId1()));
+      HorseDetailDto parent1 = getById(horse.parentId1());
+      validator.validateHorseParents(parent1);
+
     }
     if (horse.parentId2() != null) {
-      validator.validateHorseParents(getById(horse.parentId2()));
+      HorseDetailDto parent2 = getById(horse.parentId2());
+      validator.validateHorseParents(parent2);
     }
 
     byte[] imageBytes = null;
@@ -109,20 +96,10 @@ public class HorseServiceImpl implements HorseService {
       imageBytes = image.getBytes();
     }
 
-    HorseDetailDto parent1 = null;
-    HorseDetailDto parent2 = null;
-
-    if (horse.parentId1() != null) {
-      parent1 = getById(horse.parentId1());
-    }
-
-    if (horse.parentId2() != null) {
-      parent2 = getById(horse.parentId2());
-    }
     var updatedHorse = dao.update(horse, imageBytes);
     return mapper.entityToDetailDto(
             updatedHorse,
-            ownerMapForSingleId(updatedHorse.ownerId()), parent1, parent2);
+            ownerMapForSingleId(updatedHorse.ownerId()));
   }
 
 
@@ -131,17 +108,9 @@ public class HorseServiceImpl implements HorseService {
     LOG.trace("getById() with parameters: {}", id);
     try {
       Horse horse = dao.getById(id);
-      HorseDetailDto parent1 = null;
-      HorseDetailDto parent2 = null;
-      if (horse.parentId1() != null) {
-        parent1 = getById(horse.parentId1());
-      }
-      if (horse.parentId2() != null) {
-        parent2 = getById(horse.parentId2());
-      }
       return mapper.entityToDetailDto(
               horse,
-              ownerMapForSingleId(horse.ownerId()), parent1, parent2);
+              ownerMapForSingleId(horse.ownerId()));
     } catch (NotFoundException e) {
       LOG.warn("Horse with ID {} not found, throwing exception", id);
       throw new NotFoundException("Horse couldn't be found");

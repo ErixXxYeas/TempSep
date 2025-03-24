@@ -111,8 +111,8 @@ public class HorseEndpoint {
               LocalDate.parse(horseJson.get("dateOfBirth").getAsString()),
               Sex.valueOf(horseJson.get("sex").getAsString().toUpperCase()),
               horseJson.has("ownerId") ? horseJson.get("ownerId").getAsLong() : null,
-              horseJson.has("parentId1") ? horseJson.get("parentId1").getAsLong() : null,
-              horseJson.has("parentId2") ? horseJson.get("parentId2").getAsLong() : null);
+              horseJson.has("parent1Id") ? horseJson.get("parent1Id").getAsLong() : null,
+              horseJson.has("parent2Id") ? horseJson.get("parent2Id").getAsLong() : null);
       LOG.info("PUT " + BASE_PATH);
       LOG.debug("Body of request:\n{}", toUpdate);
       return service.update(toUpdate.toUpdateDtoWithId(id), image);
@@ -148,8 +148,8 @@ public class HorseEndpoint {
               LocalDate.parse(horseJson.get("dateOfBirth").getAsString()),
               Sex.valueOf(horseJson.get("sex").getAsString().toUpperCase()),
               horseJson.has("ownerId") ? horseJson.get("ownerId").getAsLong() : null,
-              horseJson.has("parentId1") ? horseJson.get("parentId1").getAsLong() : null,
-              horseJson.has("parentId2") ? horseJson.get("parentId2").getAsLong() : null);
+              horseJson.has("parent1Id") ? horseJson.get("parent1Id").getAsLong() : null,
+              horseJson.has("parent2Id") ? horseJson.get("parent2Id").getAsLong() : null);
 
       LOG.info("POST " + BASE_PATH);
       LOG.debug("Body of request:\n{}", toCreate);

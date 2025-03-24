@@ -17,8 +17,8 @@ public record HorseDetailDto(
     Sex sex,
     byte[] image,
     OwnerDto owner,
-    HorseDetailDto parent1,
-    HorseDetailDto parent2
+    Long parent1Id,
+    Long parent2Id
 
 ) {
 }
