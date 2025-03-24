@@ -117,6 +117,29 @@ public class HorseServiceImpl implements HorseService {
     }
   }
 
+  @Override
+  public HorseTreeNodeDto getByIdForTree(long id) throws NotFoundException {
+    LOG.trace("getById() with parameters: {}", id);
+
+    try {
+      HorseTreeNodeDto parent1 = null;
+      HorseTreeNodeDto parent2 = null;
+      Horse horse = dao.getById(id);
+      if(horse.parentId1() != null){
+        parent1 = getByIdForTree(horse.parentId1());
+      }
+      if(horse.parentId2() != null){
+        parent2 = getByIdForTree(horse.parentId2());
+      }
+      return mapper.entityToTreeNodeDto(
+              horse,
+              ownerMapForSingleId(horse.ownerId()), parent1, parent2);
+    } catch (NotFoundException e) {
+      LOG.warn("Horse with ID {} not found, throwing exception", id);
+      throw new NotFoundException("Horse couldn't be found");
+    }
+  }
+
 
   @Override
   public Horse create(HorseCreateDto horse, MultipartFile image) throws ValidationException, ConflictException, NotFoundException {

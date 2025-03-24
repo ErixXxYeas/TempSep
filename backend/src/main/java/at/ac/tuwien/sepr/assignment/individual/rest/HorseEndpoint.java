@@ -1,9 +1,5 @@
 package at.ac.tuwien.sepr.assignment.individual.rest;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateRestDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.*;
 import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
@@ -64,6 +60,7 @@ public class HorseEndpoint {
     return service.horsesByParameters(searchParameters);
   }
 
+
   /**
    * Retrieves the details of a horse by its ID.
    *
@@ -74,8 +71,29 @@ public class HorseEndpoint {
   @GetMapping("{id}")
   public HorseDetailDto getById(@PathVariable("id") long id) {
     LOG.info("GET " + BASE_PATH + "/{}", id);
+
     try {
       return service.getById(id);
+    } catch (NotFoundException e) {
+      HttpStatus status = HttpStatus.NOT_FOUND;
+      LOG.warn("Error getting horse with ID {}: {}", id, e.getMessage(), e);
+      logClientError(status, "Horse to get details of not found", e);
+      throw new ResponseStatusException(status, e.getMessage(), e);
+    }
+  }
+
+  /**
+   * Retrieves the details of a horse by its ID.
+   *
+   * @param id the unique identifier of the horse
+   * @return the detailed information of the requested horse
+   * @throws ResponseStatusException if the horse is not found
+   */
+  @GetMapping("{id}/familytree")
+  public HorseTreeNodeDto getByIdForTree(@PathVariable("id") long id) {
+    LOG.info("GET " + BASE_PATH + "/{}/familytree", id);
+    try {
+      return service.getByIdForTree(id);
     } catch (NotFoundException e) {
       HttpStatus status = HttpStatus.NOT_FOUND;
       LOG.warn("Error getting horse with ID {}: {}", id, e.getMessage(), e);

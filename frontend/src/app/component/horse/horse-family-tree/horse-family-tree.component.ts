@@ -3,11 +3,12 @@ import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
-import {Horse} from 'src/app/dto/horse';
+import {Horse, HorseNode} from 'src/app/dto/horse';
 import {HorseService} from 'src/app/service/horse.service';
 import {OwnerService} from 'src/app/service/owner.service';
 import {ConfirmDeleteDialogComponent} from "../../confirm-delete-dialog/confirm-delete-dialog.component";
 import {CommonModule} from "@angular/common";
+
 @Component({
   selector: 'app-horse-detail',
   templateUrl: './horse-family-tree.component.html',
@@ -48,7 +49,7 @@ export class HorseFamilyTreeComponent implements OnInit {
     }
   }
 
-  containsHorse(horse: Horse):boolean{
+  containsHorse(horse: Horse): boolean {
     return this.allAncestors.has(horse);
   }
 
@@ -57,22 +58,23 @@ export class HorseFamilyTreeComponent implements OnInit {
       this.horseId = Number(params.get('id'));
     })
     this.route.queryParamMap.subscribe(queryParams => {
-      this.maxDepth = Number(queryParams.get('generations')) || 1 ;
+      this.maxDepth = Number(queryParams.get('generations')) || 1;
     });
     this.fetchHorseData()
   }
 
   fetchHorseData() {
     if (this.horseId) {
-      this.service.getById(this.horseId).subscribe({
+      this.service.getByIdForTree(this.horseId).subscribe({
         next: data => {
+          console.log(data)
           this.horse = data;
           this.allAncestors.add(data)
           this.workingAncestors.add(data)
           console.log(this.workingAncestors)
-          if(this.maxDepth){
-            this.getAncestors(data.parent1Id, this.maxDepth - 1 );
-            this.getAncestors(data.parent2Id, this.maxDepth - 1 );
+          if (this.maxDepth) {
+            this.getAncestors(data.parent1, this.maxDepth - 1);
+            this.getAncestors(data.parent2, this.maxDepth - 1);
           }
         }, error: error => {
           console.error('Error fetching horses', error);
@@ -86,43 +88,38 @@ export class HorseFamilyTreeComponent implements OnInit {
     }
   }
 
-  toggleNode(horse: Horse){
-    if (this.allAncestors.has(horse) && this.workingAncestors.has(horse) ){
+  toggleNode(horse: Horse) {
+    if (this.allAncestors.has(horse) && this.workingAncestors.has(horse)) {
       this.workingAncestors.delete(horse)
-    } else if(this.allAncestors.has(horse)) {
+    } else if (this.allAncestors.has(horse)) {
       this.workingAncestors.add(horse);
     }
-    if (!horse.parent1Id && !horse.parent2Id){
+    if (!horse.parent1Id && !horse.parent2Id) {
       this.notification.warning("No Parent")
     }
 
 
   }
 
-  isExtended(horse: Horse): boolean{
+  isExtended(horse: Horse): boolean {
     return this.workingAncestors.has(horse)
   }
 
-  getAncestors(parentId: number | undefined, depth: number) {
-    if(!parentId || depth <= 0){
+  getAncestors(parent: HorseNode | undefined, depth: number) {
+    if (!parent || depth <= 0) {
       return
     }
     depth = depth - 1;
-    if(parentId){
-      this.service.getById(parentId).subscribe(
-        {
-          next: data =>{
-            this.allAncestors.add(data)
-            this.workingAncestors.add(data)
-            if (data.parent1Id) {
-              this.getAncestors(data.parent1Id, depth);
-            }
-            if (data.parent2Id) {
-              this.getAncestors(data.parent2Id, depth);
-            }
-          }
-        }
-      )
+    if (parent) {
+      this.allAncestors.add(parent)
+      this.workingAncestors.add(parent)
+      if (parent.parent1) {
+        this.getAncestors(parent.parent1, depth);
+      }
+      if (parent.parent2) {
+        this.getAncestors(parent.parent2, depth);
+      }
+
     }
   }
 

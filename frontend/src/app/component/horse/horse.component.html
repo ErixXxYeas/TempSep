@@ -100,11 +100,11 @@
         id="searchHorseOwner"
         name="searchHorseOwner"
         class="form-control"
-        (input)="reloadHorses()"
+        (change)="validateOwnerSuggestion()"
         [(ngModel)]="searchOwner">
     </div>
     <datalist id="horse-owners">
-      <option *ngFor="let horse of horses" [value]="horse.owner != null ? horse.owner.firstName +' '+ horse.owner.lastName : '' ">
+      <option *ngFor="let owner of uniqueOwners" [value]="owner ">
     </datalist>
   </form>
 

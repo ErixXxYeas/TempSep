@@ -15,6 +15,7 @@ import java.util.stream.Stream;
  */
 public interface HorseService {
 
+
   /**
    * Lists all horses stored in the system, that fit the parameters.
    *
@@ -47,6 +48,8 @@ public interface HorseService {
    * @throws NotFoundException if the horse with the given ID does not exist in the persistent data store
    */
   HorseDetailDto getById(long id) throws NotFoundException;
+
+  HorseTreeNodeDto getByIdForTree(long id) throws NotFoundException;
 
   /**
    * Creates a horse with the given Information

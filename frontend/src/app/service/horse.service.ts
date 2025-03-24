@@ -2,7 +2,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {Horse, HorseCreate} from '../dto/horse';
+import {Horse, HorseCreate, HorseNode} from '../dto/horse';
 import {formatIsoDate} from "../utils/date-helper";
 import {Sex} from "../dto/sex";
 
@@ -18,23 +18,19 @@ export class HorseService {
     private http: HttpClient
   ) {}
 
-  /**
-   * Get all horses stored in the system
-   *
-   * @return observable list of found horses.
-   */
-  getAll(): Observable<Horse[]> {
-    return this.http.get<Horse[]>(baseUri)
-      .pipe(
-        map(horses => horses.map(this.fixHorseDate))
-      );
-  }
 
   getById(id: number): Observable<Horse>{
     return this.http.get<Horse>(`${baseUri}/${id}`).pipe(
       map(this.fixHorseDate)
     );
   }
+
+  getByIdForTree(id: number): Observable<HorseNode>{
+    return this.http.get<HorseNode>(`${baseUri}/${id}/familytree`).pipe(
+      map(this.fixHorseDate)
+    );
+  }
+
 
   deleteById(id: number | undefined): Observable<Horse>{
     return this.http.delete<Horse>(`${baseUri}/${id}`);
@@ -91,6 +87,7 @@ export class HorseService {
     sex?: Sex,
     bornBefore?: string,
     dateOfBirth?: string,
+    owner?: string,
     limitTo?: number
   ): Observable<Horse[]> {
     let params = new HttpParams();
@@ -110,10 +107,17 @@ export class HorseService {
     if (dateOfBirth) {
       params = params.set('dateOfBirth', dateOfBirth);
     }
+    if(owner){
+      const name = owner.split(' ')
+      params = params.set('ownerFirstName', name[0])
+      params = params.set('ownerLastName', name[1])
+    }
     if (limitTo !== undefined) {
       params = params.set('maxAmount', limitTo.toString());
     }
 
+
+    console.log(limitTo)
     return this.http.get<Horse[]>(baseUri, { params });
   }
 

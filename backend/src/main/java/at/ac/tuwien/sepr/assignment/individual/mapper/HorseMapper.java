@@ -1,11 +1,7 @@
 package at.ac.tuwien.sepr.assignment.individual.mapper;
 
 
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.HorseCreateDto;
-import at.ac.tuwien.sepr.assignment.individual.dto.OwnerDto;
+import at.ac.tuwien.sepr.assignment.individual.dto.*;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.FatalException;
 
@@ -37,7 +33,6 @@ public class HorseMapper {
     if (horse == null) {
       return null;
     }
-
     return new HorseListDto(
             horse.id(),
             horse.name(),
@@ -76,6 +71,34 @@ public class HorseMapper {
             getOwner(horse, owners),
             horse.parentId1(),
             horse.parentId2()
+    );
+  }
+
+  /**
+   * Converts a {@link Horse} entity into a {@link HorseDetailDto}.
+   * The given maps must contain the owners and parents referenced by the horse.
+   *
+   * @param horse  the horse entity to convert
+   * @param owners a map of horse owners by their ID
+   * @return the converted {@link HorseDetailDto}
+   */
+  public HorseTreeNodeDto entityToTreeNodeDto(
+          Horse horse,
+          Map<Long, OwnerDto> owners,
+          HorseTreeNodeDto parent1,
+          HorseTreeNodeDto parent2
+          ) {
+    LOG.trace("entityToDto({})", horse);
+    if (horse == null) {
+      return null;
+    }
+    return new HorseTreeNodeDto(
+            horse.id(),
+            horse.name(),
+            horse.dateOfBirth(),
+            horse.sex(),
+            parent1,
+            parent2
     );
   }
 

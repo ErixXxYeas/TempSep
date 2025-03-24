@@ -30,16 +30,20 @@ import org.springframework.stereotype.Repository;
 public class HorseJdbcDao implements HorseDao {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
   private static final String TABLE_NAME = "horse";
+  private static final String OWNER_TABLE = "owner";
 
   private static final String SQL_SELECT_ALL =
           "SELECT * FROM " + TABLE_NAME;
   private static final String SQL_SELECT_ALL_BY_PARAMS =
-          "SELECT * FROM " + TABLE_NAME
-                  + " WHERE (:name IS NULL OR UPPER(name) LIKE UPPER('%%' || COALESCE(:name, '') || '%%')) "
-                  + "AND (:description IS NULL OR UPPER(description) LIKE UPPER('%%' || COALESCE(:description, '') || '%%')) "
-                  + "AND (:born_before IS NULL OR date_of_birth < :born_before) "
-                  + "AND (:date_of_birth IS NULL OR date_of_birth = :date_of_birth) "
-                  + "AND (:sex IS NULL OR sex = :sex) "
+          "SELECT * FROM " + TABLE_NAME + " h "
+                  + "LEFT JOIN " + OWNER_TABLE + " o ON h.OWNER_ID = o.ID "
+                  + "WHERE (:name IS NULL OR UPPER(h.name) LIKE UPPER('%%' || COALESCE(:name, '') || '%%')) "
+                  + "AND (:description IS NULL OR UPPER(h.description) LIKE UPPER('%%' || COALESCE(:description, '') || '%%')) "
+                  + "AND (:born_before IS NULL OR h.date_of_birth < :born_before) "
+                  + "AND (:date_of_birth IS NULL OR h.date_of_birth = :date_of_birth) "
+                  + "AND (:sex IS NULL OR h.sex = :sex) "
+                  + "AND (:owner_first_name IS NULL OR UPPER(o.first_name) LIKE UPPER('%%' || COALESCE(:owner_first_name, '') || '%%')) "
+                  + "AND (:owner_last_name IS NULL OR UPPER(o.last_name) LIKE UPPER('%%' || COALESCE(:owner_last_name, '') || '%%')) "
                   + "LIMIT :limit";
 
   private static final String SQL_SELECT_BY_ID =
@@ -89,6 +93,8 @@ public class HorseJdbcDao implements HorseDao {
             .param("born_before", params.bornBefore())
             .param("date_of_birth", params.dateOfBirth())
             .param("description", params.description())
+            .param("owner_first_name", params.ownerFirstName())
+            .param("owner_last_name", params.ownerLastName())
             .param("limit", params.limit() == null ? Integer.MAX_VALUE : params.limit())
             .query(this::mapRow)
             .list();

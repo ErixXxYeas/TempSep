@@ -13,6 +13,15 @@ export interface Horse {
   owner?: Owner;
 }
 
+export interface HorseNode {
+  id?: number;
+  parent1?: HorseNode;
+  parent2?: HorseNode;
+  name: string;
+  dateOfBirth: Date;
+  sex: Sex;
+}
+
 export interface HorseSearch {
   name?: string;
   // TODO fill in missing fields

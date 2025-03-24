@@ -26,6 +26,7 @@ import {Sex} from "../../dto/sex";
   styleUrls: ['./horse.component.scss']
 })
 export class HorseComponent implements OnInit {
+  uniqueOwners: string[] = [];
   horses: Horse[] = [];
   bannerError: string | null = null;
   horseForDeletion: Horse | undefined;
@@ -45,10 +46,25 @@ export class HorseComponent implements OnInit {
   }
 
   reloadHorses() {
-    this.service.searchByParams(this.searchName, this.searchDescription, this.searchSex, undefined, this.searchDateOfBirth ? formatIsoDate(this.searchDateOfBirth) : undefined,  Number.MAX_VALUE ).subscribe({
+    this.uniqueOwners = [];
+    this.service.searchByParams(this.searchName,
+      this.searchDescription,
+      this.searchSex,
+      undefined,
+      this.searchDateOfBirth ? formatIsoDate(this.searchDateOfBirth) : undefined,
+      this.searchOwner,
+      Number.MAX_VALUE ).subscribe({
       next: (data) => {
         this.horses = data
         this.bannerError = null;
+        for (let i = 0; i < data.length ; i++){
+          const owner = data[i].owner
+          const ownerName = owner ? this.ownerName(owner) : '';
+          if (ownerName && !this.uniqueOwners.includes(ownerName)) {
+            this.uniqueOwners.push(ownerName);
+          }
+        }
+
         console.log(data)
       },
       error: (error) => {
@@ -57,6 +73,17 @@ export class HorseComponent implements OnInit {
         this.notification.error(error.message, 'Could Not Fetch Horses');
       }
     });
+  }
+  validateOwnerSuggestion(){
+    const validOptions = this.horses
+      .filter(h => h.owner)
+      .map(h => `${h.owner?.firstName} ${h.owner?.lastName}`);
+
+    if (!validOptions.includes(this.searchOwner)) {
+      this.searchOwner = '';
+    } else {
+      this.reloadHorses()
+    }
   }
 
   public get horseBirthDateText(): string {

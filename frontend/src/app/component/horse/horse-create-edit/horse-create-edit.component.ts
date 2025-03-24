@@ -143,7 +143,7 @@ export class HorseCreateEditComponent implements OnInit {
   parentSuggestionsByGender = (input: string, sex: Sex) => {
     return input === ''
       ? of([])
-      : this.service.searchByParams(input, undefined, sex , this.horseBirthDateText,  undefined, 5).pipe(
+      : this.service.searchByParams(input, undefined, sex , this.horseBirthDateText,  undefined, undefined, 5).pipe(
         map(horses =>
           horses.filter(
           (horse =>

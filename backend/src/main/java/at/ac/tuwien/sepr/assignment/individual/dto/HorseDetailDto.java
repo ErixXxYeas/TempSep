@@ -2,7 +2,6 @@ package at.ac.tuwien.sepr.assignment.individual.dto;
 
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 
-import java.sql.Blob;
 import java.time.LocalDate;
 
 /**
