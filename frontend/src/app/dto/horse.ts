@@ -23,8 +23,13 @@ export interface HorseNode {
 }
 
 export interface HorseSearch {
-  name?: string;
-  // TODO fill in missing fields
+  name?: string,
+  description?: string,
+  bornBefore?: string
+  dateOfBirth?: Date,
+  sex?: Sex,
+  ownerName?: string
+  limit?: number
 }
 
 export interface HorseCreate {

@@ -47,7 +47,7 @@
         name="searchHorseName"
         class="form-control"
         (input)="reloadHorses()"
-        [(ngModel)]="searchName">
+        [(ngModel)]="searchParameters.name">
       <datalist id="horse-names">
         <option *ngFor="let horse of horses" [value]="horse.name">
       </datalist>
@@ -62,7 +62,7 @@
         name="searchHorseDescription"
         class="form-control"
         (input)="reloadHorses()"
-        [(ngModel)]="searchDescription">
+        [(ngModel)]="searchParameters.description">
     </div>
 
     <div class="ms-1">
@@ -85,7 +85,7 @@
         name="searchHorseSex"
         class="form-select"
         (change)="reloadHorses()"
-        [(ngModel)]="searchSex">
+        [(ngModel)]="searchParameters.sex">
         <option></option>
         <option value="FEMALE">Female</option>
         <option value="MALE">Male</option>
@@ -101,7 +101,7 @@
         name="searchHorseOwner"
         class="form-control"
         (change)="validateOwnerSuggestion()"
-        [(ngModel)]="searchOwner">
+        [(ngModel)]="searchParameters.ownerName">
     </div>
     <datalist id="horse-owners">
       <option *ngFor="let owner of uniqueOwners" [value]="owner ">

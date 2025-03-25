@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, input, OnInit} from '@angular/core';
 import {FormsModule, NgForm, NgModel} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {map, Observable, of} from 'rxjs';
 import {AutocompleteComponent} from 'src/app/component/autocomplete/autocomplete.component';
-import {convertFromHorseToCreate, Horse} from 'src/app/dto/horse';
+import {convertFromHorseToCreate, Horse, HorseSearch} from 'src/app/dto/horse';
 import {Owner} from 'src/app/dto/owner';
 import {Sex} from 'src/app/dto/sex';
 import {ErrorFormatterService} from 'src/app/service/error-formatter.service';
@@ -141,9 +141,17 @@ export class HorseCreateEditComponent implements OnInit {
   };
 
   parentSuggestionsByGender = (input: string, sex: Sex) => {
+
+    let searchParams: HorseSearch = {
+      name: input,
+      sex: sex,
+      bornBefore: this.horseBirthDateText,
+      limit: 5
+    }
+
     return input === ''
       ? of([])
-      : this.service.searchByParams(input, undefined, sex , this.horseBirthDateText,  undefined, undefined, 5).pipe(
+      : this.service.searchByParams(searchParams).pipe(
         map(horses =>
           horses.filter(
           (horse =>

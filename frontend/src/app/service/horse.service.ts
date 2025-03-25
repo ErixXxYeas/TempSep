@@ -2,7 +2,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
-import {Horse, HorseCreate, HorseNode} from '../dto/horse';
+import {Horse, HorseCreate, HorseNode, HorseSearch} from '../dto/horse';
 import {formatIsoDate} from "../utils/date-helper";
 import {Sex} from "../dto/sex";
 
@@ -81,43 +81,35 @@ export class HorseService {
     );
   }
 
-  public searchByParams(
-    name?: string,
-    description?: string,
-    sex?: Sex,
-    bornBefore?: string,
-    dateOfBirth?: string,
-    owner?: string,
-    limitTo?: number
+  public searchByParams(searchParams: HorseSearch
   ): Observable<Horse[]> {
     let params = new HttpParams();
 
-    if (name) {
-      params = params.set('name', name.trim());
+    if (searchParams.name) {
+      params = params.set('name', searchParams.name.trim());
     }
-    if (description) {
-      params = params.set('description', description.trim());
+    if (searchParams.description) {
+      params = params.set('description', searchParams.description.trim());
     }
-    if (sex) {
-      params = params.set('sex', sex);
+    if (searchParams.sex) {
+      params = params.set('sex',searchParams.sex);
     }
-    if (bornBefore) {
-      params = params.set('bornBefore', bornBefore);
+    if (searchParams.bornBefore) {
+      params = params.set('bornBefore', searchParams.bornBefore);
     }
-    if (dateOfBirth) {
-      params = params.set('dateOfBirth', dateOfBirth);
+    if (searchParams.dateOfBirth) {
+      params = params.set('dateOfBirth', formatIsoDate(searchParams.dateOfBirth));
     }
-    if(owner){
-      const name = owner.split(' ')
+    if(searchParams.ownerName){
+      const name = searchParams.ownerName.split(' ')
       params = params.set('ownerFirstName', name[0])
       params = params.set('ownerLastName', name[1])
     }
-    if (limitTo !== undefined) {
-      params = params.set('maxAmount', limitTo.toString());
+    if (searchParams.limit !== undefined) {
+      params = params.set('maxAmount', searchParams.limit.toString());
     }
 
-
-    console.log(limitTo)
+    console.log(searchParams.limit)
     return this.http.get<Horse[]>(baseUri, { params });
   }
 

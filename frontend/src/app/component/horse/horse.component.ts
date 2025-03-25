@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AutocompleteComponent } from 'src/app/component/autocomplete/autocomplete.component';
 import { HorseService } from 'src/app/service/horse.service';
-import { Horse } from 'src/app/dto/horse';
+import {Horse, HorseSearch} from 'src/app/dto/horse';
 import { Owner } from 'src/app/dto/owner';
 import { ConfirmDeleteDialogComponent } from 'src/app/component/confirm-delete-dialog/confirm-delete-dialog.component';
 import {formatIsoDate} from "../../utils/date-helper";
@@ -30,11 +30,13 @@ export class HorseComponent implements OnInit {
   horses: Horse[] = [];
   bannerError: string | null = null;
   horseForDeletion: Horse | undefined;
-  searchName: string = '';
-  searchDescription: string = '';
-  searchDateOfBirth: Date | undefined;
-  searchSex: Sex | undefined;
-  searchOwner: string = '';
+  searchParameters: HorseSearch = {
+    name: "",
+    description:"",
+    dateOfBirth: undefined,
+    sex: undefined,
+    ownerName: ""
+  }
 
   constructor(
     private service: HorseService,
@@ -47,13 +49,7 @@ export class HorseComponent implements OnInit {
 
   reloadHorses() {
     this.uniqueOwners = [];
-    this.service.searchByParams(this.searchName,
-      this.searchDescription,
-      this.searchSex,
-      undefined,
-      this.searchDateOfBirth ? formatIsoDate(this.searchDateOfBirth) : undefined,
-      this.searchOwner,
-      Number.MAX_VALUE ).subscribe({
+    this.service.searchByParams(this.searchParameters).subscribe({
       next: (data) => {
         this.horses = data
         this.bannerError = null;
@@ -79,26 +75,26 @@ export class HorseComponent implements OnInit {
       .filter(h => h.owner)
       .map(h => `${h.owner?.firstName} ${h.owner?.lastName}`);
 
-    if (!validOptions.includes(this.searchOwner)) {
-      this.searchOwner = '';
+    if (!validOptions.includes(<string>this.searchParameters.ownerName)) {
+      this.searchParameters.ownerName = '';
     } else {
       this.reloadHorses()
     }
   }
 
   public get horseBirthDateText(): string {
-    if (!this.searchDateOfBirth) {
+    if (!this.searchParameters.dateOfBirth) {
       return '';
     } else {
-      return formatIsoDate(this.searchDateOfBirth);
+      return formatIsoDate(this.searchParameters.dateOfBirth);
     }
   }
 
   public set horseBirthDateText(date: string) {
     if (date != null && date !== '') {
-      this.searchDateOfBirth = new Date(date);
+      this.searchParameters.dateOfBirth = new Date(date);
     } else {
-      this.searchDateOfBirth = undefined;
+      this.searchParameters.dateOfBirth = undefined;
     }
   }
 
