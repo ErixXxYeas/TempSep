@@ -82,16 +82,18 @@ export class HorseDetailComponent implements OnInit {
             })
           }
 
-          if (data.image) {
-            this.imagePreview = 'data:image/jpeg;base64,' + data.image;
-            this.imageAvailable = true
+          if (data.image && data.id) {
+            this.service.getHorseImage(data.id).subscribe(url => {
+              this.imagePreview = url
+              this.imageAvailable = true;
+            })
           }
 
         }, error: error => {
           console.error('Error fetching horses', error);
           this.bannerError = 'Could not fetch horses: ' + error.message;
           const errorMessage = error.status === 0
-            ? 'Is the backend up?'
+            ? 'Server Problems?'
             : error.message.message;
           this.notification.error(errorMessage, 'Could Not Fetch Horses');
         }

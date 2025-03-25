@@ -2,6 +2,7 @@ package at.ac.tuwien.sepr.assignment.individual.entity;
 
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.time.LocalDate;
 
@@ -14,7 +15,7 @@ public record Horse(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    byte[] image,
+    InputStream image,
     Long ownerId,
     Long parentId1,
     Long parentId2

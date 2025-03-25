@@ -99,7 +99,6 @@ public class OwnerJdbcDao implements OwnerDao {
     return owners.getFirst();
   }
 
-
   @Override
   public Collection<Owner> getAllById(Collection<Long> ids) {
     LOG.trace("getAllById() with parameters: {}", ids);

@@ -4,7 +4,6 @@ import {map, Observable} from 'rxjs';
 import {environment} from 'src/environments/environment';
 import {Horse, HorseCreate, HorseNode, HorseSearch} from '../dto/horse';
 import {formatIsoDate} from "../utils/date-helper";
-import {Sex} from "../dto/sex";
 
 
 const baseUri = environment.backendUrl + '/horses';
@@ -25,10 +24,20 @@ export class HorseService {
     );
   }
 
+  getHorseImage(id: number): Observable<string> {
+    return this.http.get(`${baseUri}/${id}/image`, { responseType: 'blob' }).pipe(
+      map(blob => URL.createObjectURL(blob))
+    );
+  }
+
   getByIdForTree(id: number, generations: number): Observable<HorseNode>{
     return this.http.get<HorseNode>(`${baseUri}/${id}/familytree?generations=${generations}`).pipe(
       map(this.fixHorseDate)
     );
+  }
+
+  removeImageById(id: number | undefined){
+    return this.http.put<Horse>(`${baseUri}/${id}/image`, null)
   }
 
 

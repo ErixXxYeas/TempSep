@@ -1,4 +1,5 @@
 package at.ac.tuwien.sepr.assignment.individual.rest;
+
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseDetailDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseListDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
@@ -9,16 +10,21 @@ import at.ac.tuwien.sepr.assignment.individual.exception.ConflictException;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import at.ac.tuwien.sepr.assignment.individual.service.HorseService;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.invoke.MethodHandles;
 import java.time.LocalDate;
 import java.util.stream.Stream;
+
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -86,11 +92,35 @@ public class HorseEndpoint {
     }
   }
 
+
+  /**
+   * Fetches the image of a horse by it's ID
+   *
+   * @param id the unique identifier of the horse
+   * @return the Image of the horse as a Inputstream as JPEG
+   */
+  @GetMapping(value = "{id}/image", produces = MediaType.IMAGE_JPEG_VALUE)
+  public ResponseEntity<InputStreamResource> getHorseImage(@PathVariable("id") long id) {
+    LOG.info("GET " + BASE_PATH + "/{}/image", id);
+    try {
+      InputStream imageStream = service.getHorseImage(id);
+      InputStreamResource resource = new InputStreamResource(imageStream);
+
+      HttpHeaders headers = new HttpHeaders();
+      headers.setContentType(MediaType.IMAGE_JPEG);
+
+      return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+    } catch (NotFoundException e) {
+      LOG.warn("Image not found for horse ID {}", id);
+      return ResponseEntity.notFound().build();
+    }
+  }
+
   /**
    * Retrieves the details of a horse with it's parents
    * by its ID and depth.
    *
-   * @param id the unique identifier of the horse
+   * @param id          the unique identifier of the horse
    * @param generations how many generations of parents should be fetched
    * @return A Horse that will act as a tree node
    * @throws NotFoundException if the horse is not found
@@ -98,7 +128,7 @@ public class HorseEndpoint {
   @GetMapping("{id}/familytree")
   public HorseTreeNodeDto getByIdForTree(
           @PathVariable("id") long id,
-          @RequestParam(value = "generations", defaultValue = "0") int generations) throws NotFoundException{
+          @RequestParam(value = "generations", defaultValue = "0") int generations) throws NotFoundException {
     LOG.info("GET " + BASE_PATH + "/{}/familytree?generations={}", id, generations);
     try {
       return service.getByIdForTree(id, generations);
@@ -114,11 +144,11 @@ public class HorseEndpoint {
   /**
    * Updates the details of an existing horse, including an optional image file.
    *
-   * @param id the ID of the horse to update
+   * @param id    the ID of the horse to update
    * @param horse the updated horse data
    * @param image the updated horse image
    * @return the updated horse details
-   * @throws ConflictException if the Owner or Parent does not exist
+   * @throws ConflictException   if the Owner or Parent does not exist
    * @throws ValidationException if the horse has invalid Data
    */
   @PutMapping(path = "{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -156,7 +186,7 @@ public class HorseEndpoint {
    *
    * @param horse the updated horse data
    * @param image the updated horse image
-   * @throws ConflictException if the Owner or Parent does not exist
+   * @throws ConflictException   if the Owner or Parent does not exist
    * @throws ValidationException if the horse has invalid Data
    */
   @PostMapping(consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -188,6 +218,8 @@ public class HorseEndpoint {
       logClientError(status, "Horse couldn't be created", e);
       throw new ResponseStatusException(status, e.getMessage(), e);
 
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
 
   }
@@ -207,6 +239,26 @@ public class HorseEndpoint {
       HttpStatus status = HttpStatus.NOT_FOUND;
       LOG.warn("Error deleting horse with ID {}: {}", id, e.getMessage(), e);
       logClientError(status, "Horse to delete of not found", e);
+      throw new ResponseStatusException(status, e.getMessage(), e);
+    }
+  }
+
+  /**
+   * Removes the image of a horse
+   *
+   * @param id the ID of the horse whos image we want to delete
+   * @return ResponseStatus if the deletion was succesfull or not
+   */
+  @PutMapping("{id}/image")
+  public ResponseEntity<Void> removeImageById(@PathVariable("id") long id) {
+    LOG.info("Remove " + BASE_PATH + "/{}/image", id);
+    try {
+      service.removeImageById(id);
+      return ResponseEntity.noContent().build();
+    } catch (NotFoundException e) {
+      HttpStatus status = HttpStatus.NOT_FOUND;
+      LOG.warn("Error removing horse image with ID {}: {}", id, e.getMessage(), e);
+      logClientError(status, "Horse Image to remove of not found", e);
       throw new ResponseStatusException(status, e.getMessage(), e);
     }
   }

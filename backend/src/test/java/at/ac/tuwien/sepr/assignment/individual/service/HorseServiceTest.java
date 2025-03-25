@@ -14,8 +14,10 @@ import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
 import at.ac.tuwien.sepr.assignment.individual.exception.ValidationException;
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,14 +38,14 @@ public class HorseServiceTest {
    */
   @Test
   public void getAllReturnsAllStoredHorses() {
-    HorseSearchDto searchParameters = new HorseSearchDto(null,null,null,null,null,null, null, null);
+    HorseSearchDto searchParameters = new HorseSearchDto(null, null, null, null, null, null, null, null);
     List<HorseListDto> horses = horseService.horsesByParameters(searchParameters)
-        .toList();
+            .toList();
     assertThat(horses.size()).isGreaterThanOrEqualTo(1);
 
     assertThat(horses)
-        .map(HorseListDto::id, HorseListDto::sex)
-        .contains(tuple(-1L, Sex.FEMALE));
+            .map(HorseListDto::id, HorseListDto::sex)
+            .contains(tuple(-1L, Sex.FEMALE));
   }
 
   /**
@@ -76,11 +78,11 @@ public class HorseServiceTest {
    * Tests if you can create a Horse successfully
    *
    * @throws ValidationException if there is a validation error
-   * @throws ConflictException if the horse already exists
-   * @throws NotFoundException if the horse does not exist
+   * @throws ConflictException   if the horse already exists
+   * @throws NotFoundException   if the horse does not exist
    */
   @Test
-  public void createHorseSuccessfully() throws ValidationException, ConflictException, NotFoundException {
+  public void createHorseSuccessfully() throws ValidationException, ConflictException, NotFoundException, IOException {
     HorseCreateDto horseDto = new HorseCreateDto(
             "Terry Test",
             "Just a test horse",
@@ -112,9 +114,6 @@ public class HorseServiceTest {
       horseService.getById(-1L);
     });
   }
-
-
-
 
 
 }

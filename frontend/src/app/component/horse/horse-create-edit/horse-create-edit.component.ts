@@ -1,4 +1,4 @@
-import {Component, input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormsModule, NgForm, NgModel} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
@@ -216,18 +216,17 @@ export class HorseCreateEditComponent implements OnInit {
         }
 
         this.horseBirthDateIsSet = true;
-        if (data.image) {
-          this.imageFile = this.imageToFile(data.image,"image")
-          this.imagePreview = 'data:image/jpeg;base64,' + data.image;
-          if (data.image != null) {
+        if (data.image && data.id) {
+          this.service.getHorseImage(data.id).subscribe(url => {
+            this.imagePreview = url
             this.imageAvailable = true;
-          }
+          })
         }
       }, error: error => {
         console.error('Error fetching horses', error);
         this.bannerError = 'Could not fetch horses: ' + error.message;
         const errorMessage = error.status === 0
-          ? 'Is the backend up?'
+          ? 'Server Problems'
           : error.message.message;
         this.notification.error(errorMessage, 'Could Not Fetch Horses');
       }
@@ -246,18 +245,6 @@ export class HorseCreateEditComponent implements OnInit {
         })
       }
     }
-  }
-
-  imageToFile(image: string, name: string): File{
-    const byteCharacters = atob(image);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray] );
-    return new File([blob], name );
-
   }
 
   public dynamicCssClassesForInput(input: NgModel): any {
@@ -295,7 +282,6 @@ export class HorseCreateEditComponent implements OnInit {
         this.horse.parent2Id = undefined
       }
     }
-
   }
 
   imageUploaded(event: any): void {
@@ -315,6 +301,9 @@ export class HorseCreateEditComponent implements OnInit {
     this.imageAvailable = false;
     this.imagePreview = null
     this.imageFile = null;
+    this.service.removeImageById(this.horseId).subscribe({next: data =>
+    console.log(data)
+    })
     const fileInput = document.getElementById("image") as HTMLInputElement;
     if(fileInput){
       fileInput.value = "";

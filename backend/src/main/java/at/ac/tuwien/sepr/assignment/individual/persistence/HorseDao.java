@@ -6,9 +6,9 @@ import at.ac.tuwien.sepr.assignment.individual.dto.HorseSearchDto;
 import at.ac.tuwien.sepr.assignment.individual.dto.HorseUpdateDto;
 import at.ac.tuwien.sepr.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepr.assignment.individual.exception.NotFoundException;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -33,7 +33,7 @@ public interface HorseDao {
    * @return the updated horse
    * @throws NotFoundException if the Horse with the given ID does not exist in the persistent data store
    */
-  Horse update(HorseUpdateDto horse, byte[] image) throws NotFoundException;
+  Horse update(HorseUpdateDto horse, InputStream image) throws NotFoundException;
 
 
   /**
@@ -52,7 +52,7 @@ public interface HorseDao {
    * @param horse the horse that will get created
    * @throws IOException if there is no Data
    */
-  Horse create(HorseCreateDto horse, byte[] image) throws IOException;
+  Horse create(HorseCreateDto horse, InputStream image) throws IOException;
 
   /**
    * Deletes the horse with the ID given in {@code horse}
@@ -62,6 +62,16 @@ public interface HorseDao {
    * @throws NotFoundException if the Horse with the given ID does not exist in the persistent data store
    */
   void delete(Long id) throws NotFoundException;
+
+
+  /**
+   * Deletes the image of a horse with the ID given in {@code horse}
+   * in the persistent data store.
+   *
+   * @param id the ID of the horse to get
+   * @throws NotFoundException if the Horse with the given ID does not exist in the persistent data store
+   */
+  Horse removeImageById(Long id) throws NotFoundException;
 
 
 }

@@ -9,13 +9,12 @@ import java.time.LocalDate;
  * This record provides all necessary details about a horse for a tree.
  */
 public record HorseTreeNodeDto(
-  Long id,
-  String name,
-  LocalDate dateOfBirth,
-  Sex sex,
-  HorseTreeNodeDto parent1,
-  HorseTreeNodeDto parent2
-)
-{
+        Long id,
+        String name,
+        LocalDate dateOfBirth,
+        Sex sex,
+        HorseTreeNodeDto parent1,
+        HorseTreeNodeDto parent2
+) {
 
-        }
+}

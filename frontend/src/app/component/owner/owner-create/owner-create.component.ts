@@ -118,7 +118,7 @@ export class OwnerCreateComponent implements OnInit {
       }
       observable.subscribe({
         next: data => {
-          this.notification.success(`Owner ${data.firstName + " " + data.lastName}  successfully ${this.modeActionFinished}.`);
+          this.notification.success(`Owner ${this.formatOwnerName(data)}  successfully ${this.modeActionFinished}.`);
           this.router.navigate(['/owners']);
         },
         error: error => {

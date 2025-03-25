@@ -10,6 +10,7 @@ import at.ac.tuwien.sepr.assignment.individual.persistence.HorseDao;
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.invoke.MethodHandles;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,9 +32,6 @@ public class HorseJdbcDao implements HorseDao {
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
   private static final String TABLE_NAME = "horse";
   private static final String OWNER_TABLE = "owner";
-
-  private static final String SQL_SELECT_ALL =
-          "SELECT * FROM " + TABLE_NAME;
   private static final String SQL_SELECT_ALL_BY_PARAMS =
           "SELECT * FROM " + TABLE_NAME + " h "
                   + "LEFT JOIN " + OWNER_TABLE + " o ON h.OWNER_ID = o.ID "
@@ -50,10 +48,14 @@ public class HorseJdbcDao implements HorseDao {
           "SELECT * FROM " + TABLE_NAME
                   + " WHERE ID = :id";
 
+  private static final String SQL_SELECT_IMAGE_BY_ID =
+          "SELECT IMAGE FROM " + TABLE_NAME
+          + " WHERE ID = :id";
 
   private static final String SQL_DELETE_BY_ID =
           "DELETE FROM " + TABLE_NAME
                   + " WHERE ID = :id";
+
 
   private static final String SQL_UPDATE =
           "UPDATE " + TABLE_NAME
@@ -68,6 +70,11 @@ public class HorseJdbcDao implements HorseDao {
                           parent2_id = :parent2_id
                       WHERE id = :id
                   """;
+
+  private static final String SQL_DELETE_IMAGE_BY_ID =
+          "UPDATE " + TABLE_NAME
+                  + " SET image = NULL "
+                  + " WHERE id = :id";
 
   private static final String SQL_INSERT =
           "INSERT INTO "
@@ -122,7 +129,7 @@ public class HorseJdbcDao implements HorseDao {
   }
 
   @Override
-  public Horse create(HorseCreateDto horse, byte[] image) throws IOException {
+  public Horse create(HorseCreateDto horse, InputStream image) throws IOException {
     LOG.trace("create() with parameters: {}", horse);
     LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, horse);
     KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -150,9 +157,7 @@ public class HorseJdbcDao implements HorseDao {
             horse.ownerId(),
             horse.parentId1(),
             horse.parentId2());
-
   }
-
 
   @Override
   public void delete(Long id) throws NotFoundException {
@@ -162,9 +167,44 @@ public class HorseJdbcDao implements HorseDao {
             .param("id", id).update();
   }
 
+  @Override
+  public Horse removeImageById(Long id) throws NotFoundException {
+    LOG.trace("removeImageById() with parameters: {}", id);
+    LOG.debug("SQL: {} with parameters: {}", SQL_DELETE_IMAGE_BY_ID, id);
+    int updated = jdbcClient
+            .sql(SQL_DELETE_IMAGE_BY_ID)
+            .param("id", id)
+            .param("image", null)
+            .update();
+
+    Horse updatedHorse = getById(id);
+
+    if (updated == 0) {
+      throw new NotFoundException(
+              "Could not update horse with ID " + updatedHorse.id() + ", because it does not exist"
+      );
+    }
+    LOG.info("Successfully updated horse with name: {}", updatedHorse.name());
+    return new Horse(
+            updatedHorse.id(),
+            updatedHorse.name(),
+            updatedHorse.description(),
+            updatedHorse.dateOfBirth(),
+            updatedHorse.sex(),
+            null,
+            updatedHorse.ownerId(),
+            updatedHorse.parentId1(),
+            updatedHorse.parentId2());
+  }
+
+  private InputStream getImageById(long id) throws NotFoundException {
+    LOG.trace("getImageById() with parameters: {} ", id);
+    Horse horse = getById(id);
+    return horse.image();
+  }
 
   @Override
-  public Horse update(HorseUpdateDto horse, byte[] image) throws NotFoundException {
+  public Horse update(HorseUpdateDto horse, InputStream image) throws NotFoundException {
     LOG.trace("update() with parameters: {} , {}", horse, image);
     LOG.debug("SQL: {} with parameters: {}", SQL_INSERT, horse);
     int updated = jdbcClient
@@ -174,7 +214,7 @@ public class HorseJdbcDao implements HorseDao {
             .param("description", horse.description())
             .param("date_of_birth", horse.dateOfBirth())
             .param("sex", horse.sex().toString())
-            .param("image", image)
+            .param("image", image == null ? getImageById(horse.id()) : image)
             .param("owner_id", horse.ownerId())
             .param("parent1_id", horse.parentId1())
             .param("parent2_id", horse.parentId2())
@@ -207,7 +247,7 @@ public class HorseJdbcDao implements HorseDao {
             result.getString("description"),
             result.getDate("date_of_birth").toLocalDate(),
             Sex.valueOf(result.getString("sex")),
-            result.getBytes("image"),
+            result.getBinaryStream("image"),
             result.getObject("owner_id", Long.class),
             result.getObject("parent1_id", Long.class),
             result.getObject("parent2_id", Long.class));

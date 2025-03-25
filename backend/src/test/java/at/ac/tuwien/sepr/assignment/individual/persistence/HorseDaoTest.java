@@ -88,13 +88,13 @@ public class HorseDaoTest {
    */
   @Test
   public void getAllReturnsAllStoredHorses() {
-    HorseSearchDto searchParameters = new HorseSearchDto(null,null,null,null,null,null, null, null);
+    HorseSearchDto searchParameters = new HorseSearchDto(null, null, null, null, null, null, null, null);
 
     List<Horse> horses = horseDao.getByParams(searchParameters);
     System.out.println(horses);
     assertThat(horses.size()).isGreaterThanOrEqualTo(1);
     assertThat(horses)
-        .extracting(Horse::id, Horse::name)
-        .contains(tuple(-1L, "Wendy"));
+            .extracting(Horse::id, Horse::name)
+            .contains(tuple(-1L, "Wendy"));
   }
 }

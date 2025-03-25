@@ -9,7 +9,7 @@ import { Owner } from 'src/app/dto/owner';
 import { ConfirmDeleteDialogComponent } from 'src/app/component/confirm-delete-dialog/confirm-delete-dialog.component';
 import {formatIsoDate} from "../../utils/date-helper";
 import {CommonModule} from "@angular/common";
-import {Sex} from "../../dto/sex";
+import {OwnerService} from "../../service/owner.service";
 
 
 @Component({
@@ -26,8 +26,8 @@ import {Sex} from "../../dto/sex";
   styleUrls: ['./horse.component.scss']
 })
 export class HorseComponent implements OnInit {
-  uniqueOwners: string[] = [];
   horses: Horse[] = [];
+  owners: Owner[] = [];
   bannerError: string | null = null;
   horseForDeletion: Horse | undefined;
   searchParameters: HorseSearch = {
@@ -40,28 +40,22 @@ export class HorseComponent implements OnInit {
 
   constructor(
     private service: HorseService,
+    private ownerService: OwnerService,
     private notification: ToastrService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.reloadHorses();
   }
 
   reloadHorses() {
-    this.uniqueOwners = [];
     this.service.searchByParams(this.searchParameters).subscribe({
       next: (data) => {
         this.horses = data
         this.bannerError = null;
-        for (let i = 0; i < data.length ; i++){
-          const owner = data[i].owner
-          const ownerName = owner ? this.ownerName(owner) : '';
-          if (ownerName && !this.uniqueOwners.includes(ownerName)) {
-            this.uniqueOwners.push(ownerName);
-          }
-        }
-
-        console.log(data)
+        this.ownerService.searchByName(this.searchParameters.ownerName, Number.MAX_VALUE).subscribe({
+          next: data=> this.owners = data
+        })
       },
       error: (error) => {
         console.error('Error fetching horses', error);
@@ -69,12 +63,14 @@ export class HorseComponent implements OnInit {
         this.notification.error(error.message, 'Could Not Fetch Horses');
       }
     });
+
   }
   validateOwnerSuggestion(){
-    const validOptions = this.horses
-      .filter(h => h.owner)
-      .map(h => `${h.owner?.firstName} ${h.owner?.lastName}`);
 
+    const validOptions = this.owners
+      .map(owner => `${owner?.firstName} ${owner?.lastName}`);
+
+    console.log(validOptions)
     if (!validOptions.includes(<string>this.searchParameters.ownerName)) {
       this.searchParameters.ownerName = '';
     } else {

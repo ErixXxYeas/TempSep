@@ -1,27 +1,3 @@
-<!-- SANITY CHECK BANNER
-    This is just for checking, that your setup works.
-    You can – and should – remove this later
--->
-
-@if (bannerError) {
-  <div class="container mt-3 mb-3">
-    <div class="alert alert-danger" role="alert">
-      <h4>Error!</h4> {{ bannerError }}
-      <p>Could not load horses.</p>
-      <p>Something is not quite right. Did you start the backend?</p>
-    </div>
-  </div>
-} @else if (horses) {
-  <div class="container mt-3">
-    <div class="alert alert-success" role="alert">
-      <h4 class="alert-heading">Well done!</h4>
-      <p>Your application is up and running.</p>
-      <p>You should see the current list of horses below.</p>
-    </div>
-  </div>
-}
-
-<!-- END SANITY CHECK BANNER -->
 
 <div class="d-flex flex-row w-auto">
   <button class="btn btn-primary mr-1" (click)="reloadHorses()" aria-label="Reload horses">
@@ -41,19 +17,13 @@
     <div class="flex-grow-2">
       <label for="searchHorseName" class="col-form-label">Name</label>
       <input
-        list="horse-names"
         type="text"
         id="searchHorseName"
         name="searchHorseName"
         class="form-control"
         (input)="reloadHorses()"
         [(ngModel)]="searchParameters.name">
-      <datalist id="horse-names">
-        <option *ngFor="let horse of horses" [value]="horse.name">
-      </datalist>
-
     </div>
-
     <div class="flex-grow-1 ms-1">
       <label for="searchHorseDescription" class="col-form-label">Description</label>
       <input
@@ -104,7 +74,7 @@
         [(ngModel)]="searchParameters.ownerName">
     </div>
     <datalist id="horse-owners">
-      <option *ngFor="let owner of uniqueOwners" [value]="owner ">
+      <option *ngFor="let owner of owners" [value]="ownerName(owner) ">
     </datalist>
   </form>
 

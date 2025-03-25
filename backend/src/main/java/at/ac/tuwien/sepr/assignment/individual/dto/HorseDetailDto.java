@@ -2,6 +2,7 @@ package at.ac.tuwien.sepr.assignment.individual.dto;
 
 import at.ac.tuwien.sepr.assignment.individual.type.Sex;
 
+import java.io.InputStream;
 import java.time.LocalDate;
 
 /**
@@ -14,7 +15,7 @@ public record HorseDetailDto(
     String description,
     LocalDate dateOfBirth,
     Sex sex,
-    byte[] image,
+    boolean image,
     OwnerDto owner,
     Long parent1Id,
     Long parent2Id
